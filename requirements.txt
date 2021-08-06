@@ -1,2 +1,3 @@
 -r requirements/pip.txt
+-r requirements/docs.txt
 # just referencing for a natural `pip install -r requirements.txt`
