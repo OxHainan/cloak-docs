@@ -1,8 +1,9 @@
-Tutorial
+Develop Cloak Smart Contract
 =================================
 
 .. toctree::
    :maxdepth: 2
 
-   examples/contents
    language/contents
+   compiler/contents
+   debug/contents

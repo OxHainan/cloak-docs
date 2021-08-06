@@ -1,3 +1,3 @@
-Features and Advancement
+Advanced Features
 ========================
 

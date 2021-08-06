@@ -8,14 +8,35 @@ Welcome to Cloak's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents
+   :caption: Getting Started
 
-   introduction/index
-   gettingstart/index
-   tutorial/index
+   basics/index
+   started/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Develop
+
+   develop/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Deploy
+
+   deploy/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contribute
+
    roadmap/index
-   publications/index
    apidoc/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: About Cloak
+
+   publications/index
    about
 
 

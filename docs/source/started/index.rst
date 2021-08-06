@@ -1,4 +1,4 @@
-Getting Started
+Quick Start
 =================================
 
 .. toctree::
@@ -6,4 +6,5 @@ Getting Started
 
    prerequisites/contents
    install/contents
+   examples/contents
    usage/contents

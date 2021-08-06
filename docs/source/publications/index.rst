@@ -4,5 +4,5 @@ Publications
 .. toctree::
    :maxdepth: 2
 
-   publications/contents
+   papers/contents
    releasenotes/contents
