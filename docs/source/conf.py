@@ -101,7 +101,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'BookTestdoc'
+htmlhelp_basename = 'cloakdocs'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -129,7 +129,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'Cloak.tex', 'Cloak Documentation',
-     'zyx', 'manual'),
+     'Oxford-Hainan Blockchain Research Institute', 'manual'),
 ]
 
 
@@ -150,7 +150,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'Cloak', 'Cloak Documentation',
-     author, 'Cloak', 'A framework towards multi-party enabled confidential smart contract.',
+     author, 'Cloak', 'A framework of developing confidential smart contract.',
      'Miscellaneous'),
 ]
 
