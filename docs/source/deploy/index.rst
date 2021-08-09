@@ -1,3 +1,14 @@
+EVM-enabled Blockchain
+=================================
+
+   blockchain/contents
+
+Cloak Network
+=================================
+
+   cloaknetwork/contents
+
+
 Deploy Cloak Smart Contract
 =================================
 
@@ -5,6 +16,6 @@ Deploy Cloak Smart Contract
    :maxdepth: 2
 
    initialize/contents
-   blockchain/contents
-   cloaknetwork/contents
+   dblockchain/contents
+   dcloaknetwork/contents
    transact/contents

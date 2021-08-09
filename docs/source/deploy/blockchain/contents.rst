@@ -1,4 +1,2 @@
-Deploy to Blockchain
-========================
 
-deploy the generated smart contracts to a blockchain
+a blockchain support Solidity smart contracts
