@@ -43,11 +43,11 @@ Privacy Types
 -------------
 Privacy types (α) define the data access rights, including me, all, tee and identifiers.
 
-* me: This type indicates that only the runtime address of the caller can obtain its plaintext.
+* ``me``: This type indicates that only the runtime address of the caller can obtain its plaintext.
 
-* all: This type indicates that all users can obtain its plaintext.
+* ``all``: This type indicates that all users can obtain its plaintext.
 
-* tee: This type indicates that only the TEE can obtain its plaintext.
+* ``tee``: This type indicates that only the TEE can obtain its plaintext.
 
 * identifiers: This type depends on the specific business to decide who is able to obtain the plaintext.
 
