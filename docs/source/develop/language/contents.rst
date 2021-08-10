@@ -41,7 +41,7 @@ Mappings      mapping
 
 Privacy Types
 -------------
-Privacy types (α) define the data access rights, including me, all, tee and identifiers.
+Privacy types (α) define the data access rights, including ``me``, ``all``, ``tee`` and identifiers.
 
 * ``me``: This type indicates that only the runtime address of the caller can obtain its plaintext.
 
