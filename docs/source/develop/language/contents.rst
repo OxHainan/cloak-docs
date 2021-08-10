@@ -130,11 +130,12 @@ Concentrately, you can refer to specific examples to correspond to the formal de
 
 It is noteworthy that function in CLOAK also has privacy types according to its data privacy types.
 Typically, there are three function types.
-* PUB,public, iff all data privacy types are **@all**.
 
-* CT,confidential transaction, iff only one private expression exists but not owned by TEE.
+* PUB, public, iff all data privacy types are **@all**.
 
-* MPT,multi-party transaction, iff one involves variables from different parties.
+* CT, confidential transaction, iff only one private expression exists but not owned by TEE.
+
+* MPT, multi-party transaction, iff one involves variables from different parties.
 
 
 A Simple CLOAK contract
