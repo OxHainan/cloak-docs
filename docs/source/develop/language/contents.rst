@@ -311,7 +311,7 @@ Labeled with ``view``, it cannot change any variable, so it is safe to be public
         return true;
     }
     
-In function ``transfer``, the ``value`` of ``me`` was transferred to ``pubBalance[to]``.
+In function ``transfer()``, the ``value`` of ``me`` was transferred to ``pubBalance[to]``.
 These two ``require()`` ensures that the security of variables. Users need to use this function to conduct transactions, so it is public too.
 
 .. code-block::
