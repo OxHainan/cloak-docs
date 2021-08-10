@@ -78,7 +78,7 @@ For example:
 
 Expressions
 -------------
-The only cloak-specific expressions (e) consist of the runtime address of the caller (me), common address of TEE (tee), reclassification of information (reveal) and native functions including standard arithmetic and boolean operators.
+The only cloak-specific expressions (e) consist of the runtime address of the caller (``me``), common address of TEE (``tee``), reclassification of information (``reveal()``) and native functions including standard arithmetic and boolean operators.
 
 **reveal()** is a operation that is able to change the access right. For example, one can reveals the value x to Alice:
 
