@@ -82,7 +82,7 @@ The only cloak-specific expressions (e) consist of the runtime address of the ca
 
 **reveal()** is a operation that is able to change the access right. For example, one can reveals the value x to Alice:
 
-.. code-block :: Solidity
+.. code-block ::
 
    uint256@me x; // here, Alice cannot obtain the plaintext of x.
    uint256@alice x_alice;
@@ -90,7 +90,7 @@ The only cloak-specific expressions (e) consist of the runtime address of the ca
 
 Of course, it can be public:
 
-::
+.. code-block ::
 
    uint256 x_public;
    x_public = reveal(x, all);
