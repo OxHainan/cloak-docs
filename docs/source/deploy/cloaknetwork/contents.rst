@@ -35,7 +35,7 @@ The Key-value Store is a collection of maps (associating a key to a value) that 
 by the application. These maps can be private (encrypted in the ledger) or public (integrity-protected 
 and visible by anyone that has access to the ledger.
 
-**3. Leger**
+**3. Ledger**
 
 All changes to the Key-Value Store are encrypted and recorded by each one of the networks 
 to disk to a decentralized auditable ledger. The integrity of the ledger is guaranteed 
@@ -58,32 +58,18 @@ application or to add a new member to the consortium.
     :alt: Cloak-Framework
     :align: center
 
-In cloak network, users’ private transactions are divided into confidential transaction and 
-Multi-Party Transaction. Confidential transaction can be executed normally without multi-Party 
-participation. 
+* Privacy Interpreter, complete privacy check for transaction
+* Key Management Enclave, provide data encryption and decryption
+* EVM Enclave, confidential smart contract execution modules
 
-Suppose Co.1 (Corporate) uses the privacy mechanism in the nodes to protect his 
-private data, he can need to deploy the corresponding confidential smart contract and privacy 
-policy to BlockChain and cloak networks respectively. 
-
-When Co.1 commit a private transaction, the nodes will check that based privacy policy 
-target function to divided the transaction is confidential transaction or Multi-Party 
-Transaction in the Privacy Interpreter. If it belongs to the former, it will enter 
-the EVM execution, otherwise it will continue to wait for Multi-Party (e.g., Co.2 or himself) 
-to complete the input of private data. 
-
-As the nodes of TEE is stateless, before the transaction enters the EVM execution, 
-the latest contract data state of the privacy smart contract needs to be synchronized 
-with the BlockChain and decrypted in the Key Management Enclave. At the same time, 
-the legality of the user's inputs of private data will be checked by the privacy smart contract.
-
-**5.1 Privacy policy**
+Privacy policy
+---------------
 
 Privacy policy is a model parameter generated based on the compilation of confidential smart contract, 
 which contains the inputs and outputs expression methods of public variables and public functions in the smart contract.
-As folows:
+As follows:
 
-::
+.. code-block ::
 
     {
         "policy": {
@@ -94,7 +80,6 @@ As folows:
                 "owner": "mapping(address!x=>uint256@x)"
             }],
             "functions": [{
-                "type": "function",
                 "name": "settleReceivable",
                 "inputs": [{
                     "name": "payee",
@@ -109,7 +94,7 @@ As folows:
                     "name": "balances"
                     "keys": [
                         "payee", 
-                        ]}, 
+                    ]}, 
                 ],
                 "mutate": [{
                     {
@@ -128,20 +113,88 @@ As folows:
         }
     }
 
+* contract, indicates the name of the confidential smart contract
+
 * states 
 
-States records all types of contract data state variables, The meaning of the ``owner`` field is
+    States records all types of contract data state variables, The meaning of the ``owner`` field is
 
-``owner: "all"`` is defaults value, means that anyone can query the data and store it on BlockChain in plaintext.
+    * ``owner: "all"`` is defaults value, means that anyone can query the data and store it on BlockChain in plaintext.
 
-``owner: id``, means that the owner of data is ``id`` (e.g., digital signature), ``id`` type is ``address``. 
-Only user has verified the identity of the ``id`` can beallowed to read the data. 
-Therefore, the value of data is private and crypted it before export cloak (e.g., synchronized data to BlockChain).
+    * ``owner: id``, means that the owner of data is ``id``, ``id`` type is ``address``. 
+      Only user has verified the identity of the ``id`` (e.g., digital signature) can be allowed to read the data. 
+      Therefore, the value of data is private and crypted it before export cloak (e.g., synchronized data to BlockChain).
 
-``owner: "mapping(address!x=>uint256@x)``, statement of the mapping ``key`` is temporary variable ``x``, 
-and flag the owner of ``value`` is ``x``. the same as ``id``.
+    * ``owner: "mapping(address!x=>uint256@x)``, statement of the mapping ``key`` is temporary variable ``x``, 
+      and flag the owner of ``value`` is ``x``. the same as ``id``.
 
-.. warn::
-Temporary variable ``x`` is only valid in the mapping declaration, e.g., in a contract, 
-allow ``mapping(address!x => uint256@x)`` and ``mapping(address!x => mapping(address => uint256@x))`` can be valid 
-at the same time, because the scope of ``x`` is limited to their respective mapping.
+    .. note ::
+
+        Temporary variable ``x`` is only valid in the mapping declaration, e.g., in a contract, 
+        allow ``mapping(address!x => uint256@x)`` and ``mapping(address!x => mapping(address => uint256@x))`` can be valid 
+        at the same time, because the scope of ``x`` is limited to their respective mapping.
+
+* functions
+
+    functions is an array collection, mark the inputs and outputs expressions of a single function, as shown below
+
+    * ``name``, is a name of function
+
+    * ``inputs``, input parameters of the function, each input contains the variable ``name``, ``type``, and ``owner`` of the parameter
+
+    * ``read``, record the name of the contract data state variable required in current function contract code, in order to synchronize data
+      with BlockChain.
+
+    * ``mutate``, the contract data state binding relationship of owner of data ``id`` in this function
+
+    * ``outputs``, output function execution result in EVM
+
+
+* privacy transaction
+
+.. image:: workflow-privacy.svg
+    :width: 900px
+    :alt: workflow-privacy
+    :align: center
+
+Privacy transaction is mainly to complete the registration of privacy policy, in order to find the corresponding privacy model in the next Multi-Party transaction.
+In cloak, one privacy policy can correspond to multiple confidential smart contract, but a multiple confidential smart contract only belongs to one privacy policy.
+When processing privacy transaction, cloak will check the validity of parameters of the policy in the Privacy Interpreter. And then, 
+check the privacy policy has already exist and if it's exist, it will check binding relationship between privacy policy again. finally, set the binding relationship 
+between privacy policy and save to ledger.
+
+Multi-Party transaction
+------------------------
+
+In cloak network, users’ private transactions are divided into confidential transaction and 
+Multi-Party Transaction. Confidential transaction can be executed normally without multi-Party 
+participation. 
+
+Suppose Co.1 (Corporate) uses the privacy mechanism in the nodes to protect his 
+private data, he can need to deploy the corresponding confidential smart contract and privacy 
+policy to BlockChain and cloak networks respectively. 
+
+When Co.1 commit a private transaction, the nodes will check that based privacy policy 
+target function to divided the transaction is confidential transaction or Multi-Party 
+Transaction in the Privacy Interpreter. If it belongs to the former, it will enter 
+the EVM execution, otherwise it will continue to wait for Multi-Party (e.g., Co.2 or himself) 
+to complete the input of private data. 
+
+.. image:: workflow-confidential.svg
+    :width: 900px
+    :alt: workflow-confidential
+    :align: center
+
+As the nodes of TEE is stateless, before the transaction enters the EVM execution, 
+the latest contract data state of the privacy smart contract needs to be synchronized 
+with the BlockChain and decrypted in the Key Management Enclave. At the same time, 
+the legality of the user's inputs of private data will be checked by the privacy smart contract.
+
+.. image:: workflow-mpt.svg
+    :width: 900px
+    :alt: workflow-mpt
+    :align: center
+
+When transaction involves multiple parties, cloak will check the legality of Multi-Party and accept
+their inputs data. Then, check whether transaction inputs parameters are complete. if not, it can wait
+for other Multi-Party. finally, take transaction into EVM Enclave extension and save it to ledger.
