@@ -17,7 +17,7 @@ Welcome to Cloak's documentation!
    :maxdepth: 2
    :caption: Develop
 
-   develop/index
+   develop/language/contents
 
 .. toctree::
    :maxdepth: 2
