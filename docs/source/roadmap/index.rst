@@ -11,9 +11,10 @@ Roadmap
       which was known in all the great civilisations, but no clear line of 
       causality has been established."*
 
-   - support main features and structures of Solidity in Language.
-   - construct user-friendly toolchains and API to support both academic and industrial usage
-   - adapt and plugin the Cloak to enable MPT on the Ethereum
+   - support main features and constructures of Solidity in Cloak Language.
+   - implement non-derterministic MPT negotiation protocol and fair MPT results distribution
+   - do systematic security analysis and auditions for industrial usage.
+   - provision a continuously operating decentralized Cloak Network and enable MPT on the Ethereum
 
 - **Silk Road**
    .. note:: 
@@ -22,9 +23,9 @@ Roadmap
       in China. It was and is a network of trade routes connecting the 
       East and West."*
 
-   - implement non-derterministic MPT negotiation protocol
-   - achieve fair MPT results distribution
-   - support a wide range of blockchain adaptations, e.g., Ethereum, etc.
+   - support ownership transfer of private data and privacy uninstallment provided by Cloak service.
+   - support cross-chain privacy policy bindings, enforcement, verification and cooperative computation.
+   - support a wide range of blockchain adaptations, e.g., Ethereum, FISCO BCOS, etc.
 
 - **Invisibility Cloak**
    .. note:: 
@@ -33,4 +34,5 @@ Roadmap
 
    - support general-purpose privacy-preserved computation, e.g., AI training.
    - provision a continuously operating decentralized Cloak Network
+   - construct user-friendly community and toolchains for both academic and industrial usage
 

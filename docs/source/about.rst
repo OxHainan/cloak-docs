@@ -29,4 +29,15 @@ economy technologies.
 Cloak Team
 --------------------------------------------
 
-todo
+The Cloak Team is an R&D team of OxHainan for privacy protection on the blockchain. 
+We strive to develop disruptive new frameworks for improving security, 
+privacy, and trustworthiness in blockchain data processing in various settings, 
+efficiently and at scale. In the last years, we have had a particular focus on the 
+following topics: novel methods and tools for blockchain privacy, as well as efficient 
+techniques for secure, verifiable privacy-preserved computation, especially TEE-based solutions.
+
+We are developing methods and tools, such as Cloak, to enable the verifiable and 
+privacy-friendly processing of blockchain data. Welcome to join us. 
+Let's make it together to empower all blockchain-driven ecosystems 
+and applications and towards a promising self-sovereign, 
+transparent, and fair cooperation future. 
