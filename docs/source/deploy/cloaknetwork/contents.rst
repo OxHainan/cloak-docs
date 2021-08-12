@@ -1,6 +1,6 @@
 
 ********************************
-TEE-based Cloak Network
+OVERVIEW
 ********************************
 The flowing diagram shows a basic cloak network made of 3 nodes. 
 All nodes run the same application inside an enclave. The effects of user 
@@ -62,14 +62,15 @@ application or to add a new member to the consortium.
 * Key Management Enclave, provide data encryption and decryption
 * EVM Enclave, confidential smart contract execution modules
 
+********************************
 Privacy policy
----------------
+********************************
 
 Privacy policy is a model parameter generated based on the compilation of confidential smart contract, 
 which contains the inputs and outputs expression methods of public variables and public functions in the smart contract.
 As follows:
 
-.. code-block ::
+.. code-block::
 
     {
         "policy": {
@@ -152,10 +153,7 @@ As follows:
 
 * privacy transaction
 
-.. image:: workflow-privacy.svg
-    :width: 900px
-    :alt: workflow-privacy
-    :align: center
+.. mermaid:: privacy.mmd
 
 Privacy transaction is mainly to complete the registration of privacy policy, in order to find the corresponding privacy model in the next Multi-Party transaction.
 In cloak, one privacy policy can correspond to multiple confidential smart contract, but a multiple confidential smart contract only belongs to one privacy policy.
@@ -163,12 +161,30 @@ When processing privacy transaction, cloak will check the validity of parameters
 check the privacy policy has already exist and if it's exist, it will check binding relationship between privacy policy again. finally, set the binding relationship 
 between privacy policy and save to ledger.
 
+************************
 Multi-Party transaction
-------------------------
+************************
 
-In cloak network, users’ private transactions are divided into confidential transaction and 
+In cloak network, users' private transactions are divided into confidential transaction and 
 Multi-Party Transaction. Confidential transaction can be executed normally without multi-Party 
 participation. 
+
+.. code-block::
+
+    {
+        "function": "settleReceivables",
+        "inputs" : [{
+            "name": "payee",
+            "value": "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe"
+        }, {
+            "name": "amount",
+            "value": "0x1234"
+        }],
+    }
+
+* function: (Optional), when the user is the initiator of the transaction, this field cannot be omitted 
+
+* inputs: inputs parameter of target of function
 
 Suppose Co.1 (Corporate) uses the privacy mechanism in the nodes to protect his 
 private data, he can need to deploy the corresponding confidential smart contract and privacy 
@@ -180,21 +196,16 @@ Transaction in the Privacy Interpreter. If it belongs to the former, it will ent
 the EVM execution, otherwise it will continue to wait for Multi-Party (e.g., Co.2 or himself) 
 to complete the input of private data. 
 
-.. image:: workflow-confidential.svg
-    :width: 900px
-    :alt: workflow-confidential
-    :align: center
+.. mermaid:: mpt.mmd
 
 As the nodes of TEE is stateless, before the transaction enters the EVM execution, 
 the latest contract data state of the privacy smart contract needs to be synchronized 
 with the BlockChain and decrypted in the Key Management Enclave. At the same time, 
 the legality of the user's inputs of private data will be checked by the privacy smart contract.
 
-.. image:: workflow-mpt.svg
-    :width: 900px
-    :alt: workflow-mpt
-    :align: center
+.. mermaid:: mpt1.mmd
 
 When transaction involves multiple parties, cloak will check the legality of Multi-Party and accept
 their inputs data. Then, check whether transaction inputs parameters are complete. if not, it can wait
-for other Multi-Party. finally, take transaction into EVM Enclave extension and save it to ledger.
+for other Multi-Party. finally, take transaction into EVM execution and save it to ledger.
+

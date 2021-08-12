@@ -12,12 +12,17 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import sys
 import os
-sys.path.append(str(os.path.realpath('cloak_highlighting')))
-from sphinx.highlighting import lexers
-from cloakLexer import CloakSolidityLexer
-lexers['cloak'] = CloakSolidityLexer(startinline=True)
+import sys
+# sys.path.insert(0, os.path.abspath('.'))
+
+from pygments_lexer_solidity import SolidityLexer, YulLexer
+
+def setup(sphinx):
+    thisdir = os.path.dirname(os.path.realpath(__file__))
+    sys.path.insert(0, thisdir + '/utils')
+    sphinx.add_lexer('Solidity', SolidityLexer)
+    sphinx.add_lexer('Yul', YulLexer)
 
 
 # -- Project information -----------------------------------------------------
@@ -42,6 +47,7 @@ release = '0.2.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinxcontrib.mermaid'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -71,7 +77,7 @@ exclude_patterns = []
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
-highlight_language = 'cloak'
+highlight_language = 'Solidity'
 
 
 # -- Options for HTML output -------------------------------------------------
