@@ -204,7 +204,7 @@ class CloakSolidityLexer(BaseLexer):
             # compiler built-ins
             (r'(balance|now)\b', Name.Builtin),
             (r'selector\b', Name.Builtin),
-            (r'(super|this|me|all|tee|owner|alice|bob)\b', Name.Builtin),
+            (r'(super|this|me|all|tee|owner|alice|bob|x|_owner|_manager)\b', Name.Builtin),
         ],
         'keywords-functions': [
             # receive/fallback functions
