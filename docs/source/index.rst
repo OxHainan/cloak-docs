@@ -10,8 +10,9 @@ Welcome to Cloak's documentation!
    :maxdepth: 2
    :caption: Getting Started
 
-   basics/introduction
+   started/introduction
    started/quick-start
+   started/contribute
 
 .. toctree::
    :maxdepth: 2
@@ -24,6 +25,7 @@ Welcome to Cloak's documentation!
    :maxdepth: 2
    :caption: Deploy
 
+   deploy/architecture
    deploy/deploy
 
 .. toctree::

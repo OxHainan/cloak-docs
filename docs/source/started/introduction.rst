@@ -55,16 +55,19 @@ contract*, *private contract*, and the *privacy policy*.
 In the *deployment* phase, Cloak helps developers deploy generated code to specified 
 blockchain and Cloak network, where the verifier contract is deployed to the blockchain, 
 the private contract and privacy policy is deployed to Cloak network and the transaction 
-class is held in Cloak SDK.  
+class is held in Cloak Client.  
 
-In the *transaction* phase, users use transaction class of Cloak SDK. to interact 
+In the *transaction* phase, users use transaction class of Cloak Client. to interact 
 with the blockchain and Cloak Network to send MPT transactions.
 
 ------------------
 Advanced Features
 ------------------
 
-------------------------
-Call for Contribution
-------------------------
+The main features of Cloak includes:
 
+- enable confidential smart contract on EVM-enabled blockchain in a pluggable manner.
+- help developers develop confidential smart contract by only annotating the data owner in source code.
+- support confidential transaction and multi-party transaction (MPT) which take private functions parameters or states from different parties.
+- support smart contract with mixed public, confidential and multi-party transactions without violating any of their privacy policies.
+- provision a toolchain for develop, deploy confidential smart contracts and transact with them.
