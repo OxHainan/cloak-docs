@@ -1,9 +1,10 @@
+=================
 Language
 =================
 
 CLOAK has developed its own domain specific language (DSL) to conveniently define privacy data and privacy policies. Considering the practicability of smart contract, CLOAK is currently developed based on Solidity. CLOAK language is a is a domain-specific annotation language consisting of (memory) locations, expressions, data types, privacy types, statements, functions, and contracts.
 
-
+-------------
 Locations
 -------------
 Location (L) consists of contract field identifiers, function arguments, local variables and mapping entries. For example:
@@ -19,7 +20,7 @@ Location (L) consists of contract field identifiers, function arguments, local v
     	}
     }
 
-
+-------------
 Data Types
 -------------
 Data types (τ) define the common data structures in CLOAK, including:
@@ -38,7 +39,7 @@ Mappings      mapping
 
 * Binary data is used to capture signatures, public keys and ciphertexts.
 
-
+-------------
 Privacy Types
 -------------
 Privacy types (α) define the data access rights, including ``me``, ``all``, ``tee`` and identifiers.
@@ -58,6 +59,7 @@ For example:
    uint256@me x; // here, only the runtime address of the caller can obtain the plaintext of x.
    uint256@alice y; // here, only the Alice can obtain the plaintext of y.
 
+------------------
 Type Declarations
 ------------------
 Type declaration consisting of Data type and Privacy type is used to specify the owner of a construct, the usage is :
@@ -75,7 +77,7 @@ For example:
    mapping(address!x => uint256@x) priBalances; // private
    uint256@tee _totalSupply;  // tee
 
-
+-------------
 Expressions
 -------------
 The only cloak-specific expressions (e) consist of the runtime address of the caller (``me``), common address of TEE (``tee``), reclassification of information (``reveal()``) and native functions including standard arithmetic and boolean operators.
@@ -95,7 +97,7 @@ Of course, it can be public:
    uint256 x_public;
    x_public = reveal(x, all);
    
-
+-------------
 Statements
 -------------
 Statements (P) are the smallest executable unit in a program. A statement can complete a basic operation. Statements in CLOAK can be divided into the following forms:
@@ -111,7 +113,7 @@ Statements (P) are the smallest executable unit in a program. A statement can co
    while e {P} // circular statement
 
 
-
+-------------
 Functions
 -------------
 Function (F) is a group of statements that perform a task together. The general form of function definition is as follows:
@@ -137,7 +139,7 @@ Typically, there are three function types.
 
 * MPT, multi-party transaction, iff one involves variables from different parties.
 
-
+------------------------
 A Simple CLOAK contract
 ------------------------
 CLOAK contract is similar to traditional solidity smart contract. Let us begin with a simple example that supports Multi-Party Transaction(MPT) with different privacy policies. It is fine if you do not understand everything right now, we will go into more detail later.
