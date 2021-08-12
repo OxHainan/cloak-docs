@@ -10,8 +10,8 @@ Welcome to Cloak's documentation!
    :maxdepth: 2
    :caption: Getting Started
 
-   basics/index
-   started/index
+   basics/introduction
+   started/quick-start
 
 .. toctree::
    :maxdepth: 2
@@ -24,7 +24,7 @@ Welcome to Cloak's documentation!
    :maxdepth: 2
    :caption: Deploy
 
-   deploy/index
+   deploy/deploy
 
 .. toctree::
    :maxdepth: 2
@@ -37,7 +37,7 @@ Welcome to Cloak's documentation!
    :maxdepth: 2
    :caption: About Cloak
 
-   publications/index
+   publications/publications
    about
 
 
