@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant P as Privacy Transaction
+    participant PI as Privacy Interpret
+    participant L as Ledger
+    activate P
+    P ->>+ P: Verify Signatrue
+    P ->> + PI: paramter type check
+    PI ->>- L: check policy has already exist
+    activate L
+    alt Privacy policy already exist
+        L --) P: Check binging relationship Privacy and user
+        alt has already binging
+            Note over P, L: THROW ERR
+        end
+    else not exist
+        P ->> L: save Privacy policy to Ledger
+    end
+    deactivate L
+    P ->> P: Set binging <br> relationship  between <br> Privacy and user
+    deactivate P

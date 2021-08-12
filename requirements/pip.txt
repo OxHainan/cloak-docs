@@ -120,3 +120,4 @@ django-debug-toolbar==3.2.1
 django-csp==3.7
 # For setting the permissions-policy security header
 django-permissions-policy==4.0.1
+sphinxcontrib-mermaid==0.7.1

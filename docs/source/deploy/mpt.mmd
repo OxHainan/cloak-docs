@@ -1,0 +1,28 @@
+
+sequenceDiagram
+    participant M as Multi-Party Transaction
+    participant C as Cloak Tx pools
+    participant E as EVM execution
+    participant K as Key Managerment
+    participant P as Privacy Policy
+    participant B as BlockChain
+    M ->> M: Verify Signatrue
+    M ->>+ C: Check Transaction <br> has already exist
+    alt Check corresponding has already exist
+        C ->>+ P: By name of target function <br> and target address of function
+        P --)- C: Privacy policy modules
+    else not exist
+        Note over C,P: THROW Privacy policy not exist
+    end
+    C ->> B: Synchronized data state of contract
+    B --)+ K: decrypted data state
+    K --)- C: Put data state to Cloak
+    alt Check Transaction type
+        alt Confidential Transaction   
+            C ->>+ E: execution Transaction
+            E --)- C: result in EVM
+        else Multi-Party Transaction
+            Note over C,E: Wait for other Multi-Party
+        end
+    end
+    deactivate C
