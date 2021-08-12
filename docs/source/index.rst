@@ -17,7 +17,8 @@ Welcome to Cloak's documentation!
    :maxdepth: 2
    :caption: Develop
 
-   develop/language/contents
+   develop/cloak-language
+   develop/develop-cloak-smart-contract
 
 .. toctree::
    :maxdepth: 2
