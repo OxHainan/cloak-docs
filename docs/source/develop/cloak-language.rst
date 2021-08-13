@@ -2,7 +2,7 @@
 Cloak Language
 =================
 
-CLOAK has developed its own domain specific language (DSL) to conveniently define privacy data and privacy policies. Considering the practicability of smart contract, CLOAK is currently developed based on Solidity. CLOAK language is a is a domain-specific annotation language consisting of (memory) locations, expressions, data types, privacy types, statements, functions, and contracts.
+CLOAK has developed its domain-specific language (DSL) to conveniently define privacy data and privacy policies. Considering the practicability of smart contracts, CLOAK is currently developed based on Solidity. CLOAK language is a domain-specific annotation language consisting of (memory) locations, expressions, data types, privacy types, statements, functions, and contracts.
 
 -------------
 Locations
@@ -35,7 +35,7 @@ Binary data   bin
 Mappings      mapping
 ===========   ========
 
-* Addresses is used to indicate the address of users.
+* Address is used to indicate the address of users.
 
 * Binary data is used to capture signatures, public keys and ciphertexts.
 
@@ -116,13 +116,13 @@ Statements (P) are the smallest executable unit in a program. A statement can co
 -------------
 Functions
 -------------
-Function (F) is a group of statements that perform a task together. The general form of function definition is as follows:
+Function (F) is a group of statements that perform a task together. The general form of a function definition is as follows:
 
 .. code-block::
 
    F ::= function f(τ_1@α_1 id_1, . . . , τ_n@α_n id_n) returns τ@α {P; return e; }
        
-Concentrately, you can refer to specific examples to correspond to the formal description:
+You can refer to specific examples to correspond to the formal description:
 
 .. code-block::
    
@@ -130,19 +130,19 @@ Concentrately, you can refer to specific examples to correspond to the formal de
         return pubBalances[owner];
     }
 
-It is noteworthy that function in CLOAK also has privacy types according to its data privacy types.
+It is noteworthy that the function in CLOAK also has privacy types according to its data privacy types.
 Typically, there are three function types.
 
 * PUB, public, iff all data privacy types are **@all**.
 
-* CT, confidential transaction, iff only one private expression exists but not owned by TEE.
+* CT, confidential transaction, iff only one private expression exists but is not owned by TEE.
 
 * MPT, multi-party transaction, iff one involves variables from different parties.
 
 ------------------------
 A Simple CLOAK contract
 ------------------------
-CLOAK contract is similar to traditional solidity smart contract. Let us begin with a simple example that supports Multi-Party Transaction(MPT) with different privacy policies. It is fine if you do not understand everything right now, we will go into more detail later.
+CLOAK contract is similar to a traditional solidity smart contract. Let us begin with a simple example that supports Multi-Party Transaction(MPT) with different privacy policies. It is fine if you do not understand everything right now, we will go into more detail later.
 
 
 .. code-block:: 
@@ -285,13 +285,13 @@ The next line specifies that the source code is written for CLOAK version 0.2.0.
 
 .. note::
 
-   CLOAK is based on Solidity, so it is conveninet for Solidity programmer, but it should be noted that the second line is the version of CLOAK rather than solidity! Because CLOAK has its own underlying compilation environment, which is different from solidity.
+   CLOAK is based on Solidity, so it is convenient for Solidity programmers, but it should be noted that the second line is the version of CLOAK rather than solidity! Because CLOAK has its own underlying compilation environment, which is different from solidity.
    
 Most of the syntax is consistent with solidity, the difference lies in the privacy policy. 
 
-The line ``final address _owner;`` declares a state variable of type ``address``.  ``final`` is a key word of `zkay <https://eth-sri.github.io/zkay/language.html>`_, meaning that they can only be assigned once in the constructor. 
+The line ``final address _owner;`` declares a state variable of type ``address``.  ``final`` is a keyword of `zkay <https://eth-sri.github.io/zkay/language.html>`_, meaning that they can only be assigned once in the constructor. 
 The line ``final address@all _manager;`` declares a state variable that everyone can learn its plaintext. 
-The line ``mapping(address!x => uint256@x) priBalances; // private`` shows a private privacy policy that only ``x`` is able to obtain the plaintext. 
+The line ``mapping(address!x => uint256@x) priBalances; // private`` shows a private privacy policy that the only ``x`` is able to obtain the plaintext. 
 Analogously, ``uint256@tee _totalSupply;  // tee`` assigns the access right to TEE.
     
 .. code-block::
@@ -300,8 +300,8 @@ Analogously, ``uint256@tee _totalSupply;  // tee`` assigns the access right to T
         return pubBalances[owner];
     }
     
-The function ``pubBalanceOf(address owner)`` is public to return owner's pubBalance.
-Labeled with ``view``, it cannot change any variable, so it is safe to be public.
+The function ``pubBalanceOf(address owner)`` is public to return the owner's pubBalance.
+Labelled with the ``view``, it cannot change any variable, so it is safe to be public.
 
 .. code-block::
 
@@ -327,7 +327,7 @@ These two ``require()`` ensures that the security of variables. Users need to us
         return true;
     }
     
-Funnction ``deposit()`` is a CT function, because the variable ``priBalances`` is a private type but not belong to TEE.
+Function ``deposit()`` is a CT function, because the variable ``priBalances`` is a private type but does not belong to TEE.
 
 .. code-block::
    
@@ -336,7 +336,7 @@ Funnction ``deposit()`` is a CT function, because the variable ``priBalances`` i
         return ts;
     }
     
-Function ``totalSupply()`` reveals the ``_totalSupply`` to _manager. Note that, ``ts`` is also a private data for others.
+Function ``totalSupply()`` reveals the ``_totalSupply`` to _manager. Note that, ``ts`` is also private data for others.
 
 
 .. code-block::
@@ -353,7 +353,7 @@ Function ``totalSupply()`` reveals the ``_totalSupply`` to _manager. Note that, 
         return true;
     }
     
-This function is a MPT function, it is very similar to ``transfer()``. The difference lies in the mapping variables ``priBalances[]``, typed with ``@x``.
+This function is an MPT function, it is very similar to ``transfer()``. The difference lies in the mapping variables ``priBalances[]``, typed with ``@x``.
 
 .. code-block::
 
@@ -386,4 +386,4 @@ Similarly, functions ``compare()`` and ``isRicher()`` are also MPT functions due
            return true;
        }
 
-This is a conditional transfer, there private parameters is required.
+This is a conditional transfer, there private parameters are required.
