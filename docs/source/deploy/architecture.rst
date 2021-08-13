@@ -1,5 +1,5 @@
 ********************************
-overview
+Overview
 ********************************
 
 The flowing diagram shows a basic cloak network made of 3 nodes. 
@@ -12,7 +12,8 @@ A consortium of member is in charge of governing the network.
     :alt: Cloak-Network
     :align: center
 
-**1. network and nodes**
+Network and Nodes
+------------------
 
 A cloak network consists of several nodes, each running on top of a 
 Trusted Execution Environment (TEE), such as Intel SGX. At the same time, 
@@ -22,7 +23,8 @@ Nodes are run and maintained by Operators. Operators are in charge of operator
 a cloak network, (e.g., adding or removing nodes). However, nodes must be trusted 
 by the consortium of members before participating in a cloak network.
 
-**2. Application**
+Application
+-------------
 
 Each node runs the same application, written in C++. An application is a collection 
 of endpoints that can be triggered by trusted Users’ HTTP commands over TLS.
@@ -35,13 +37,15 @@ The Key-value Store is a collection of maps (associating a key to a value) that 
 by the application. These maps can be private (encrypted in the ledger) or public (integrity-protected 
 and visible by anyone that has access to the ledger.
 
-**3. Ledger**
+Ledger
+---------
 
 All changes to the Key-Value Store are encrypted and recorded by each one of the networks 
 to disk to a decentralized auditable ledger. The integrity of the ledger is guaranteed 
 by a Merkle Tree whose root is periodically signed by the current primary/ledger node.
 
-**4. Governance**
+Governance
+------------
 
 A cloak network is governed by a consortium of Members. The scriptable Constitution, 
 recorded in the ledger itself, defines a set of rules that members must follows.
@@ -50,25 +54,27 @@ Members can submit proposals to modify the state of the Key-Value Store.
 For example, members can vote to allow a new trusted agent to issue requests to the 
 application or to add a new member to the consortium.
 
-
-**5. Workflow of transact**
+********************************
+Workflow of Transaction
+********************************
 
 .. image:: ../imgs/cloak-framework.svg
     :width: 1000px
     :alt: Cloak-Framework
     :align: center
 
-* Privacy Interpreter, complete privacy check for transaction
-* Key Management Enclave, provide data encryption and decryption
-* EVM Enclave, confidential smart contract execution modules
+* Privacy Interpreter, complete privacy parameters check for transaction.
+* Key Management Enclave, Provide data encryption and decryption functions inside Enclave to protect 
+  users' data information from being stolen by third parties.
+* EVM Enclave, responsible for the execution of confidential smart contract and output the execution result.
 
-********************************
-Privacy policy
-********************************
+Privacy Policy Transaction
+---------------------------
 
 Privacy policy is a model parameter generated based on the compilation of confidential smart contract, 
 which contains the inputs and outputs expression methods of public variables and public functions in the smart contract.
-As follows:
+
+The input format of the transaction is as follows:
 
 .. code-block::
 
@@ -114,17 +120,17 @@ As follows:
         }
     }
 
-* contract, indicates the name of the confidential smart contract
+* contract, indicates the name of the confidential smart contract.
 
 * states 
 
     States records all types of contract data state variables, The meaning of the ``owner`` field is
 
-    * ``owner: "all"`` is defaults value, means that anyone can query the data and store it on BlockChain in plaintext.
+    * ``owner: "all"`` is defaults value, means that anyone can query the data and store it on Block Chain in plaintext.
 
     * ``owner: id``, means that the owner of data is ``id``, ``id`` type is ``address``. 
       Only user has verified the identity of the ``id`` (e.g., digital signature) can be allowed to read the data. 
-      Therefore, the value of data is private and crypted it before export cloak (e.g., synchronized data to BlockChain).
+      Therefore, the value of data is private and crypted it before export cloak (e.g., synchronized data to Block Chain).
 
     * ``owner: "mapping(address!x=>uint256@x)``, statement of the mapping ``key`` is temporary variable ``x``, 
       and flag the owner of ``value`` is ``x``. the same as ``id``.
@@ -144,14 +150,14 @@ As follows:
     * ``inputs``, input parameters of the function, each input contains the variable ``name``, ``type``, and ``owner`` of the parameter
 
     * ``read``, record the name of the contract data state variable required in current function contract code, in order to synchronize data
-      with BlockChain.
+      with Block Chain.
 
-    * ``mutate``, the contract data state binding relationship of owner of data ``id`` in this function
+    * ``mutate``, the contract data state binding relationship of owner of data ``id`` in this function.
 
-    * ``outputs``, output function execution result in EVM
+    * ``outputs``, output function execution result in EVM.
 
 
-* privacy transaction
+The processing flow is as follows:
 
 .. mermaid:: privacy.mmd
 
@@ -161,13 +167,14 @@ When processing privacy transaction, cloak will check the validity of parameters
 check the privacy policy has already exist and if it's exist, it will check binding relationship between privacy policy again. finally, set the binding relationship 
 between privacy policy and save to ledger.
 
-************************
-Multi-Party transaction
-************************
+Multi-Party Transaction
+--------------------------
 
 In cloak network, users' private transactions are divided into confidential transaction and 
-Multi-Party Transaction. Confidential transaction can be executed normally without multi-Party 
+multi-Party transaction. Confidential transaction can be executed normally without multi-Party 
 participation. 
+
+The input format of the transaction is as follows:
 
 .. code-block::
 
@@ -184,11 +191,32 @@ participation.
 
 * function: (Optional), when the user is the initiator of the transaction, this field cannot be omitted 
 
-* inputs: inputs parameter of target of function
+* inputs: inputs parameter of target of function, structure array composed of ``name`` and ``value``. 
+
+.. note::
+    Due to ``value`` can only accept ``string`` types, when the variable type of ``name`` is an ``array``, it will 
+    need to be converted to ``string`` types. e.g., we need to input the flowing array types data,
+
+    .. code::
+
+        ["0x123", "0x456"]
+    
+    so, we can converte it to
+
+    .. code-block::
+
+        '["0x123", "0x456"]'
+
+The processing flow is as follows:
+
+.. image:: ../imgs/transaction-identity.svg
+    :width: 1000px
+    :alt: transaction-identity
+    :align: center
 
 Suppose Co.1 (Corporate) uses the privacy mechanism in the nodes to protect his 
 private data, he can need to deploy the corresponding confidential smart contract and privacy 
-policy to BlockChain and cloak networks respectively. 
+policy to Block Chain and cloak networks respectively. 
 
 When Co.1 commit a private transaction, the nodes will check that based privacy policy 
 target function to divided the transaction is confidential transaction or Multi-Party 
@@ -196,14 +224,15 @@ Transaction in the Privacy Interpreter. If it belongs to the former, it will ent
 the EVM execution, otherwise it will continue to wait for Multi-Party (e.g., Co.2 or himself) 
 to complete the input of private data. 
 
-.. mermaid:: transaction-identity.mmd
-
 As the nodes of TEE is stateless, before the transaction enters the EVM execution, 
 the latest contract data state of the privacy smart contract needs to be synchronized 
-with the BlockChain and decrypted in the Key Management Enclave. At the same time, 
+with the Block Chain and decrypted in the Key Management Enclave. At the same time, 
 the legality of the user's inputs of private data will be checked by the privacy smart contract.
 
-.. mermaid:: multi party transaction.mmd
+.. image:: ../imgs/multi-party-transaction.svg
+    :width: 800px
+    :alt: transaction-identity
+    :align: center
 
 When transaction involves multiple parties, cloak will check the legality of Multi-Party and accept
 their inputs data. Then, check whether transaction inputs parameters are complete. if not, it can wait
