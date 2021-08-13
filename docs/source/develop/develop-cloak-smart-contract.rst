@@ -58,10 +58,10 @@ With CLOAK, users could intuitively specify the MPT as a CLOAK smart contract, t
 
 * In line 1, the developer could declare the key of balances as a temporary variable ``k``, then specifies the corresponding value is owned by the account with address ``k``, *e.g.*, ``balances[tenderer]`` is only known by the tenderer in line 23.
 * In line 2, the developer specifies ``mPrice`` should be public. 
-* In line 6-7, to handle an uncertain number of suppliers, the developer declares owners ``p`` and specifies the owners’ owned data separately in two dynamic arrays. 
+* In lines 6-7, to handle an uncertain number of suppliers, the developer declares owners ``p`` and specifies the owners’ owned data separately in two dynamic arrays. 
 * In line 10, the return value ``sPrice`` is owned by the winner.
-* In line 12-13, the developer ``reveal`` private data to another owner, which is forced by CLOAK to avoid unconsciously leaking privacy.
-* In line 14-24, it computes the lowest price, the second lowest price, and the winner. The computation is based on the operation between private data from different parties, *e.g.*, ``bids[i] < sPrice``, ``balances[tenderer] += sPrice``.
+* In lines 12-13, the developer ``reveal`` private data to another owner, which is forced by CLOAK to avoid unconsciously leaking privacy.
+* In lines 14-24, it computes the lowest price, the second-lowest price, and the winner. The computation is based on the operation between private data from different parties, *e.g.*, ``bids[i] < sPrice``, ``balances[tenderer] += sPrice``.
 
 
 Annotation Checker
@@ -82,7 +82,7 @@ Policy Generator
 With checked AST, Policy Generator generates a privacy config :math:`P` for the contract.
 :math:`P` simplifies and characterizes the privacy invariants. Typically, :math:`P` includes variables with data type and owners. It also includes ABI, a read-write set of each function.
 Specifically, :math:`P` records each function’s characteristics from four aspects, *inputs*, *read*, *mutate* and *return*. The *inputs* includes its parameters with specified data type and owner; *read* records state variables the function read in execution; *mutate* records the contract states it mutated; *return* records the return variables.
-Since :math:`P` has recorded the details of state variables in the head, *e.g.*, data type and owner, **Policy Generator** leaves the variable identities in read, mutate and return.
+Since :math:`P` has recorded the details of state variables in the head, *e.g.*, data type and owner, **Policy Generator** leaves the variable identities in *read*, *mutate* and *return*.
 
 
 Code Generator
