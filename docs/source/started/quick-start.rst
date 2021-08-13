@@ -15,13 +15,13 @@ service <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/index.html
 ---------------
 Installation
 ---------------
-to install, there two ways, the easy way is to use docker:
+to install compiler, there are two ways, the easy way is to use docker:
 
 .. code:: 
 
    docker pull plytools/circleci-compiler:v0.2.0
 
-Or install to any host what you want, Cloak compiler is implemented by
+Or install it to any host what you want, Cloak compiler is implemented by
 Python 3, so you need prepare a environment which includes a executable
 Python 3 and pip3, and its version is at least greater than 3.8.
 
@@ -101,8 +101,8 @@ compile
 there are three important files in output directory, which are public_contract.sol, private_contract.sol and policy.json
 
 * private_contract.sol: a normal solidity contract deploying to Cloak-Tee, is been executed by eEVM in TEE environment.
-* public_contract.sol: a normal solidity contract too deploying to Blockchain.
-* policy.json: it is the privacy policy definition of the cloak contract binding to private contract.
+* public_contract.sol: a normal solidity contract deploying to Blockchain.
+* policy.json: privacy policy definition of the cloak contract binding to the private contract.
 
 deploy
 **********************
