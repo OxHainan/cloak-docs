@@ -2,7 +2,7 @@
 Cloak Language
 =================
 
-CLOAK has developed its domain-specific language (DSL) to conveniently define privacy data and privacy policies. Considering the practicability of smart contracts, CLOAK is currently developed based on Solidity. CLOAK language is a domain-specific annotation language consisting of (memory) locations, expressions, data types, privacy types, statements, functions, and contracts.
+CLOAK has developed its domain-specific language (DSL) to conveniently define privacy data and privacy policies. Considering the practicability of smart contracts, CLOAK is currently developed based on Solidity. CLOAK language is a domain-specific annotation language consisting of (memory) locations, data types, privacy types, expressions, statements, functions, and contracts.
 
 -------------
 Locations
