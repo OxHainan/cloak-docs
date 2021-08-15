@@ -1,5 +1,9 @@
+===============================
+Cloak Network
+===============================
+
 ********************************
-Overview
+Cloak Network Overview
 ********************************
 
 The flowing diagram shows a basic cloak network made of 3 nodes. 
@@ -68,102 +72,19 @@ Workflow of Transaction
   users' data information from being stolen by third parties.
 * EVM Enclave, responsible for the execution of confidential smart contract and output the execution result.
 
-Privacy Policy Transaction
+Policy Binding Transaction
 ---------------------------
 
-Privacy policy is a model parameter generated based on the compilation of confidential smart contract, 
+Privacy policy is a model parameter generated based on the compilation of Cloak smart contract, 
 which contains the inputs and outputs expression methods of public variables and public functions in the smart contract.
-
-The input format of the transaction is as follows:
-
-.. code-block::
-
-    {
-        "policy": {
-            "contract":"SupplyChain",
-            "states": [{
-                "name": "balances",
-                "type": "mapping(address=>uint256)",
-                "owner": "mapping(address!x=>uint256@x)"
-            }],
-            "functions": [{
-                "name": "settleReceivable",
-                "inputs": [{
-                    "name": "payee",
-                    "type": "uint256",
-                    "owner": "all"
-                }, {
-                    "name": "amount",
-                    "type": "uint256",
-                    "owner": "tee" 
-                }],
-                "read": [{
-                    "name": "balances"
-                    "keys": [
-                        "payee", 
-                    ]}, 
-                ],
-                "mutate": [{
-                    {
-                        "name": "balances",
-                        "keys": [
-                            "msg.sender"
-                        ]
-                    },
-                }],
-                "outputs": [{
-                    "name": "",
-                    "type": "uint256",
-                    "owner": "all"
-                }]
-            }]
-        }
-    }
-
-* contract, indicates the name of the confidential smart contract.
-
-* states 
-
-    States records all types of contract data state variables, The meaning of the ``owner`` field is
-
-    * ``owner: "all"`` is defaults value, means that anyone can query the data and store it on Block Chain in plaintext.
-
-    * ``owner: id``, means that the owner of data is ``id``, ``id`` type is ``address``. 
-      Only user has verified the identity of the ``id`` (e.g., digital signature) can be allowed to read the data. 
-      Therefore, the value of data is private and crypted it before export cloak (e.g., synchronized data to Block Chain).
-
-    * ``owner: "mapping(address!x=>uint256@x)``, statement of the mapping ``key`` is temporary variable ``x``, 
-      and flag the owner of ``value`` is ``x``. the same as ``id``.
-
-    .. note ::
-
-        Temporary variable ``x`` is only valid in the mapping declaration, e.g., in a contract, 
-        allow ``mapping(address!x => uint256@x)`` and ``mapping(address!x => mapping(address => uint256@x))`` can be valid 
-        at the same time, because the scope of ``x`` is limited to their respective mapping.
-
-* functions
-
-    functions is an array collection, mark the inputs and outputs expressions of a single function, as shown below
-
-    * ``name``, is a name of function
-
-    * ``inputs``, input parameters of the function, each input contains the variable ``name``, ``type``, and ``owner`` of the parameter
-
-    * ``read``, record the name of the contract data state variable required in current function contract code, in order to synchronize data
-      with Block Chain.
-
-    * ``mutate``, the contract data state binding relationship of owner of data ``id`` in this function.
-
-    * ``outputs``, output function execution result in EVM.
-
 
 The processing flow is as follows:
 
 .. mermaid:: privacy.mmd
 
-Privacy transaction is mainly to complete the registration of privacy policy, in order to find the corresponding privacy model in the next Multi-Party transaction.
+Policy Binding Transaction is mainly to complete the registration of privacy policy, in order to find the corresponding privacy model in the next Multi-Party transaction.
 In cloak, one privacy policy can correspond to multiple confidential smart contract, but a multiple confidential smart contract only belongs to one privacy policy.
-When processing privacy transaction, cloak will check the validity of parameters of the policy in the Privacy Interpreter. And then, 
+When processing a Policy Binding Transaction, cloak will check the validity of parameters of the policy in the Privacy Interpreter. And then, 
 check the privacy policy has already exist and if it's exist, it will check binding relationship between privacy policy again. finally, set the binding relationship 
 between privacy policy and save to ledger.
 

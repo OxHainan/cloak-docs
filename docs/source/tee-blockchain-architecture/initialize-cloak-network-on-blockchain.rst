@@ -1,11 +1,7 @@
+=======================================
+Initialize Cloak Network on Blockchain
+=======================================
 
-=================================
-Deploy Cloak Smart Contract
-=================================
-
---------------
-Initialize
---------------
 A cloak service includes four components, they are listed below:
 
 * cloak-tee: the core component, which is a CCF app (which is a distributed TEE-based framework),
@@ -70,26 +66,3 @@ uint
 mapping
 address
 ...
-
-
-----------------------------
-Deploy to Blockchain
-----------------------------
-
-deploy the generated smart contracts to a blockchain
-
-
-----------------------------
-Deploy to Cloak Network
-----------------------------
-
-deploy the generated smart contracts to the Cloak Network
-
-
-----------------------------
-Transact with Cloak Client
-----------------------------
-
-deploy the generated smart contracts to the Cloak Network
-
-

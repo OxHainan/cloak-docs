@@ -2,7 +2,7 @@
 Cloak Language
 =================
 
-CLOAK has developed its domain-specific language (DSL) to conveniently define privacy data and privacy policies. Considering the practicability of smart contracts, CLOAK is currently developed based on Solidity. CLOAK language is a domain-specific annotation language consisting of (memory) locations, data types, privacy types, expressions, statements, functions, and contracts.
+Cloak has developed its domain-specific language (DSL) to conveniently define privacy data and privacy policies. Considering the practicability of smart contracts, Cloak is currently developed based on Solidity. Cloak language is a domain-specific annotation language consisting of (memory) locations, data types, privacy types, expressions, statements, functions, and contracts.
 
 -------------
 Locations
@@ -23,7 +23,7 @@ Location (L) consists of contract field identifiers, function arguments, local v
 -------------
 Data Types
 -------------
-Data types (τ) define the common data structures in CLOAK, including:
+Data types (τ) define the common data structures in Cloak, including:
 
 ===========   ========
 Type          Key
@@ -100,7 +100,7 @@ Of course, it can be public:
 -------------
 Statements
 -------------
-Statements (P) are the smallest executable unit in a program. A statement can complete a basic operation. Statements in CLOAK can be divided into the following forms:
+Statements (P) are the smallest executable unit in a program. A statement can complete a basic operation. Statements in Cloak can be divided into the following forms:
 
 .. code-block:: 
    
@@ -130,7 +130,7 @@ You can refer to specific examples to correspond to the formal description:
         return pubBalances[owner];
     }
 
-It is noteworthy that the function in CLOAK also has privacy types according to its data privacy types.
+It is noteworthy that the function in Cloak also has privacy types according to its data privacy types.
 Typically, there are three function types.
 
 * PUB, public, iff all data privacy types are **@all**.
@@ -140,9 +140,9 @@ Typically, there are three function types.
 * MPT, multi-party transaction, iff one involves variables from different parties.
 
 ------------------------
-A Simple CLOAK contract
+A Simple Cloak contract
 ------------------------
-CLOAK contract is similar to a traditional solidity smart contract. Let us begin with a simple example that supports Multi-Party Transaction(MPT) with different privacy policies. It is fine if you do not understand everything right now, we will go into more detail later.
+Cloak contract is similar to a traditional solidity smart contract. Let us begin with a simple example that supports Multi-Party Transaction(MPT) with different privacy policies. It is fine if you do not understand everything right now, we will go into more detail later.
 
 
 .. code-block:: 
@@ -281,11 +281,11 @@ CLOAK contract is similar to a traditional solidity smart contract. Let us begin
    
 
 The first line tells you that the source code is licensed under the Apache version 2.0.
-The next line specifies that the source code is written for CLOAK version 0.2.0.
+The next line specifies that the source code is written for Cloak version 0.2.0.
 
 .. note::
 
-   CLOAK is based on Solidity, so it is convenient for Solidity programmers, but it should be noted that the second line is the version of CLOAK rather than solidity! Because CLOAK has its own underlying compilation environment, which is different from solidity.
+   Cloak is based on Solidity, so it is convenient for Solidity programmers, but it should be noted that the second line is the version of Cloak rather than solidity! Because Cloak has its own underlying compilation environment, which is different from solidity.
    
 Most of the syntax is consistent with solidity, the difference lies in the privacy policy. 
 

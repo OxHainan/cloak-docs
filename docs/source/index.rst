@@ -16,17 +16,23 @@ Welcome to Cloak's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Develop
+   :caption: TEE-Blockchain Architecture
 
-   develop/cloak-language
-   develop/develop-cloak-smart-contract
+   tee-blockchain-architecture/cloak-network
+   tee-blockchain-architecture/initialize-cloak-network-on-blockchain
 
 .. toctree::
    :maxdepth: 2
-   :caption: Deploy
+   :caption: Develop Cloak Smart Contract
 
-   deploy/architecture
-   deploy/deploy
+   develop-cloak-smart-contract/cloak-language
+   develop-cloak-smart-contract/compiler
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Deploy Cloak Smart Contract
+
+   deploy-cloak-smart-contract/deploy
 
 .. toctree::
    :maxdepth: 2

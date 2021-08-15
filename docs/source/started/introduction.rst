@@ -40,8 +40,8 @@ Cloak framework is designed to work with *TEE* to enable confidential smart cont
 The figure followed shows the workflow of Cloak. It is mainly divided into three phases, 
 *development*, *deployment* and *transaction*. 
 
-.. image:: ../imgs/framework.*
-    :alt: The overall workflow of  CLOAK
+.. image:: ../imgs/framework.svg
+    :alt: The overall workflow of  Cloak
     :align: center
 
 In the *development* phase, we provide a domain-specific annotation 
