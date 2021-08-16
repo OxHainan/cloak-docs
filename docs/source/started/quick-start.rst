@@ -100,8 +100,8 @@ compile
 
 there are three important files in output directory, which are public_contract.sol, private_contract.sol and policy.json
 
-* private_contract.sol: a normal solidity contract deploying to Cloak-Tee, is been executed by eEVM in TEE environment.
-* public_contract.sol: a normal solidity contract deploying to Blockchain.
+* private_contract.sol: a solidity contract, it will be deployed to Cloak-Tee and be executed by eEVM in TEE environment.
+* public_contract.sol: a solidity contract, it will be deployed to Blockchain.
 * policy.json: privacy policy definition of the cloak contract binding to the private contract.
 
 deploy
