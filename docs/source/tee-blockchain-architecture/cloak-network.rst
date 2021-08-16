@@ -72,11 +72,18 @@ Workflow of Transaction
   users' data information from being stolen by third parties.
 * EVM Enclave, responsible for the execution of confidential smart contract and output the execution result.
 
+Deploy confidential smart contract
+-------------------------------------
+Users can write confidential smart contract based on cloak language and compile it in the cloak compiler to 
+generate ``privacy policy`` and contract ``code``. Then, contract ``code`` can deploy to Block Chain and get the contract address, marked as ``Verifier``.
+
+
 Policy Binding Transaction
 ---------------------------
 
-Privacy policy is a model parameter generated based on the compilation of Cloak smart contract, 
-which contains the inputs and outputs expression methods of public variables and public functions in the smart contract.
+Policy binding transaction can bing ``Verifier`` and privacy policy. Privacy policy is a model parameter generated based 
+on the compilation of Cloak smart contract, which contains the inputs and outputs expression methods of public variables 
+and public functions in the smart contract.
 
 The processing flow is as follows:
 
@@ -86,7 +93,7 @@ Policy Binding Transaction is mainly to complete the registration of privacy pol
 In cloak, one privacy policy can correspond to multiple confidential smart contract, but a multiple confidential smart contract only belongs to one privacy policy.
 When processing a Policy Binding Transaction, cloak will check the validity of parameters of the policy in the Privacy Interpreter. And then, 
 check the privacy policy has already exist and if it's exist, it will check binding relationship between privacy policy again. finally, set the binding relationship 
-between privacy policy and save to ledger.
+between privacy policy and confidential smart contract, and save it to ledger.
 
 Multi-Party Transaction
 --------------------------
