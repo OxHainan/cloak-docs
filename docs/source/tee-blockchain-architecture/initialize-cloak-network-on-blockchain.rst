@@ -26,7 +26,7 @@ Cloak compiler provide two commands to deploy them, you can use it too, for exam
      python cloak/__main__.py deploy-pki <SENDER ADDRESS> --blockchain-backend w3-ganache --blockchain-node-uri http://127.0.0.1:8545
      python cloak/__main__.py deploy-service <SENDER ADDRESS> --blockchain-backend w3-ganache --blockchain-node-uri http://127.0.0.1:8545
 
-deploy cloak-tee
+build cloak-tee
 **********************
 cloak-tee is a CCF app, compile and run it just like a stardard CFF app.
 
@@ -40,7 +40,7 @@ get cloak-tee code in Docker:
 
 .. code-block::
 
-    git clone https://github.com/OxHainan/cloak-tee.git
+    git clone --recurse-submodules https://github.com/OxHainan/cloak-tee.git
     cd cloak-tee
 
 build:
@@ -51,39 +51,23 @@ build:
     cmake .. -GNinja
     ninja
 
-run:
+sutup cloak service
+**********************
+After build cloak-tee, the next steps is run cloak-tee, cloak-tee-agent and prepare cloak-tee, you can use cloak manager script to do that things.
 
-.. code-block::
+The cloak manager directory is CLOAK-TEE-PROJECT/agent, install dependencies
 
-    /opt/ccf-0.15.2/bin/sandbox.sh -p libevm4ccf.virtual.so
+.. code::
 
-deploy cloak-tee-agent
-*****************************
-after run cloak-tee, the next step is to setup cloak-tee-agent, cloak-tee-agent requires python 3.8 or greater version, install dependencies:
-
-.. code-block::
-
+   cd ../agent
    pip install -r requirements.txt
 
-setup:
+setup cloak service:
 
-.. code-block::
+.. code::
 
-   python src/main.py <log file of cloak-tee>
+   python cloak.py setup-cloak-service --build-path <CLOAK-TEE BUILD PATH> --cloak-service-address <CLOAK SERVICE ADDRESS> --pki-address <PKI ADDRESS> --blockchain-http-uri <BLOCKCHAIN-HTTP-URI>
 
-if you use sandbox.sh setup the cloak-tee, the path of log file is workerspace/sandbox_0/out under cloak-tee directory.
+The `build-path` option is the path that you built cloak-tee.
 
-prepare cloak-tee and use cloak-tee
-************************************
-Though cloak-tee has been running, it is not ready for process transaction, it need to get the PKI/cloak service contract address, generate the tee SK, register tee address to cloak service, etc. so we has to send a prepare request to cloak-tee, let it finish that things.
-
-As described above, cloak-tee is a CCF app, so a request to cloak-tee is a stardard JRPC request, so you can use curl or anything else to request cloak-tee, see:`use apps <https://microsoft.github.io/CCF/main/use_apps/index.html>`__, And we provide `cloak-client <https://github.com/OxHainan/cloak-client>`__ as a SDK, use it may be the best choice.
-
-Here is a example using ccf-client to prepare cloak-tee:
-
-.. code-block::
-
-   ccf_client = ccf.clients.CCFClient(<HOST>, <PORT>, <CA_PATH>, <CERT_PATH>, <KEY_PATH>)
-   ccf_client.call("/app/cloak_prepare", {"cloak_service_addr": <cloak_service_addr>, "pki_addr": <pki_addr>})
-
-after prepare process done, cloak service is ready.
+If you want to develop or test cloak-tee, ganache-cli may be a good choice as a blockchain backend, after installed ganache and started it, The `--blockchain-http-uri` option should be `http://127.0.0.1:8545`

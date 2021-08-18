@@ -51,8 +51,8 @@ Here we will show you how to compile, deploy, call a Cloak contract through `dem
     pragma cloak ^0.2.0;
 
     contract Demo {
-        final address@all _manager; // all
-        mapping(address => uint256) pubBalances; // public
+        final address@all _manager;                  // all
+        mapping(address => uint256) pubBalances;     // public
         mapping(address!x => uint256@x) priBalances; // private
 
         constructor(address manager) public {
@@ -104,9 +104,25 @@ there are three important files in output directory, which are public_contract.s
 * public_contract.sol: a solidity contract, it will be deployed to Blockchain.
 * policy.json: privacy policy definition of the cloak contract binding to the private contract.
 
-deploy
-**********************
+deploy public contract
+***********************
+To deploy public contract to blockchain, you can use web3(or others), but cloak-compiler provide a command that can easily finish it:
 
+.. code::
+
+    python cloak/__main__.py deploy <compiled output dir> <args...>  --blockchain-backend w3-ganache --blockchain-node-uri http://127.0.0.1:8545 --blockchain-pki-address <PKI Address> --blockchain-service-address <cloak service address>
+
+For demonstrating the demo.cloak, we suppose that a test account is:
+
+.. code::
+
+   private key: 0x55b99466a43e0ccb52a11a42a3b4e10bfba630e8427570035f6db7b5c22f689e
+   address: 0xDC8FBC8Eb748FfeBf850D6B93a22C3506A465beE
+
+So command <args...> option is 0xDC8FBC8Eb748FfeBf850D6B93a22C3506A465beE as the constructor function argument.
+
+deploy private contract
+************************
 
 ------------------------------
 Enable Cloak on Blockchain
