@@ -10,7 +10,7 @@ Cloak service and a Cloak language compiler as
 `Introduction <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/introduction.html>`__
 described, in normal case, we will provide a test cloak service, though
 you can deploy Cloak service for yourself, check `deploy cloak
-service <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/index.html>`__.
+service <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html>`__.
 
 ---------------
 Installation
@@ -91,6 +91,38 @@ Here we will show you how to compile, deploy, call a Cloak contract through `dem
         }
     }
 
+
+For demonstrating the demo.cloak, we suppose that a test account is:
+
+.. code::
+
+   private key: 0x55b99466a43e0ccb52a11a42a3b4e10bfba630e8427570035f6db7b5c22f689e
+   address: 0xDC8FBC8Eb748FfeBf850D6B93a22C3506A465beE
+
+register public key
+***********************
+Before you execute a MPT, if you are the owner of some state data (e.g. _manager in Demo contract),
+you need to register your public key to PKI contract,
+and the public key must be specified by a stardard PEM format,
+here is a example that get a PEM-format public key from hex-string private key:
+
+.. code::
+
+    echo 302e0201010420 <PRIVATE KEY> a00706052b8104000a | xxd -r -p | openssl ec -inform d -pubout
+
+replace <PRIVATE KEY> with `55b99466a43e0ccb52a11a42a3b4e10bfba630e8427570035f6db7b5c22f689e` and execute:
+
+.. code::
+
+   ➜  ~ echo 302e0201010420 55b99466a43e0ccb52a11a42a3b4e10bfba630e8427570035f6db7b5c22f689e a00706052b8104000a | xxd -r -p | openssl ec -inform d -pubout
+   read EC key
+   writing EC key
+   -----BEGIN PUBLIC KEY-----
+   MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEXFZ6txDg9knTl5E5mFnj7G1j9x91x5d9
+   MPCYiA6CoewqASjNGc8orVGol8ajLiz3rnleoSm2OyoPsM/3KXdrMg==
+   -----END PUBLIC KEY-----
+
+
 compile
 **********************
 
@@ -112,20 +144,99 @@ To deploy public contract to blockchain, you can use web3(or others), but cloak-
 
     python cloak/__main__.py deploy <compiled output dir> <args...>  --blockchain-backend w3-ganache --blockchain-node-uri http://127.0.0.1:8545 --blockchain-pki-address <PKI Address> --blockchain-service-address <cloak service address>
 
-For demonstrating the demo.cloak, we suppose that a test account is:
+<args...> option is the constructor function arguments.
+
+cloak-client
+************************
+To deploy private contract, send policy and execute MPT to cloak-tee, cloak-client is a good tool that implements web3 provider.
+
+install cloak-client:
 
 .. code::
 
-   private key: 0x55b99466a43e0ccb52a11a42a3b4e10bfba630e8427570035f6db7b5c22f689e
-   address: 0xDC8FBC8Eb748FfeBf850D6B93a22C3506A465beE
+   npm install OxHainan/cloak-client
 
-So command <args...> option is 0xDC8FBC8Eb748FfeBf850D6B93a22C3506A465beE as the constructor function argument.
+cloak-client is a extended web3, so the usage of cloak-client is same as web3 except cloak module.
 
-deploy private contract
-************************
+Get web3 Object and set CloakProvider:
 
-------------------------------
-Enable Cloak on Blockchain
-------------------------------
+.. code::
 
+   const cloak = require('cloak-client');
 
+   const httpsAgent = new https.Agent({
+       rejectUnauthorized: false,
+       ca: <CCF network ca>,
+       cert: <CCF USER cert>,
+       key: <CCF USER PK>,
+   });
+
+   var web3 = new Web3()
+   // "https://127.0.0.1:8000" is a CCF(cloak-tee) URI
+   web3.setProvider(new cloak.CloakProvider("https://127.0.0.1:8000", httpsAgent, web3))
+
+Deploy a solidity contract:
+
+.. code::
+
+    var contract = new Contract(jsonInterface, address);
+
+    contract.methods.somFunc().send({from: ....})
+    .on('receipt', function(){
+        ...
+    });
+
+extended cloak module
+***********************
+There are extended functinos under `web3.cloak`, which include send policy, send MPT and get MPT etc.
+
+send policy:
+
+.. code::
+
+    web3.cloak.sendPrivacyTransaction({
+        account: account,
+        params: {
+            to: <PRIVATE CONTRACT ADDRESS>,
+            codeHash: <HASH OF PRIVATE CONTRACT>,
+            verifierAddr: <PUBLIC CONTRACT ADDRESS>,
+            data: JSON.parse(<POLICY FILE DATA>))
+        }
+    })
+
+the return value is a Policy HASH.
+
+send MPT:
+
+.. code::
+
+   return web3.cloak.sendMultiPartyTransaction({
+      account: account,
+      params: {
+          nonce: <NONCE>,
+          to: <PRIVATE CONTRACT ADDRESS OR MPT ID>,
+          data: <CALL DATA JSON>
+      }
+   })
+
+* nonce: same as Ethereum nonce
+* to: if `to` is private contract address, that mean to propose a MPT transaction, otherwise, that mean to participate a MPT(which id is <MPT ID>).
+* data: it includes the function what you what you want to call and input arguments, it look like:
+
+  .. code::
+    
+    {
+        "function": "getSum",
+        "inputs" : [
+            { "name": "_a", "value": "100"},
+            { "name": "_b", "value": "201"}
+        ]
+    }
+
+Executed MPT will not get result immediately, it will return a `id` of that MPT regardless of proposing or participating, you need call getMPT to check the MPT status and result.
+
+get MPT:
+
+.. code::
+
+   web3.cloak.getMultiPartyTransaction({id: <MPT ID>})
