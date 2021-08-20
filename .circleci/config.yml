@@ -1,0 +1,19 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.4
+    working_directory: ~/cloak-docs
+    steps: 
+      - checkout
+      - run:
+          name: Pip requirements 
+          command: |
+            sudo pip install --upgrade pip
+            sudo pip install sphinx sphinx_intl sphinx_rtd_theme
+            sudo pip install -r requirements.txt
+      - run:
+          name: Build Html
+          command: make html
+          working_directory: docs
