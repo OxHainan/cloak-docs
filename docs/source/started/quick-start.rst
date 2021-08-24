@@ -21,8 +21,8 @@ to install compiler, there are two ways, the easy way is to use docker:
 
    docker pull plytools/circleci-compiler:v0.2.0
 
-Or install it to any host what you want, Cloak compiler is implemented by
-Python 3, so you need prepare a environment which includes a executable
+Or install it to any host that you want, Cloak compiler is implemented by
+Python 3, so you need to prepare an environment which includes a executable
 Python 3 and pip3, and its version is at least greater than 3.8.
 
 clone code:
@@ -99,12 +99,12 @@ For demonstrating the demo.cloak, we suppose that a test account is:
    private key: 0x55b99466a43e0ccb52a11a42a3b4e10bfba630e8427570035f6db7b5c22f689e
    address: 0xDC8FBC8Eb748FfeBf850D6B93a22C3506A465beE
 
-register public key
+Register public key
 ***********************
-Before you execute a MPT, if you are the owner of some state data (e.g. _manager in Demo contract),
+Before you execute an MPT, if you are the owner of some state data (*e.g.*, _manager in Demo contract),
 you need to register your public key to PKI contract,
-and the public key must be specified by a stardard PEM format,
-here is a example that get a PEM-format public key from hex-string private key:
+and the public key must be specified by a standard PEM format,
+here is an example that get a PEM-format public key from hex-string private key:
 
 .. code::
 
@@ -123,32 +123,32 @@ replace <PRIVATE KEY> with `55b99466a43e0ccb52a11a42a3b4e10bfba630e8427570035f6d
    -----END PUBLIC KEY-----
 
 
-compile
+Compile
 **********************
 
 .. code:: 
 
     python cloak/__main__.py compile -o output demo.cloak
 
-there are three important files in output directory, which are public_contract.sol, private_contract.sol and policy.json
+there are three important files in the output directory, including ``public_contract.sol``, ``private_contract.sol`` and ``policy.json``.
 
-* private_contract.sol: a solidity contract, it will be deployed to Cloak-Tee and be executed by eEVM in TEE environment.
-* public_contract.sol: a solidity contract, it will be deployed to Blockchain.
-* policy.json: privacy policy definition of the cloak contract binding to the private contract.
+* ``public_contract.sol``: a solidity contract, which will be deployed to Blockchain.
+* ``private_contract.sol``: a solidity contract, which will be deployed to **Cloak-Tee** and executed by eEVM in the TEE environment.
+* ``policy.json``: privacy policy definition of the cloak contract binding to the private contract.
 
-deploy public contract
+Deploy public contract
 ***********************
-To deploy public contract to blockchain, you can use web3(or others), but cloak-compiler provide a command that can easily finish it:
+To deploy the public contract to blockchain, you can use web3(or others), but **Cloak-Compiler** provide a command that can easily finish it:
 
 .. code::
 
     python cloak/__main__.py deploy <compiled output dir> <args...>  --blockchain-backend w3-ganache --blockchain-node-uri http://127.0.0.1:8545 --blockchain-pki-address <PKI Address> --blockchain-service-address <cloak service address>
 
-<args...> option is the constructor function arguments.
+``<args...>`` option is the constructor function arguments.
 
-cloak-client
+Cloak-Client
 ************************
-To deploy private contract, send policy and execute MPT to cloak-tee, cloak-client is a good tool that implements web3 provider.
+To deploy the private contract, send policy and execute MPT to **Cloak-Tee**, **Cloak-Client** is a good tool that implements web3 provider.
 
 install cloak-client:
 
