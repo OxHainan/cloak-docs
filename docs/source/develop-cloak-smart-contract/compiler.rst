@@ -16,15 +16,15 @@ Annotate Privacy Invariants
 ==============================
 Developers could annotate variable owner in the declaration statement to one of the {``all``, ``me``, ``id``, ``tee``}.
 
-* ``all`` means public;
+* ``all``, means public;
 
-*  ``me`` means the ``msg.sender``;
+*  ``me``, means the ``msg.sender``;
 
-* ``id`` is declared variable in type address;
+* ``id``, is declared variable in type address;
 
-* ``tee`` means any registered address of SGX with Cloak runtime.
+* ``tee``, means any registered address of SGX with Cloak runtime.
 
-With Cloak, users could intuitively specify the MPT as a Cloak smart contract, the *.cloak* file in the following contract.
+With Cloak, users could intuitively specify the MPT as a Cloak smart contract, the *.cloak* file shows in the following contract.
 
 .. code-block ::
 

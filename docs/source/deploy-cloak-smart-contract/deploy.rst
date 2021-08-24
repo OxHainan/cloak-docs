@@ -20,7 +20,7 @@ cloak-client
 ************************
 To deploy private contract, send policy and execute MPT to cloak-tee, cloak-client is a good tool that implements web3 provider.
 
-install cloak-client:
+Install cloak-client:
 
 .. code::
 
@@ -56,11 +56,11 @@ Deploy a solidity contract:
         ...
     });
 
-extended cloak module
+Extended cloak module
 ***********************
 There are extended functinos under `web3.cloak`, which include send policy, send MPT and get MPT etc.
 
-send policy:
+Send policy:
 
 .. code::
 
@@ -74,9 +74,9 @@ send policy:
         }
     })
 
-the return value is a Policy HASH.
+The return value is a Policy HASH.
 
-send MPT:
+Send MPT:
 
 .. code::
 
@@ -90,8 +90,8 @@ send MPT:
    })
 
 * nonce: same as Ethereum nonce
-* to: if `to` is private contract address, that mean to propose a MPT transaction, otherwise, that mean to participate a MPT(which id is <MPT ID>).
-* data: it includes the function what you what you want to call and input arguments, it look like:
+* to: if `to` is private contract address, that means to propose an MPT transaction, otherwise, that mean to participate an MPT(which id is <MPT ID>).
+* data: it includes the function what you want to call and input arguments, it looks like:
 
   .. code::
     
@@ -103,9 +103,9 @@ send MPT:
         ]
     }
 
-Executed MPT will not get result immediately, it will return a `id` of that MPT regardless of proposing or participating, you need call getMPT to check the MPT status and result.
+Executed MPT will not get result immediately, it will return a id of that MPT regardless of proposing or participating, you need to call **getMultiPartyTransaction** to check the MPT status and result.
 
-get MPT:
+Get MPT:
 
 .. code::
 

@@ -35,22 +35,22 @@ Binary data   bin
 Mappings      mapping
 ===========   ========
 
-* Address is used to indicate the address of users.
+* Address, is used to indicate the address of users.
 
-* Binary data is used to capture signatures, public keys and ciphertexts.
+* Binary data, is used to capture signatures, public keys and ciphertexts.
 
 -------------
 Privacy Types
 -------------
 Privacy types (α) define the data access rights, including ``me``, ``all``, ``tee`` and identifiers.
 
-* ``me``: This type indicates that only the runtime address of the caller can obtain its plaintext.
+* ``me``, indicates that only the runtime address of the caller can obtain its plaintext.
 
-* ``all``: This type indicates that all users can obtain its plaintext.
+* ``all``, indicates that all users can obtain its plaintext.
 
-* ``tee``: This type indicates that only the TEE can obtain its plaintext.
+* ``tee``, indicates that only the TEE can obtain its plaintext.
 
-* identifiers: This type depends on the specific business to decide who is able to obtain the plaintext.
+* identifiers, depends on the specific business to decide who is able to obtain the plaintext.
 
 For example:
 
