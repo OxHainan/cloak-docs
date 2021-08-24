@@ -4,7 +4,7 @@ Call for Contributions
 All Contributions Counts
 ----------------------------
 
-We are always calling for talented, self-motivated developers, reserachers or students
+We are always calling for talented, self-motivated developers, researchers or students
 who are excited about our vision. 
 For now, all code of Cloak has been published as four repositories:
 
