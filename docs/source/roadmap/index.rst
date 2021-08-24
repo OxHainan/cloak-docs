@@ -12,7 +12,7 @@ Roadmap
       causality has been established."*
 
    - support main features and constructures of Solidity in Cloak Language.
-   - implement non-derterministic MPT negotiation protocol and fair MPT results distribution
+   - implement non-deterministic MPT negotiation protocol and fair MPT results distribution
    - do systematic security analysis and auditions for industrial usage.
    - provision a continuously operating decentralized Cloak Network and enable MPT on the Ethereum
 
