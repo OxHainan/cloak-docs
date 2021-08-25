@@ -3,22 +3,22 @@
 Deploy to Blockchain
 =================================
 
-deploy the generated smart contracts to a blockchain
+Deploy the generated smart contracts to the blockchain
 
 
 =================================
 Deploy to Cloak Network
 =================================
 
-deploy the generated smart contracts to the Cloak Network
+Deploy the generated smart contracts to the Cloak Network
 
 
 =================================
 Cloak Client
 =================================
-cloak-client
+Cloak-client
 ************************
-To deploy private contract, send policy and execute MPT to cloak-tee, cloak-client is a good tool that implements web3 provider.
+To deploy the private contract, send policy to cloak-tee and execute MPT int it, cloak-client is a good tool that implements web3 provider.
 
 Install cloak-client:
 
@@ -26,7 +26,7 @@ Install cloak-client:
 
    npm install OxHainan/cloak-client
 
-cloak-client is a extended web3, so the usage of cloak-client is same as web3 except cloak module.
+Cloak-client is an extended web3, so the usage of cloak-client is the same as web3 except Cloak module.
 
 Get web3 Object and set CloakProvider:
 
@@ -45,7 +45,7 @@ Get web3 Object and set CloakProvider:
    // "https://127.0.0.1:8000" is a CCF(cloak-tee) URI
    web3.setProvider(new cloak.CloakProvider("https://127.0.0.1:8000", httpsAgent, web3))
 
-Deploy a solidity contract:
+Deploy a Solidity contract:
 
 .. code::
 
@@ -56,9 +56,9 @@ Deploy a solidity contract:
         ...
     });
 
-Extended cloak module
+Extended Cloak Module
 ***********************
-There are extended functinos under `web3.cloak`, which include send policy, send MPT and get MPT etc.
+There are extended functions under `web3.cloak`, which include send policy, send MPT and get MPT, etc.
 
 Send policy:
 
@@ -89,9 +89,9 @@ Send MPT:
       }
    })
 
-* nonce: same as Ethereum nonce
-* to: if `to` is private contract address, that means to propose an MPT transaction, otherwise, that mean to participate an MPT(which id is <MPT ID>).
-* data: it includes the function what you want to call and input arguments, it looks like:
+* ``nonce``: same as Ethereum nonce.
+* ``to``: if ``to`` is private contract address, that means to propose an MPT transaction, otherwise, that means to participate an MPT(which id is `<MPT ID>`).
+* ``data``: it includes the function what you want to call and input arguments, it looks like:
 
   .. code::
     
@@ -103,7 +103,8 @@ Send MPT:
         ]
     }
 
-Executed MPT will not get result immediately, it will return a id of that MPT regardless of proposing or participating, you need to call **getMultiPartyTransaction** to check the MPT status and result.
+Executed MPT will not get the result immediately, it will return an id of that MPT regardless of proposing or participating.
+You need to call ``getMultiPartyTransaction()`` to check the MPT status and the result.
 
 Get MPT:
 
