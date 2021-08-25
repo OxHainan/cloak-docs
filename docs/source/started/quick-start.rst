@@ -25,14 +25,14 @@ Or install it to any host that you want, Cloak compiler is implemented by
 Python 3, so you need to prepare an environment which includes a executable
 Python 3 and pip3, and its version is at least greater than 3.8.
 
-clone code:
+Clone code:
 
 .. code:: 
 
    git clone https://github.com/OxHainan/cloak-compiler.git
    cd cloak-compiler
 
-setup:
+Setup:
 
 .. code:: 
 
@@ -98,7 +98,7 @@ For demonstrating the demo.cloak, we suppose that a test account is:
    private key: 0x55b99466a43e0ccb52a11a42a3b4e10bfba630e8427570035f6db7b5c22f689e
    address: 0xDC8FBC8Eb748FfeBf850D6B93a22C3506A465beE
 
-Compile cloak contract
+Compile Cloak Contract
 **********************
 
 .. code:: 
@@ -108,10 +108,10 @@ Compile cloak contract
 There are three important files in output directory, including public_contract.sol, private_contract.sol and policy.json.
 
 * public_contract.sol: a solidity contract, it will be deployed to Blockchain.
-* private_contract.sol: a solidity contract, it will be deployed to Cloak-Tee and be executed by eEVM in TEE environment.
-* policy.json: privacy policy definition of the cloak contract binding to the private contract.
+* private_contract.sol: a solidity contract, it will be deployed to cloak-tee and be executed by eEVM in TEE environment.
+* policy.json: privacy policy definition of the Cloak contract binding to the private contract.
 
-Deploy public contract
+Deploy Public Contract
 ***********************
 To deploy public contract to blockchain, you can use web3(or others), but cloak-compiler provide a command that can easily finish it:
 
@@ -124,7 +124,7 @@ To deploy public contract to blockchain, you can use web3(or others), but cloak-
 We have writed a `sample <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__ that uses cloak-client to show you how to register pk, deploy private contract, bind privacy policy and send MPT etc,
 next, we will step by step go through the cloak transaction workflow based on the sample.
 
-Register public key
+Register Public Key
 ***********************
 Before you execute an MPT, if you are the owner of some state data (*e.g.*, _manager in Demo contract),
 you need to register your public key to PKI contract,
@@ -171,9 +171,9 @@ Based on it, in our demo sample, register pk to blockchain looks like:
      return web3.eth.sendSignedTransaction(signed.rawTransaction)
    }
 
-cloak web3
+Cloak Web3
 ***********************
-Cloak-client wraps a web3 Provider, so you can create a web3 object and create _manager account like:
+Cloak-client wraps a Web3 Provider, so you can create a web3 object and create _manager account like:
 
 .. code::
 
@@ -189,10 +189,10 @@ Cloak-client wraps a web3 Provider, so you can create a web3 object and create _
     const acc_1 = web3.eth.accounts.privateKeyToAccount("0x55b99466a43e0ccb52a11a42a3b4e10bfba630e8427570035f6db7b5c22f689e");
 
 `https://127.0.0.1:8000` is cloak-tee service host and port,
-because of encryption, cloak-tee can only accept https request, so you need to provide the network.pem of cloak network as CA, and a trusted user(cert and pk), 
+because of encryption, cloak-tee can only accept https request, so you need to provide the network.pem of Cloak network as CA, and a trusted user(cert and pk), 
 `args[0]` is directory of the three file, if you use cloak.py setup your cloak-tee, it will be workerspace/sanbox_common under cloak-tee build directory.
 
-Deploy private contract
+Deploy Private Contract
 ************************
 Deploy private contract is more like standard web3 except the web3 object is wrapped by ``CloakProvider``:
 
@@ -212,7 +212,7 @@ Deploy private contract is more like standard web3 except the web3 object is wra
     }
 
 
-Bind privacy policy
+Bind Privacy Policy
 ************************
 
 .. code::
@@ -228,7 +228,7 @@ Bind privacy policy
         }
     })
 
-Send deposit transaction
+Send Deposit Transaction
 *************************
 Deposit function store the balance to private mapping from public contract, the proposer and participant is same one (so-called CT).
 
@@ -249,7 +249,7 @@ Deposit function store the balance to private mapping from public contract, the 
         }
     })
 
-Get transaction result
+Get Transaction Result
 **************************
 
 .. code::
@@ -258,12 +258,12 @@ Get transaction result
     await new Promise(resolve => setTimeout(resolve, 3000));
     web3.cloak.getMultiPartyTransaction({id: mpt_id}).then(console.log).catch(console.log)
 
-After send a CT/MPT transaction to cloak network, it will return a MPT ID, you can use that id check the transaction status,
-wait 3 second seem stupid, it did, so we will provide a function that loops to get status until MPT finished later.
+After sending a CT/MPT transaction to Cloak network, it will return an MPT ID, you can use that id to check the transaction status,
+wait 3 seconds seem stupid, it did, so we will provide a function that loops to get status until MPT finished later.
 
-send multi party transfer
+Multi Party Transfer
 **************************
-This code show how to propose a MPT and how to participate that MPT:
+This code shows how to propose an MPT and how to participate that MPT:
 
 .. code::
 
