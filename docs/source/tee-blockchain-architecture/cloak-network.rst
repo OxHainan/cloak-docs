@@ -67,8 +67,8 @@ Workflow of Transaction
     :alt: Cloak-Framework
     :align: center
 
-* Privacy Interpreter, complete privacy parameters check for the transaction.
-* Key Management Enclave, provide data encryption and decryption functions inside Enclave to protect 
+* Privacy Interpreter, completes privacy parameters check for the transaction.
+* Key Management Enclave, provides data encryption and decryption functions inside Enclave to protect 
   users' data information from being stolen by third parties.
 * EVM Enclave, responsible for the execution of confidential smart contracts and output the execution result.
 
@@ -81,7 +81,7 @@ generate ``privacy policy`` and contract ``code``. Then, contract ``code`` can d
 Policy Binding Transaction
 ---------------------------
 
-Policy binding transaction can bing ``Verifier`` and privacy policy. Privacy policy is a model parameter generated based 
+Policy binding transaction can bind ``Verifier`` and privacy policy. Privacy policy is a model parameter generated based 
 on the compilation of Cloak smart contract, which contains the inputs and outputs expression methods of public variables 
 and public functions in the smart contract.
 
@@ -89,11 +89,21 @@ The processing flow is as follows:
 
 .. mermaid:: privacy.mmd
 
-Policy Binding Transaction is mainly to complete the registration of privacy policy, in order to find the corresponding privacy model in the next Multi-Party transaction.
+Policy Binding Transaction is mainly to complete the registration of privacy policy to find the corresponding privacy model in the next Multi-Party Transaction.
 In Cloak, one privacy policy can correspond to multiple confidential smart contract, but a multiple confidential smart contract only belongs to one privacy policy.
-When processing a Policy Binding Transaction, Cloak will check the validity of parameters of the policy in the Privacy Interpreter. And then, 
-check the privacy policy has already existed and if it exists, it will check binding relationship between privacy policy again. Finally, set the binding relationship 
-between privacy policy and confidential smart contract, and save it to ledger.
+When processing a Policy Binding Transaction, Cloak will 
+
+1. check the validity of parameters of the policy in the Privacy Interpreter;
+2. check whether the policy exists 
+
+  2.1 If it exists, it will check the binding relationship between privacy policy and user;
+
+    2.1.1 If it has already been binded, throw error. 
+
+  2.2 If not, it will save it to the ledger;
+
+3. set the binding relationship between privacy policy and confidential smart contract;
+
 
 Multi-Party Transaction
 --------------------------
@@ -143,7 +153,7 @@ The processing flow is as follows:
     :align: center
 
 Suppose Co.1 (Corporate) uses the privacy mechanism in the nodes to protect his 
-private data, he can need to deploy the corresponding confidential smart contract and privacy 
+private data, he needs to deploy the corresponding confidential smart contract and privacy 
 policy to blockchain and Cloak networks respectively. 
 
 When Co.1 commits a private transaction, the nodes will check that based privacy policy 
@@ -163,5 +173,5 @@ the legality of the user's inputs of private data will be checked by the private
     :align: center
 
 When a transaction involves multiple parties, Cloak will check the legality of Multi-Party and accept
-their inputs data. Then, check whether transaction inputs parameters are complete. If not, it can wait
-for other Multi-Party. Finally, take the transaction into EVM execution and save it to the ledger.
+their inputs data. Then, Cloak checks the completeness of transaction inputs parameters. If not, it can wait
+for other Multi-Party. Finally, Cloak takes the transaction into EVM execution and saves it to the ledger.
