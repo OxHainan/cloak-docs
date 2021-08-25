@@ -2,7 +2,7 @@
 Initialize Cloak Network on Blockchain
 =======================================
 
-A cloak service includes four components, they are listed below:
+A Cloak service includes four components, they are listed below:
 
 * cloak-tee: the core component, which is a `CCF <https://github.com/microsoft/CCF>`__ app that runs in a TEE environment,
   deals with Ethereum and Cloak transaction from users and synchronizes the results to blockchain.
