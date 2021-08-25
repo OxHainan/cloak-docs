@@ -140,7 +140,7 @@ The generated privacy policy is as follows:
 
     * ``owner: id``, means that the owner of data is ``id``, ``id`` type is ``address``. 
       Only user has verified the identity of the ``id`` (e.g., digital signature) can be allowed to read the data. 
-      Therefore, the value of data is private and crypted it before export cloak (e.g., synchronized data to Block Chain).
+      Therefore, the value of data is private and crypted it before export Cloak (e.g., synchronized data to Blockchain).
 
     * ``owner: "mapping(address!x=>uint256@x)``, statement of the mapping ``key`` is temporary variable ``x``, 
       and flag the owner of ``value`` is ``x``. the same as ``id``.
