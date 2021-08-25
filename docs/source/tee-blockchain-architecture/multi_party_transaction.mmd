@@ -4,20 +4,20 @@ sequenceDiagram
     participant E as EVM execution
     participant L as Ledger
 
-    M ->> M: Verify Signatrue
-    M ->>+ C: Check Transaction <br> has already exist
-    C ->>+ L: By hash of target Transaction
-    L --)- C: Information of target Transaction
+    M ->> M: Verify signatrue
+    M ->>+ C: Check transaction <br> whether exist
+    C ->>+ L: Check by the hash of target transaction
+    L --)- C: Return information of target transaction
     alt Check the legitimacy of Multi-Party
         Note over C,E: PASS
     end
-    C ->> C: Accept Multi-Party input data
-    alt <br>Check whether the inputs paramters <br> has already complete
+    C ->> C: Accept Multi-Party's input data
+    alt Check the completeness of inputs
         Note over C,E: PASS
     else Not complete
         Note over C,E: Wait for other Multi-Party
     end
-    C ->>+ E: execution Transaction
-    E --)- C: result in EVM
-    C ->> L: save to Ledger
+    C ->>+ E: Execute transaction
+    E --)- C: Return result in EVM
+    C ->> L: Save it to the ledger
     deactivate C
