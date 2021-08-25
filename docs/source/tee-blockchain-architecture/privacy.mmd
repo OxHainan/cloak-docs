@@ -5,17 +5,17 @@ sequenceDiagram
     participant L as Ledger
     activate P
     P ->>+ P: Verify Signatrue
-    P ->> + PI: paramter type check
-    PI ->>- L: check policy has already exist
+    P ->> + PI: Check paramter type 
+    PI ->>- L: Check whether the policy exists
     activate L
     alt Privacy policy already exist
-        L --) P: Check binging relationship Privacy and user
-        alt has already binging
+        L --) P: Check binding relationship between policy and user
+        alt Has already binding
             Note over P, L: THROW ERR
         end
-    else not exist
-        P ->> L: save Privacy policy to Ledger
+    else Not exist
+        P ->> L: Save privacy policy to the Ledger
     end
     deactivate L
-    P ->> P: Set binging <br> relationship  between <br> Privacy and user
+    P ->> P: Set binding <br> relationship  between <br> privacy policy and <br> confidential smart contract
     deactivate P
