@@ -8,7 +8,7 @@ Prerequisites
 Before use Cloak, you need to know Cloak is a framework that includes a
 Cloak service and a Cloak language compiler as
 `Introduction <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/introduction.html>`__
-described, in normal case, we will provide a test cloak service, though
+described, in normal case, we will provide a test Cloak Service, though
 you can deploy Cloak service for yourself, check `deploy cloak
 service <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html>`__.
 
@@ -189,7 +189,7 @@ Cloak-client wraps a Web3 Provider, so you can create a web3 object and create _
     const acc_1 = web3.eth.accounts.privateKeyToAccount("0x55b99466a43e0ccb52a11a42a3b4e10bfba630e8427570035f6db7b5c22f689e");
 
 `https://127.0.0.1:8000` is cloak-tee service host and port,
-because of encryption, cloak-tee can only accept https request, so you need to provide the network.pem of Cloak network as CA, and a trusted user(cert and pk), 
+because of encryption, cloak-tee can only accept https request, so you need to provide the network.pem of Cloak Network as CA, and a trusted user(cert and pk), 
 `args[0]` is directory of the three file, if you use cloak.py setup your cloak-tee, it will be workerspace/sanbox_common under cloak-tee build directory.
 
 Deploy Private Contract
@@ -258,7 +258,7 @@ Get Transaction Result
     await new Promise(resolve => setTimeout(resolve, 3000));
     web3.cloak.getMultiPartyTransaction({id: mpt_id}).then(console.log).catch(console.log)
 
-After sending a CT/MPT transaction to Cloak network, it will return an MPT ID, you can use that id to check the transaction status,
+After sending a CT/MPT transaction to Cloak Network, it will return an MPT ID, you can use that id to check the transaction status,
 wait 3 seconds seem stupid, it did, so we will provide a function that loops to get status until MPT finished later.
 
 Multi Party Transfer

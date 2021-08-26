@@ -6,7 +6,7 @@ Cloak Network
 Cloak Network Overview
 ********************************
 
-The flowing diagram shows a basic Cloak network made of 3 nodes. 
+The flowing diagram shows a basic Cloak Network made of 3 nodes. 
 All nodes run the same application inside an enclave. The effects of user 
 and member transactions are eventually committed to a replicated encrypted ledger. 
 A consortium of members is in charge of governing the network.
@@ -19,13 +19,13 @@ A consortium of members is in charge of governing the network.
 Network and Nodes
 ------------------
 
-A Cloak network consists of several nodes, each running on top of a 
+A Cloak Network consists of several nodes, each running on top of a 
 Trusted Execution Environment (TEE), such as Intel SGX. At the same time, 
-a Cloak network is decentralized and highly-available.
+a Cloak Network is decentralized and highly-available.
 
 Nodes are run and maintained by Operators. Operators are in charge of operator 
-a Cloak network, (*e.g.*, adding or removing nodes). However, nodes must be trusted 
-by the consortium of members before participating in a Cloak network.
+a Cloak Network, (*e.g.*, adding or removing nodes). However, nodes must be trusted 
+by the consortium of members before participating in a Cloak Network.
 
 Application
 -------------
@@ -51,7 +51,7 @@ by a Merkle Tree whose root is periodically signed by the current primary/ledger
 Governance
 ------------
 
-A Cloak network is governed by a consortium of Members. The scriptable Constitution, 
+A Cloak Network is governed by a consortium of Members. The scriptable Constitution, 
 recorded in the ledger itself, defines a set of rules that members must follow.
 
 Members can submit proposals to modify the state of the Key-Value Store. 
@@ -108,7 +108,7 @@ When processing a Policy Binding Transaction, Cloak will
 Multi-Party Transaction
 --------------------------
 
-In the Cloak network, users' private transactions are divided into confidential transactions and 
+In the Cloak Network, users' private transactions are divided into confidential transactions and 
 Multi-Party transactions. The confidential transaction can be executed normally without multi-Party 
 participation. 
 

@@ -9,7 +9,7 @@ Compile
 
 In the development phase, developers first annotate privacy invariants in Solidity smart contract intuitively to get Cloak smart contract.
 **Annotation Checker** checks the annotation to make sure the privacy invariants are correct.
-The core of the development phase is **Cloak Engine**, in which the **Code Generator**, **Policy Generator**, and **Compilation Core** generate *verifier contract*, *service contract*, and *privacy config*.
+The core of the development phase is **Cloak Engine**, in which the **Code Generator**, **Policy Generator**, and **Compilation Core** generate *verifier contract*, *private contract*, and *privacy policy*.
 
 
 Annotate Privacy Invariants
@@ -79,7 +79,7 @@ For example, Cloak prohibits developers from implicitly assigning their private 
 
 Policy Generator
 ====================
-With checked AST, Policy Generator generates a privacy config :math:`P` for the contract.
+With checked AST, Policy Generator generates a privacy policy :math:`P` for the contract.
 :math:`P` simplifies and characterizes the privacy invariants. Typically, :math:`P` includes variables with data type and owners. It also includes ABI, a read-write set of each function.
 Specifically, :math:`P` records each function’s characteristics from four aspects, *inputs*, *read*, *mutate* and *return*. The *inputs* includes its parameters with specified data type and owner; *read* records state variables the function read in execution; *mutate* records the contract states it mutated; *return* records the return variables.
 Since :math:`P` has recorded the details of state variables in the head, *e.g.*, data type and owner, **Policy Generator** leaves the variable identities in *read*, *mutate* and *return*.
@@ -169,7 +169,7 @@ The generated privacy policy is as follows:
 
 Code Generator
 ====================
-**Code Generator** generates a service contract :math:`F` and a verifier contract :math:`V`.
+**Code Generator** generates a private contract :math:`F` and a verifier contract :math:`V`.
 While leaving the computation logic in :math:`F`, **Code Generator** generates :math:`V` to verify the result and update the state.
 In :math:`V`, **Code Generator** first imports a pre-deployed Cloak TEE registration contract, which holds a list of registered SGXs with Cloak runtime.
 Then Cloak transforms each MPT function in *.cloak* into a new function in *V*, which verifies the MPT proof *p* and assigns new state :math:`C(s')` later.

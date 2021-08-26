@@ -47,11 +47,3 @@ Welcome to Cloak's documentation!
 
    publications/publications
    about
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

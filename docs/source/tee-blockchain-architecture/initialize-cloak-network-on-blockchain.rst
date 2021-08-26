@@ -10,7 +10,7 @@ A Cloak service includes four components, they are listed below:
   communicate with the real-world (blockchain, file system, etc.), so cloak-tee-agent is the untrusted 
   part that reads cloak-tee log file and communicates with outside.
 * PKI Contract: provide the service to get PK from address for encryption and decryption.
-* cloak service contract: provide some useful functions that include tee address register, 
+* Cloak Service contract: provide some useful functions that include tee address register, 
   verification of synchronization.
 
 Deploy PKI and Cloak Service Contract
