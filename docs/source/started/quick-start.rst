@@ -119,7 +119,7 @@ To deploy public contract to blockchain, you can use web3(or others), but cloak-
 
     python cloak/__main__.py deploy <compiled output dir> <args...>  --blockchain-backend w3-ganache --blockchain-node-uri http://127.0.0.1:8545 --blockchain-pki-address <PKI Address> --blockchain-service-address <cloak service address>
 
-`<args...>` option is the constructor function arguments.
+`<args...>` option is the constructor function arguments. In this example, it is *0xDC8FBC8Eb748FfeBf850D6B93a22C3506A465beE*, the address mentioned above.
 
 We have writed a `sample <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__ that uses cloak-client to show you how to register pk, deploy private contract, bind privacy policy and send MPT etc,
 next, we will step by step go through the cloak transaction workflow based on the sample.
