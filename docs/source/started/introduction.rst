@@ -30,8 +30,8 @@ of deployed MPTs reduced by 19%.
 
 The Cloak is an ongoing project aiming to become a chain-agnostic 
 privacy infrastructure of the blockchain ecology. We are always calling for
-talented, self-motivated developers, researchers or students
- excited about our vision. Let us make it together.
+talented, self-motivated developers, researchers or students 
+excited about our vision. Let us make it together.
 
 ------------------
 Cloak Overview
@@ -77,3 +77,17 @@ The main features of Cloak include:
 - support the confidential transaction and Multi-Party Transaction (MPT), which take private functions parameters or states from different parties.
 - support smart contracts with mixed public, confidential and multi-party transactions without violating any of their privacy policies.
 - provision a toolchain for develop, deploy confidential smart contracts and transact with them.
+
+------------------
+Limitations
+------------------
+
+- string, bytes are not yet supported
+
+-------------------------------
+Security Disclaimer
+-------------------------------
+.. warning:: 
+    Cloak is an ongoing project. The security of our implementation has not been systematically reviewed yet! 
+    Do not use Cloak in a productive system or to process sensitive confidential data now.
+    We will keep working on Cloak, making it cool and practical step-by-step. Welcome to join us!
