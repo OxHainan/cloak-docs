@@ -7,7 +7,7 @@ Introduction
 What is Cloak?
 -------------------------------
 
-Cloak a pluggable and configurable framework for developing 
+Cloak is a pluggable and configurable framework for developing 
 and deploying confidential smart contracts. 
 To this end, Cloak allows users to specify *privacy invariants* 
 (what is private data and to who is the data private) in a 
