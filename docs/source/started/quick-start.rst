@@ -5,24 +5,24 @@ Quick Start
 ---------------
 Prerequisites
 ---------------
-Before use Cloak, you need to know Cloak is a framework that includes a
-Cloak service and a Cloak language compiler as
+Before using Cloak, you need to know Cloak is a framework that includes a
+Cloak Service and a Cloak language compiler as
 `Introduction <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/introduction.html>`__
-described, in normal case, we will provide a test Cloak Service, though
-you can deploy Cloak service for yourself, check `deploy cloak
-service <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html>`__.
+described, in a normal case, we will provide a test Cloak Service, though
+you can deploy Cloak Service for yourself, check `deploy Cloak
+Service <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html>`__.
 
 ---------------
 Installation
 ---------------
-To install compiler, there are two ways, the easy way is to use docker:
+To install compiler, there are two ways, the easiser way is to use docker:
 
 .. code:: 
 
    docker pull plytools/circleci-compiler:v0.2.0
 
-Or install it to any host that you want, Cloak compiler is implemented by
-Python 3, so you need to prepare an environment which includes a executable
+Or install it to any host that you want, Cloak Compiler is implemented by
+Python 3, so you need to prepare an environment that includes an executable
 Python 3 and pip3, and its version is at least greater than 3.8.
 
 Clone code:
@@ -42,7 +42,7 @@ Setup:
 --------------------
 Cloak by Examples
 --------------------
-Here we will show you how to compile, deploy, call a Cloak contract through `demo.cloak <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/index.html>`__:
+Here we will show you how to compile, deploy and call a Cloak smart contract through `demo.cloak <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/index.html>`__:
 
 .. code-block::
 
@@ -91,7 +91,7 @@ Here we will show you how to compile, deploy, call a Cloak contract through `dem
         }
     }
 
-For demonstrating the demo.cloak, we suppose that a test account is:
+For demonstrating the demo.cloak, We use the following test account as an example.
 
 .. code::
 
@@ -105,31 +105,31 @@ Compile Cloak Contract
 
     python cloak/__main__.py compile -o output demo.cloak
 
-There are three important files in output directory, including public_contract.sol, private_contract.sol and policy.json.
+There are three important files in the output directory, including public_contract.sol, private_contract.sol and policy.json.
 
 * public_contract.sol: a solidity contract, it will be deployed to Blockchain.
 * private_contract.sol: a solidity contract, it will be deployed to cloak-tee and be executed by eEVM in TEE environment.
-* policy.json: privacy policy definition of the Cloak contract binding to the private contract.
+* policy.json: privacy policy definition of the Cloak smart contract binding to the private contract.
 
 Deploy Public Contract
 ***********************
-To deploy public contract to blockchain, you can use web3(or others), but cloak-compiler provide a command that can easily finish it:
+Web3 is a recommended tool for deploying the public contract to the blockchain.  For convenience, cloak-complier provides a command to complete it.
 
 .. code::
 
     python cloak/__main__.py deploy <compiled output dir> <args...>  --blockchain-backend w3-ganache --blockchain-node-uri http://127.0.0.1:8545 --blockchain-pki-address <PKI Address> --blockchain-service-address <cloak service address>
 
-`<args...>` option is the constructor function arguments. In this example, it is *0xDC8FBC8Eb748FfeBf850D6B93a22C3506A465beE*, the address mentioned above.
+`<args...>` option is the constructor function arguments. In this example, it is *0xDC8FBC8Eb748FfeBf850D6B93a22C3506A465beE*.
 
-We have writed a `sample <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__ that uses cloak-client to show you how to register pk, deploy private contract, bind privacy policy and send MPT etc,
-next, we will step by step go through the cloak transaction workflow based on the sample.
+We have writed a `sample <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__ that uses cloak-client to show you how to register pk, deploy private contract, bind privacy policy and send MPT, *etc*.
+Next, we will step by step go through the Cloak transaction workflow based on the sample.
 
 Register Public Key
 ***********************
-Before you execute an MPT, if you are the owner of some state data (*e.g.*, _manager in Demo contract),
-you need to register your public key to PKI contract,
-and the public key must be specified by a standard PEM format,
-here is an example that get a PEM-format public key from hex-string private key:
+Before executing an MPT, if you are the owner of some state data (*e.g.*, _manager in Demo contract),
+you need to register your public key to the PKI contract,
+and the public key must be specified by a standard PEM format.
+Here is an example that get a PEM-format public key from hex-string private key:
 
 .. code::
 
@@ -147,7 +147,7 @@ Replace <PRIVATE KEY> with `55b99466a43e0ccb52a11a42a3b4e10bfba630e8427570035f6d
    MPCYiA6CoewqASjNGc8orVGol8ajLiz3rnleoSm2OyoPsM/3KXdrMg==
    -----END PUBLIC KEY-----
 
-Based on it, in our demo sample, register pk to blockchain looks like:
+Based on it, in our demo sample, registering pk to blockchain works as following:
 
 .. code::
 
@@ -188,9 +188,9 @@ Cloak-client wraps a Web3 Provider, so you can create a web3 object and create _
     web3.setProvider(new CloakProvider("https://127.0.0.1:8000", httpsAgent, web3))
     const acc_1 = web3.eth.accounts.privateKeyToAccount("0x55b99466a43e0ccb52a11a42a3b4e10bfba630e8427570035f6db7b5c22f689e");
 
-`https://127.0.0.1:8000` is cloak-tee service host and port,
-because of encryption, cloak-tee can only accept https request, so you need to provide the network.pem of Cloak Network as CA, and a trusted user(cert and pk), 
-`args[0]` is directory of the three file, if you use cloak.py setup your cloak-tee, it will be workerspace/sanbox_common under cloak-tee build directory.
+`https://127.0.0.1:8000` is cloak-tee service host and port.
+Because of encryption, cloak-tee can only accept https request, you need to provide the network.pem of Cloak Network as CA, and a trusted user(cert and pk), 
+`args[0]` is the directory of the three files. If you use cloak.py setup your cloak-tee, it will be workerspace/sanbox_common under cloak-tee build directory.
 
 Deploy Private Contract
 ************************
@@ -230,7 +230,7 @@ Bind Privacy Policy
 
 Send Deposit Transaction
 *************************
-Deposit function store the balance to private mapping from public contract, the proposer and participant is same one (so-called CT).
+The deposit function stores the balance to private mapping from the public contract, the proposer and participant are the same (so-called CT).
 
 .. code::
 
@@ -258,8 +258,8 @@ Get Transaction Result
     await new Promise(resolve => setTimeout(resolve, 3000));
     web3.cloak.getMultiPartyTransaction({id: mpt_id}).then(console.log).catch(console.log)
 
-After sending a CT/MPT transaction to Cloak Network, it will return an MPT ID, you can use that id to check the transaction status,
-wait 3 seconds seem stupid, it did, so we will provide a function that loops to get status until MPT finished later.
+After sending a CT/MPT transaction to Cloak Network, it will return an MPT ID, you can use that id to check the transaction status.
+We provide a function that loops to get status until MPT finished later.
 
 Multi Party Transfer
 **************************
