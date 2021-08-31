@@ -82,7 +82,7 @@ Expressions
 -------------
 The only Cloak-specific expressions (e) consist of the runtime address of the caller (``me``), common address of TEE (``tee``), reclassification of information (``reveal()``) and native functions including standard arithmetic and boolean operators.
 
-**reveal()** is a operation that is able to change the access right. For example, one can reveals the value x to Alice:
+**reveal()** is a operation that is able to change the access right. For example, one can reveal the value *x* to Alice:
 
 .. code-block ::
 
@@ -140,9 +140,9 @@ Typically, there are three function types.
 * MPT, multi-party transaction, iff one involves variables from different parties.
 
 ------------------------
-A Simple Cloak contract
+A Simple Cloak Contract
 ------------------------
-Cloak contract is similar to a traditional solidity smart contract. Let us begin with a simple example that supports Multi-Party Transaction(MPT) with different privacy policies. It is fine if you do not understand everything right now, we will go into more detail later.
+Cloak contract is similar to a traditional Solidity smart contract. Let us begin with a simple example that supports Multi-Party Transaction(MPT) with different privacy policies. It is fine if you do not understand everything right now, we will go into more detail later.
 
 
 .. code-block:: 
@@ -386,4 +386,4 @@ Similarly, functions ``compare()`` and ``isRicher()`` are also MPT functions due
            return true;
        }
 
-This is a conditional transfer, there private parameters are required.
+This is an MPT, where private parameters are required.
