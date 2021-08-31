@@ -21,10 +21,10 @@ Network and Nodes
 
 A Cloak Network consists of several nodes, each running on top of a 
 Trusted Execution Environment (TEE), such as Intel SGX. At the same time, 
-a Cloak Network is decentralized and highly-available.
+a Cloak network is decentralized and highly-available.
 
-Nodes are run and maintained by Operators. Operators are in charge of operator 
-a Cloak Network, (*e.g.*, adding or removing nodes). However, nodes must be trusted 
+Nodes are run and maintained by Operators who in charge of operatoring 
+a Cloak Network (*e.g.*, adding or removing nodes). However, nodes must be trusted 
 by the consortium of members before participating in a Cloak Network.
 
 Application
@@ -74,7 +74,7 @@ Workflow of Transaction
 
 Deploy Confidential Smart Contracts
 -------------------------------------
-Users can write confidential smart contract based on Cloak language and compile it in the **Cloak-Compiler** to 
+Users can write confidential smart contract based on Cloak language and compile it in the cloak-compiler to 
 generate ``privacy policy`` and contract ``code``. Then, contract ``code`` can deploy to blockchain and get the contract address, marked as ``Verifier``.
 
 
@@ -153,11 +153,11 @@ The processing flow is as follows:
     :align: center
 
 Suppose Co.1 (Corporate) uses the privacy mechanism in the nodes to protect his 
-private data, he needs to deploy the corresponding confidential smart contract and privacy 
-policy to blockchain and Cloak networks respectively. 
+private data, he needs to deploy the corresponding confidential smart contract to the blockchain and to deploy the privacy 
+policy to Cloak Network, respectively. 
 
-When Co.1 commits a private transaction, the nodes will check that based privacy policy 
-target function to divide the transaction is confidential transaction or Multi-Party 
+When Co.1 commits a private transaction, the nodes will check that based on privacy policy 
+target function to decide the transaction is a confidential transaction or a Multi-Party 
 Transaction in the Privacy Interpreter. If it belongs to the former, it will enter 
 the EVM execution, otherwise, it will continue to wait for Multi-Party (*e.g.*, Co.2 or himself) 
 to complete the input of private data. 
