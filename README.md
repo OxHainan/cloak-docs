@@ -20,6 +20,8 @@ The user sends confidential transactions or multi-party transactions to the netw
 A consortium of members sending governance transactions in charge of governing the network. 
 The effects of user and member transactions are eventually committed to a replicated encrypted ledger.
 
+![Clock Network](./docs/source/imgs/cloak-network.svg)
+
 ## Table of contents
 
 - Getting Started
