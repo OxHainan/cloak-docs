@@ -12,14 +12,13 @@ enforced privacy and deploy it to the existing EVM-enabled platforms
 (*e.g.*, Ethereum) and TEE devices to enable the confidential smart 
 contract. 
 
+
 Cloak is designed to work with TEE and EVM-enabled blockchain. 
 It initializes the blockchain in a pluggable manner to become a new architecture, where the blockchain and its clients are enhanced to be the Cloak Blockchain and the Cloak Client respectively, and the Cloak Network is added by Cloak.
 In Cloak Network, all nodes run the same application inside an enclave.
 The user sends confidential transactions or multi-party transactions to the network. 
 A consortium of members sending governance transactions in charge of governing the network. 
 The effects of user and member transactions are eventually committed to a replicated encrypted ledger.
-
-![Cloak Network](./docs/source/imgs/cloak-network.svg)
 
 ## Table of contents
 
