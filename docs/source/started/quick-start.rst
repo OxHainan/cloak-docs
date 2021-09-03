@@ -42,7 +42,19 @@ Setup:
 --------------------
 Cloak by Examples
 --------------------
-Here we will show you how to compile, deploy and call a Cloak smart contract through `demo.cloak <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/index.html>`__:
+The steps that use cloak:
+1. Write a Cloak file
+2. Compile it to generate public_contract.sol, private_contract.sol and policy.json
+3. Deploy public_contract.sol to Cloak Blockchain
+4. Register your public key to PKI contract
+5. Deploy private_contract.sol to cloak-tee
+6. Bind policy.json to the private contract
+7. Propose or participate a transaction
+
+Here we will show you how to finish there steps through `demo.cloak <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/index.html>`__:
+
+demo.cloak
+**********************
 
 .. code-block::
 
@@ -113,7 +125,8 @@ There are three important files in the output directory, including public_contra
 
 Deploy Public Contract
 ***********************
-Web3 is a recommended tool for deploying the public contract to the blockchain.  For convenience, cloak-complier provides a command to complete it.
+Web3 is a recommended tool for deploying the public contract to the blockchain.
+For convenience, cloak-complier provides a command to complete it.
 
 .. code::
 
@@ -121,185 +134,31 @@ Web3 is a recommended tool for deploying the public contract to the blockchain. 
 
 `<args...>` option is the constructor function arguments. In this example, it is *0xDC8FBC8Eb748FfeBf850D6B93a22C3506A465beE*.
 
-We have writed a `sample <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__ that uses cloak-client to show you how to register pk, deploy private contract, bind privacy policy and send MPT, *etc*.
-Next, we will step by step go through the Cloak transaction workflow based on the sample.
+Use cloak-client
+**********************
+After you deploy public_contract.sol, for the next steps, we have writed a `sample <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__ that uses cloak-client to show you how to register pk, deploy private contract, bind privacy policy and send MPT, *etc*.
 
-Register Public Key
-***********************
-Before executing an MPT, if you are the owner of some state data (*e.g.*, _manager in Demo contract),
-you need to register your public key to the PKI contract,
-and the public key must be specified by a standard PEM format.
-Here is an example that get a PEM-format public key from hex-string private key:
+Clone cloak-client and change directory to sample/demo:
 
 .. code::
 
-    echo 302e0201010420 <PRIVATE KEY> a00706052b8104000a | xxd -r -p | openssl ec -inform d -pubout
+   git clone https://github.com/OxHainan/cloak-client.git
+   cd cloak-client/samples/demo
 
-Replace <PRIVATE KEY> with `55b99466a43e0ccb52a11a42a3b4e10bfba630e8427570035f6db7b5c22f689e` and execute:
-
-.. code::
-
-   ➜  ~ echo 302e0201010420 55b99466a43e0ccb52a11a42a3b4e10bfba630e8427570035f6db7b5c22f689e a00706052b8104000a | xxd -r -p | openssl ec -inform d -pubout
-   read EC key
-   writing EC key
-   -----BEGIN PUBLIC KEY-----
-   MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEXFZ6txDg9knTl5E5mFnj7G1j9x91x5d9
-   MPCYiA6CoewqASjNGc8orVGol8ajLiz3rnleoSm2OyoPsM/3KXdrMg==
-   -----END PUBLIC KEY-----
-
-Based on it, in our demo sample, registering pk to blockchain works as following:
+Install dependencies:
 
 .. code::
 
-   async function get_pem_pk(account) {
-      const cmd = `echo 302e0201010420 ${account.privateKey.substring(2,)} a00706052b8104000a | xxd -r -p | openssl ec -inform d -pubout`
-      const {stdout,} = await p_exec(cmd)
-      return stdout.toString()
-   }
+   npm install
 
-   async function register_pki(web3, account) {
-     const pki_file = compile_dir + "/CloakPKI.sol"
-     const [abi, ] = await get_abi_and_bin(pki_file, "CloakPKI")
-     var pki = new web3.eth.Contract(abi, pki_address)
-     var tx = {
-         to: pki_address,
-         data: pki.methods.announcePk(await get_pem_pk(account)).encodeABI(),
-         gas: 900000,
-         gasPrice: 0,
-     }
-     var signed = await web3.eth.accounts.signTransaction(tx, account.privateKey)
-     return web3.eth.sendSignedTransaction(signed.rawTransaction)
-   }
-
-Cloak Web3
-***********************
-Cloak-client wraps a Web3 Provider, so you can create a web3 object and create _manager account like:
+run:
 
 .. code::
 
-    const httpsAgent = new Agent({
-        rejectUnauthorized: false,
-        ca: readFileSync(args[0]+"/networkcert.pem"),
-        cert: readFileSync(args[0]+"/user0_cert.pem"),
-        key: readFileSync(args[0]+"/user0_privk.pem"),
-    });
+   # CCF_AUTH_DIR: a directory that includes CCF network.cert and a user cert and pk, typically workspace/sandbox_common/ under cloak-tee build directory if you use sandbox.sh setup cloak-tee.
+   # COMPILE_DIR: cloak-compiler output directory
+   node index.js <CCF_AUTH_DIR> <COMPILE_DIR> <PKI_ADDRESS> <PUBLIC_CONTRACT_ADDRESS>
 
-    var web3 = new Web3()
-    web3.setProvider(new CloakProvider("https://127.0.0.1:8000", httpsAgent, web3))
-    const acc_1 = web3.eth.accounts.privateKeyToAccount("0x55b99466a43e0ccb52a11a42a3b4e10bfba630e8427570035f6db7b5c22f689e");
-
-`https://127.0.0.1:8000` is cloak-tee service host and port.
-Because of encryption, cloak-tee can only accept https request, you need to provide the network.pem of Cloak Network as CA, and a trusted user(cert and pk), 
-`args[0]` is the directory of the three files. If you use cloak.py setup your cloak-tee, it will be workerspace/sanbox_common under cloak-tee build directory.
-
-Deploy Private Contract
-************************
-Deploy private contract is more like standard web3 except the web3 object is wrapped by ``CloakProvider``:
-
-.. code::
-
-    async function get_abi_and_bin(file, name) {
-        const cmd = `solc --combined-json abi,bin,bin-runtime,hashes --evm-version homestead --optimize ${file}`
-        const {stdout,} = await p_exec(cmd)
-        const j = JSON.parse(stdout)["contracts"][`${file}:${name}`]
-        return [j["abi"], j["bin"]]
-    }
-
-    async function deployContract(web3, account, file, name, params) {
-        const [abi, bin] = await get_abi_and_bin(file, name)
-        var contract = new web3.eth.Contract(abi)
-        return contract.deploy({data: bin, arguments: params}).send({from: account.address})
-    }
-
-
-Bind Privacy Policy
-************************
-
-.. code::
-
-    const code_hash = web3.utils.sha3(readFileSync(code_file))
-    await web3.cloak.sendPrivacyTransaction({
-        account: acc_1,
-        params: {
-            to: deployed.options.address,
-            codeHash: code_hash,
-            verifierAddr: public_contract_address,
-            data: web3.utils.toHex(readFileSync(policy_file))
-        }
-    })
-
-Send Deposit Transaction
-*************************
-The deposit function stores the balance to private mapping from the public contract, the proposer and participant are the same (so-called CT).
-
-.. code::
-
-    // deposit
-    var mpt_id = await web3.cloak.sendMultiPartyTransaction({
-        account: acc_1,
-        params: {
-            nonce: web3.utils.toHex(100),
-            to: deployed.options.address,
-            data: {
-                "function": "deposit",
-                "inputs": [
-                    {"name": "value", "value": "100"},
-                ]
-            }
-        }
-    })
-
-Get Transaction Result
-**************************
-
-.. code::
-
-    // wait 3 second
-    await new Promise(resolve => setTimeout(resolve, 3000));
-    web3.cloak.getMultiPartyTransaction({id: mpt_id}).then(console.log).catch(console.log)
-
-After sending a CT/MPT transaction to Cloak Network, it will return an MPT ID, you can use that id to check the transaction status.
-We provide a function that loops to get status until MPT finished later.
-
-Multi Party Transfer
-**************************
-This code shows how to propose an MPT and how to participate that MPT:
-
-.. code::
-
-    // multi party transfer
-    const acc_2 = web3.eth.accounts.create();
-    await register_pki(ganache_web3, acc_2)
-
-    var mpt_id = await web3.cloak.sendMultiPartyTransaction({
-        account: acc_1,
-        params: {
-            nonce: web3.utils.toHex(100),
-            to: deployed.options.address,
-            data: {
-                "function": "multiPartyTransfer",
-                "inputs": [
-                    {"name": "value", "value": "10"},
-                ]
-            }
-        }
-    })
-
-    await web3.cloak.sendMultiPartyTransaction({
-        account: acc_2,
-        params: {
-            nonce: web3.utils.toHex(100),
-            to: mpt_id,
-            data: {
-                "function": "multiPartyTransfer",
-                "inputs": [
-                    {"name": "to", "value": acc_2.address},
-                ]
-            }
-        }
-    })
-
-For more detail usage of cloak-client, please check: 
-`<https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`__,
-the full sample code: `<https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__
+More detail usage of `cloak-client document <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`__,
+the full `sample code <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__
 
