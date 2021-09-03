@@ -1,3 +1,5 @@
+<img  width="280" src="https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/_static/logo.png" alt="cloak-logo" align="left">
+
 # Cloak-Docs
 
 This is a Cloak documentation for guiding interested people to understand and use Cloak.
@@ -15,14 +17,17 @@ contract.
 
 Cloak is designed to work with TEE and EVM-enabled blockchain. 
 It initializes the blockchain in a pluggable manner to become a new architecture, where the blockchain and its clients are enhanced to be the Cloak Blockchain and the Cloak Client respectively, and the Cloak Network is added by Cloak.
-In Cloak Network, all nodes run the same application inside an enclave.
+
+In [**Cloak Networks**][cloak-networks], all nodes run the same application inside an enclave.
 The user sends confidential transactions or multi-party transactions to the network. 
 A consortium of members sending governance transactions in charge of governing the network. 
 The effects of user and member transactions are eventually committed to a replicated encrypted ledger.
 
 ![Clock Network](./docs/source/imgs/cloak-network.svg)
 
-## Table of contents
+[cloak-networks]: https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/cloak-network.html#cloak-network
+
+## 📖 Table of contents
 
 - Getting Started
     - [Introduction](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/introduction.html)
@@ -83,17 +88,17 @@ The effects of user and member transactions are eventually committed to a replic
         - [Oxford-Hainan Blockchain Research Institute](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/about.html#oxford-hainan-blockchain-research-institute)
         - [Cloak Team](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/about.html#cloak-team)
 
-## Build The Docs
+## Building The Docs
 
 Cloak's documentation is contained in the `docs` folder and is published to [Read the Docs](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/#). It is based on Sphinx and can be built using the Makefile contained in the subdirectory:
 
-### Prerequisites
+### 📋 Prerequisites
 
 ```shell
 $ pip install -r requirements.txt
 ```
 
-### Build Documents
+### 🎉Building Documents
 
 ```shell
 $ cd docs
@@ -111,6 +116,33 @@ $ make html
 - A compiler of Cloak framework, [cloak-compiler](https://github.com/OxHainan/cloak-compiler).
 - The client of Cloak for providing web3-compatable API and interacting with cloak-compiler and cloak-tee, [cloak-client](https://github.com/OxHainan/cloak-client).
 
-## Contributing
+## 👏 How to Contribute
 
-This project welcomes contributions and suggestions. Please see the [Call for Contributions](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/contribute.html).
+The main purpose of this repository is to continue evolving Cloak TEE core. We want to make contributing to this project as easy and transparent as possible, and we are grateful to the community for contributing bug fixes and improvements. 
+Read below to learn how you can take part in improving Cloak TEE.
+
+### [Code of Conduct][code]
+
+Cloak TEE has adopted a Code of Conduct that we expect project participants to adhere to.
+Please read the [full text][code] so that you can understand what actions will and will not be tolerated.
+
+[code]: https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/contribute.html#documentation-style-guide
+
+### [Contributing Guide][contribute]
+
+Read our [**Call for Contributions**][contribute] to learn about our development process, how to propose bugfixed and improvements, and how to build and test your changes to Cloak.
+
+[contribute]: https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/contribute.html#all-contributions-counts
+
+### [Open Source Roadmap][roadmap]
+
+You can learn more about our vision for Cloak Networks in the [**Roadmap**][roadmap].
+
+[roadmap]: https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/roadmap/index.html#roadmap
+
+### Submit Issues
+
+If you find a bug or have some new idea, please submit it to [**issues**][issues]. This is a great place to get started, gain experience,
+and get familiar with our contribution process.
+
+[issues]: https://github.com/OxHainan/cloak-tee/issues
