@@ -43,6 +43,7 @@ Setup:
 Cloak by Examples
 --------------------
 The steps that use cloak:
+
 1. Write a Cloak file
 2. Compile it to generate public_contract.sol, private_contract.sol and policy.json
 3. Deploy public_contract.sol to Cloak Blockchain
