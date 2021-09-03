@@ -1,10 +1,9 @@
-<img  width="280" src="https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/_static/logo.png" alt="cloak-logo" align="center">
-
+<img  width="280" src="https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/_static/logo.png" alt="cloak-logo" align="left">
 
 
 # Cloak-Docs
 
-This is a Cloak documentation for guiding interested people to understand and use Cloak.
+This is a Cloak documentation, guiding people to understand and use Cloak.
 
 ## What is Cloak
 
