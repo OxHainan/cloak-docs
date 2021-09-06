@@ -52,7 +52,7 @@ The steps that use cloak:
 6. Bind policy.json to the private contract
 7. Propose or participate a transaction
 
-Here we will show you how to finish there steps through `demo.cloak <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/index.html>`__:
+Here we will show you how to finish there steps through `demo.cloak <https://github.com/OxHainan/cloak-client/blob/main/samples/demo/demo.cloak>`__:
 
 demo.cloak
 **********************
