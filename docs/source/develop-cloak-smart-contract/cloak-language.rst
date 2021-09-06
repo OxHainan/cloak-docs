@@ -39,6 +39,10 @@ Mappings      mapping
 
 * Binary data, is used to capture signatures, public keys and ciphertexts.
 
+.. note::
+
+   Cloak is still in the process of development and cannot support all data types. **Nested mapping**, **string** and **array** will be gradually supported later.
+
 -------------
 Privacy Types
 -------------
