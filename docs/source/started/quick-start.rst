@@ -6,11 +6,11 @@ Quick Start
 Prerequisites
 ---------------
 Before using Cloak, you need to know Cloak is a framework that includes a
-Cloak Service and a Cloak language compiler as
+Cloak Network and a Cloak language compiler as
 `Introduction <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/introduction.html>`__
-described, in a normal case, we will provide a test Cloak Service, though
-you can deploy Cloak Service for yourself, check `deploy Cloak
-Service <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html>`__.
+described, we don't deploy a public test Cloak Network yet,
+please deploy a Cloak Network for yourself if you want to use Cloak,
+check `deploy Cloak Network <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html>`__.
 
 ---------------
 Installation
@@ -116,7 +116,7 @@ Compile Cloak Contract
 
 .. code:: 
 
-    python cloak/__main__.py compile -o output demo.cloak
+    python cloak/__main__.py compile -o output --blockchain-pki-address <PKI ADDRESS> --blockchain-service-address <CLOAK SERVICE ADDRESS> test/demo.cloak
 
 There are three important files in the output directory, including public_contract.sol, private_contract.sol and policy.json.
 
@@ -124,20 +124,9 @@ There are three important files in the output directory, including public_contra
 * private_contract.sol: a solidity contract, it will be deployed to cloak-tee and be executed by eEVM in TEE environment.
 * policy.json: privacy policy definition of the Cloak smart contract binding to the private contract.
 
-Deploy Public Contract
-***********************
-Web3 is a recommended tool for deploying the public contract to the blockchain.
-For convenience, cloak-complier provides a command to complete it.
-
-.. code::
-
-    python cloak/__main__.py deploy <compiled output dir> <args...>  --blockchain-backend w3-ganache --blockchain-node-uri http://127.0.0.1:8545 --blockchain-pki-address <PKI Address> --blockchain-service-address <cloak service address>
-
-`<args...>` option is the constructor function arguments. In this example, it is *0xDC8FBC8Eb748FfeBf850D6B93a22C3506A465beE*.
-
 Use cloak-client
 **********************
-After you deploy public_contract.sol, for the next steps, we have writed a `sample <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__ that uses cloak-client to show you how to register pk, deploy private contract, bind privacy policy and send MPT, *etc*.
+After you compiled demo.cloak, for the next steps, we have writed a `sample <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__ that uses cloak-client to show you how to register pk, deploy private/public contract, bind privacy policy and send MPT, *etc*.
 
 Clone cloak-client and change directory to sample/demo:
 
@@ -158,7 +147,7 @@ run:
 
    # CCF_AUTH_DIR: a directory that includes CCF network.cert and a user cert and pk, typically workspace/sandbox_common/ under cloak-tee build directory if you use sandbox.sh setup cloak-tee.
    # COMPILE_DIR: cloak-compiler output directory
-   node index.js <CCF_AUTH_DIR> <COMPILE_DIR> <PKI_ADDRESS> <PUBLIC_CONTRACT_ADDRESS>
+   node index.js <CCF_AUTH_DIR> <COMPILE_DIR> <PKI_ADDRESS>
 
 More detail usage of `cloak-client document <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`__,
 the full `sample code <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__
