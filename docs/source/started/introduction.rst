@@ -7,9 +7,14 @@ Introduction
 What is Cloak?
 -------------------------------
 
+.. image:: ../imgs/logo.png
+    :alt: Cloak
+    :align: center
+
+
 Cloak is a pluggable and configurable framework for developing 
 and deploying confidential smart contracts. 
-To this end, Cloak allows users to specify *privacy invariants* 
+Cloak allows users to specify *privacy invariants* 
 (what is private data and to who is the data private) in a 
 declarative way. Then, it automatically generate runtime with verifiably 
 enforced privacy and deploy it to the existing EVM-enabled platforms 
@@ -72,11 +77,11 @@ Advanced Features
 
 The main features of Cloak include:
 
-- enable confidential smart contracts on EVM-enabled blockchain in a pluggable manner.
-- help developers develop confidential smart contracts by only annotating the data owner in source code.
-- support the confidential transaction and Multi-Party Transaction (MPT), which take private functions parameters or states from different parties.
-- support smart contracts with mixed public, confidential and multi-party transactions without violating any of their privacy policies.
-- provision a toolchain for develop, deploy confidential smart contracts and transact with them.
+- **Enable-CT/MPT**, support the confidential transaction (CT) and Multi-Party Transaction (MPT), which take private functions parameters or states from different parties.
+- **Enable-Mixed Contract**, support smart contracts with mixed public, confidential and multi-party transactions without violating any of their privacy policies.
+- **Easy to use**, help developers develop confidential smart contracts by only annotating the data owner in source code.
+- **Pluggable**, enable confidential smart contracts on EVM-enabled blockchain in a pluggable manner.
+- **Easy to develop**, provision a toolchain for develop, deploy confidential smart contracts and transact with them.
 
 ------------------
 Limitations

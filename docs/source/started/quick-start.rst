@@ -5,23 +5,23 @@ Quick Start
 ---------------
 Prerequisites
 ---------------
-Before using Cloak, you need to know Cloak is a framework that includes a
-Cloak Network and a Cloak language compiler as
-`Introduction <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/introduction.html>`__
-described, we don't deploy a public test Cloak Network yet,
-please deploy a Cloak Network for yourself if you want to use Cloak,
-check `deploy Cloak Network <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html>`__.
+Cloak is a framework consisting of a Cloak Network and a Cloak language compiler described as
+`Introduction <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/introduction.html>`__.
+Up to now, we haven't  deployed a public test Cloak Network to provide Cloak Service.
+Please deploy a Cloak Network for yourself if you want to use Cloak,
+following `Initialize Cloak Network on Blockchain <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html>`__.
+Here, we focus on the process of using Cloak.
 
 ---------------
 Installation
 ---------------
-To install compiler, there are two ways, the easiser way is to use docker:
+There are two ways to install compiler, the easiser way is to use docker:
 
 .. code:: 
 
    docker pull plytools/circleci-compiler:v0.2.0
 
-Or install it to any host that you want, Cloak Compiler is implemented by
+Or install it to any host that you want. Note that, Cloak Compiler is implemented by
 Python 3, so you need to prepare an environment that includes an executable
 Python 3 and pip3, and its version is at least greater than 3.8.
 
@@ -42,20 +42,24 @@ Setup:
 --------------------
 Cloak by Examples
 --------------------
-The steps that use cloak:
+Using Cloak requires the following seven steps:
 
-1. Write a Cloak file
-2. Compile it to generate public_contract.sol, private_contract.sol and policy.json
-3. Deploy public_contract.sol to Cloak Blockchain
-4. Register your public key to PKI contract
-5. Deploy private_contract.sol to cloak-tee
-6. Bind policy.json to the private contract
-7. Propose or participate a transaction
+1. Write a Cloak contract file.
+2. Compile it via Cloak Compiler to generate public_contract.sol, private_contract.sol and policy.json.
+3. Deploy public_contract.sol to Cloak Blockchain.
+4. Register your public key to PKI contract.
+5. Deploy private_contract.sol to cloak-tee.
+6. Bind policy.json to the private contract.
+7. Propose or participate a transaction.
 
 Here we will show you how to finish there steps through `demo.cloak <https://github.com/OxHainan/cloak-client/blob/main/samples/demo/demo.cloak>`__:
 
-demo.cloak
+A Glance of Cloak Contract
 **********************
+
+This is the *demo.cloak*, representing the Cloak contract of the first step.
+Here, we pay attention to the steps of using it rather than the details. 
+A detailed description is presented in `Cloak Compiler <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/compiler.html>`_.
 
 .. code-block::
 
@@ -104,7 +108,7 @@ demo.cloak
         }
     }
 
-For demonstrating the demo.cloak, We use the following test account as an example.
+For demonstrating the *demo.cloak*, We use the following test account as an example.
 
 .. code::
 
@@ -114,19 +118,23 @@ For demonstrating the demo.cloak, We use the following test account as an exampl
 Compile Cloak Contract
 **********************
 
+This is the second step, we write a python script to execute it.
+
 .. code:: 
 
     python cloak/__main__.py compile -o output --blockchain-pki-address <PKI ADDRESS> --blockchain-service-address <CLOAK SERVICE ADDRESS> test/demo.cloak
 
-There are three important files in the output directory, including public_contract.sol, private_contract.sol and policy.json.
+There are three important files in the *output* directory, including public_contract.sol, private_contract.sol and policy.json.
 
 * public_contract.sol: a solidity contract, it will be deployed to Blockchain.
 * private_contract.sol: a solidity contract, it will be deployed to cloak-tee and be executed by eEVM in TEE environment.
-* policy.json: privacy policy definition of the Cloak smart contract binding to the private contract.
+* policy.json: a privacy policy definition of the Cloak smart contract binding to the private contract.
 
 Use cloak-client
 **********************
-After you compiled demo.cloak, for the next steps, we have writed a `sample <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__ that uses cloak-client to show you how to register pk, deploy private/public contract, bind privacy policy and send MPT, *etc*.
+
+The remaining steps will be carried out through cloak-client.
+We have writed a `sample <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__ that uses cloak-client to show you how to register pk, deploy private/public contract, bind privacy policy and propose a CT/MPT transaction, *etc*.
 
 Clone cloak-client and change directory to sample/demo:
 
@@ -149,6 +157,6 @@ run:
    # COMPILE_DIR: cloak-compiler output directory
    node index.js <CCF_AUTH_DIR> <COMPILE_DIR> <PKI_ADDRESS>
 
-More detail usage of `cloak-client document <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`__,
-the full `sample code <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__
+More detailed usage is in the `cloak-client document <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`__, and
+the full sample is in the `code <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__.
 
