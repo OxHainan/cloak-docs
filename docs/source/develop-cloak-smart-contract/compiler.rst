@@ -11,15 +11,19 @@ In `Quick Start <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/st
 
 .. code-block ::
 
-   python cloak/__main__.py compile -o output demo.cloak
+    python cloak/__main__.py compile -o output --blockchain-pki-address <PKI ADDRESS> --blockchain-service-address <CLOAK SERVICE ADDRESS> test/demo.cloak
    
 
-Here, we will briefly show you how the cloak-compiler works inside.	
-In the development phase, developers first annotate privacy invariants in Solidity smart contract intuitively to get Cloak smart contract.
-Then, using the cloak-complier to compile the Cloak contract. 
-At first, **Annotation Checker** checks the annotation to make sure the privacy invariants are correct.
-Next, the **Policy Generator** generates *privacy policy*.
-Finally, the **Code Generator** generates *verifier contract (aka public contract)* and *private contract*.
+Here, we will briefly show you how the cloak-compiler works inside.
+
+
+In the `development phase <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/introduction.html#cloak-overview>`_, developers first annotate privacy invariants in Solidity smart contract intuitively to get Cloak smart contract and use the cloak-complier to compile the Cloak contract. 
+
+The components of cloak-compiler works as following:
+
+*  **Annotation Checker**, checks the annotation to make sure the privacy invariants are correct.
+*  **Policy Generator**, generates *privacy policy*.
+*  **Code Generator**, generates *verifier contract (aka public contract)* and *private contract*.
 
 
 For more detail, we recommend the `Publications <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/publications/publications.html>`_.
