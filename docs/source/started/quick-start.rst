@@ -130,11 +130,11 @@ There are three important files in the *output* directory, including public_cont
 * private_contract.sol: a solidity contract, it will be deployed to cloak-tee and be executed by eEVM in TEE environment.
 * policy.json: a privacy policy definition of the Cloak smart contract binding to the private contract.
 
-Use cloak-client
+Deploy and Transaction
 **********************
 
-The remaining steps will be carried out through cloak-client.
-We have writed a `sample <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__ that uses cloak-client to show you how to register pk, deploy private/public contract, bind privacy policy and propose a CT/MPT transaction, *etc*.
+The remaining steps will be carried out through `cloak-client <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`_.
+We have writed a `sample <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__ that uses cloak-client to show you how to register pk, deploy public/private contract, bind privacy policy and propose a CT/MPT transaction, *etc*.
 
 Clone cloak-client and change directory to sample/demo:
 
@@ -149,11 +149,11 @@ Install dependencies:
 
    npm install
 
-run:
+Run command:
 
 .. code::
 
-   # CCF_AUTH_DIR: a directory that includes CCF network.cert and a user cert and pk, typically workspace/sandbox_common/ under cloak-tee build directory if you use sandbox.sh setup cloak-tee.
+   # CCF_AUTH_DIR: a directory that includes CCF network.cert, a user cert and pk, typically workspace/sandbox_common/ under cloak-tee build directory if you use sandbox.sh setup cloak-tee.
    # COMPILE_DIR: cloak-compiler output directory
    node index.js <CCF_AUTH_DIR> <COMPILE_DIR> <PKI_ADDRESS>
 
