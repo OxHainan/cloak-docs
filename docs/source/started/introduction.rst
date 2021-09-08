@@ -81,8 +81,8 @@ The main features of Cloak include:
 - **Enable-CT/MPT**, support the confidential transaction (CT) and Multi-Party Transaction (MPT), which take private functions parameters or states from different parties.
 - **Enable-Mixed Contract**, support smart contracts with mixed public, confidential and multi-party transactions without violating any of their privacy policies.
 - **Easy to use**, help developers develop confidential smart contracts by only annotating the data owner in source code.
-- **Pluggable**, enable confidential smart contracts on EVM-enabled blockchain in a pluggable manner.
 - **Easy to develop**, provision a toolchain for develop, deploy confidential smart contracts and transact with them.
+- **Pluggable**, enable confidential smart contracts on EVM-enabled blockchain in a pluggable manner.
 
 ------------------
 Limitations
