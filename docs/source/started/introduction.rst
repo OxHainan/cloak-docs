@@ -8,6 +8,7 @@ What is Cloak?
 -------------------------------
 
 .. image:: ../imgs/logo.png
+    :scale: 60 %
     :alt: Cloak
     :align: center
 
