@@ -92,6 +92,14 @@ The effects of user and member transactions are eventually committed to a replic
         - [Oxford-Hainan Blockchain Research Institute](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/about.html#oxford-hainan-blockchain-research-institute)
         - [Cloak Team](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/about.html#cloak-team)
 
+## Contents
+
+- [Building The Docs](#-building-the-docs)
+- [Learn More](#-learn-more)
+- [Related Links](#-related-links)
+- [How to Contribute](#-how-to-contribute)
+- [Warning](#-warning)
+
 ## 🎉 Building The Docs
 
 Cloak's documentation is contained in the `docs` folder and is published to [Read the Docs](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/#). It is based on Sphinx and can be built using the Makefile contained in the subdirectory:
@@ -150,3 +158,7 @@ If you find a bug or have some new idea, please submit it to [**issues**][issues
 and get familiar with our contribution process.
 
 [issues]: https://github.com/OxHainan/cloak-tee/issues
+
+## ❗️ Warning
+
+Cloak is an ongoing project. The security of our implementation has not been systematically reviewed yet! Do not use Cloak in a productive system or to process sensitive confidential data now. We will keep working on Cloak, making it cool and practical step-by-step. 
