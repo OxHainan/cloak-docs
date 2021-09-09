@@ -8,7 +8,7 @@
 
 This is a documentation, guiding people to understand and use Cloak.
 
-## What is Cloak
+## What is Cloak?
 
 Cloak is a pluggable and configurable framework for developing and deploying confidential smart contracts. 
 To this end, Cloak allows users to specify *privacy invariants*
