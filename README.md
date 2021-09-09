@@ -1,7 +1,10 @@
 <img  width="280" src="https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/_static/logo.png" alt="cloak-logo" align="left">
 
-
-# Cloak-Docs
+<h1 align="center">
+    <a>
+    Cloak Docs
+  </a>
+</h1>
 
 This is a Cloak documentation, guiding people to understand and use Cloak.
 
