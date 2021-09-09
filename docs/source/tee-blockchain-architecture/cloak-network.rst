@@ -189,7 +189,7 @@ The processing flow is as follows:
   
   4.1 If it is a CT, the execution executes it and return result in EVM. 
   
-  4.2 If it is a MPT, it will wait for other MPT until meet the demand. The details will be described below.
+  4.2 If it is an MPT, it will wait for other MPT until meet the demand. The details will be described below.
 
 When a transaction is MPT, Cloak will check the legality of Multi-Party and accept
 their inputs data. Then, Cloak checks the completeness of transaction inputs parameters. If not, it can wait
