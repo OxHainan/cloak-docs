@@ -15,7 +15,7 @@ sequenceDiagram
         Note over C,P: THROW ERROR: Privacy policy not exist
     end
     C ->> B: Send synchronized data state of contract
-    B --)+ K: Return decrypted data state
+    B --)+ K: Return encrypted data state
     K --)- C: Put data state
     alt Check transaction type
         alt Execute confidential transaction   

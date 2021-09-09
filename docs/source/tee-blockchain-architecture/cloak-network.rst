@@ -2,6 +2,17 @@
 Cloak Network
 ===============================
 
+Cloak Network is the network consisting of multiple Cloak Executors that hold TEE with Cloak runtime in it. Cloak Executors
+
+- processes broadcasted requests from `cloak-client <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`_.
+- runs contracts in its TEE.
+- executes the Confidential Transaction (CT) and the Multi-Party Transaction (MPT) in its TEE.
+- generates proofs proving the correctness of state updates indenpendently.
+
+Cloak Network is built on `CCF Network <https://microsoft.github.io/CCF/main/overview/index.html>_`, *i.e.*, a special CCF Network running Cloak App.
+
+Next, we will introduce the network and its workflow in detail.
+
 ********************************
 Cloak Network Overview
 ********************************
@@ -67,16 +78,29 @@ Workflow of Transaction
     :alt: Cloak-Framework
     :align: center
 
+
+There are three critical components in the Cloak-TEE enables the CT and MPT.
 * Privacy Interpreter, completes privacy parameters check for the transaction.
 * Key Management Enclave, provides data encryption and decryption functions inside Enclave to protect 
   users' data information from being stolen by third parties.
 * EVM Enclave, responsible for the execution of confidential smart contracts and output the execution result.
 
+Taking two cooperators as an example to explain the workflow of MPT.
+
+1. Co.1 uses the Cloak-Complier to compiler its confidential contract and obtains verifier contract (*aka.* public contract), private contract and private policy.
+2. Cloak-Compiler deploys the verifier contract to the blockchain (1.1) and deploy the rest to the Cloak Network (1.2).
+3. Co.1 and Co.2 send MPT to the Cloak Network (2.1 and 2.2).
+4. Privacy Interpreter checks the parameters and decryptes them with Key Management Enclave(2.3).
+5. EVM Enclave executes these two transaction (3).
+6. Cloak Network synchronize the final states (transaction) to the verifier contract (4).
+
+Next, we focus on the key steps, *i.e.*, deploy confidential contracts, policy binding transaction and multi-party transaction.
+
 Deploy Confidential Smart Contracts
 -------------------------------------
-Users can write confidential smart contract based on Cloak language and compile it in the cloak-compiler to 
-generate ``privacy policy`` and contract ``code``. Then, contract ``code`` can deploy to blockchain and get the contract address, marked as ``Verifier``.
-
+Users can write confidential smart contract based on `Cloak Language <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/cloak-language.html>`_ and compile it in the `cloak-compiler <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/compiler.html#>`_ to 
+generate privacy policy and two contracts. Then, one of contracts can deploy to blockchain and get the contract address, marked as ``Verifier``.
+The other contract is the private contract deployed via `cloak-client <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`_.
 
 Policy Binding Transaction
 ---------------------------
@@ -108,9 +132,10 @@ When processing a Policy Binding Transaction, Cloak will
 Multi-Party Transaction
 --------------------------
 
-In the Cloak Network, users' private transactions are divided into confidential transactions and 
-Multi-Party transactions. The confidential transaction can be executed normally without multi-Party 
-participation. 
+In the Cloak Network, users' private transactions are divided into Confidential Transactions (CT) and 
+Multi-Party Transactions (MPT). The former is the confidential transaction involving one participant.
+The latter involves multiple participants.
+MPT and CT have similar processing logic, but the difference is that MPT need to wait for other's transactions.
 
 The input format of the transaction is as follows:
 
@@ -145,6 +170,10 @@ The input format of the transaction is as follows:
 
         '["0x123", "0x456"]'
 
+Suppose Co.1 uses Cloak to execute confidential transactions.
+He needs to deploy the corresponding verifier contract to the blockchain and to deploy the privacy 
+policy and private contract to Cloak Network, respectively. 
+
 The processing flow is as follows:
 
 .. image:: ../imgs/transaction-identity.svg
@@ -152,26 +181,43 @@ The processing flow is as follows:
     :alt: transaction-identity
     :align: center
 
-Suppose Co.1 (Corporate) uses the privacy mechanism in the nodes to protect his 
-private data, he needs to deploy the corresponding confidential smart contract to the blockchain and to deploy the privacy 
-policy to Cloak Network, respectively. 
+1. Check whether the policy exists; 
 
-When Co.1 commits a private transaction, the nodes will check that based on privacy policy 
-target function to decide the transaction is a confidential transaction or a Multi-Party 
-Transaction in the Privacy Interpreter. If it belongs to the former, it will enter 
-the EVM execution, otherwise, it will continue to wait for Multi-Party (*e.g.*, Co.2 or himself) 
-to complete the input of private data. 
+  1.1 If it exists, it will send the name and address of target function and get privacy policy modules;
 
-As the nodes of TEE is stateless before the transaction enters the EVM execution, 
-the latest contract data state of the private smart contract needs to be synchronized 
-with the blockchain and decrypted in the Key Management Enclave. At the same time, 
-the legality of the user's inputs of private data will be checked by the private smart contract.
+  1.2 If not, it will throw an error;
+
+2. Send synchronized data state of contract to blockchain and get the encrypted state;
+3. Key Management decrypte and send it to Cloak Tx pools;
+4. Check the type of transaction;
+  
+  4.1 If it is a CT, the execution executes it and return result in EVM. 
+
+  4.2 If it is a MPT, it will wait for other MPT until meet the demand. The details will be described below.
+
+When a transaction is MPT, Cloak will check the legality of Multi-Party and accept
+their inputs data. Then, Cloak checks the completeness of transaction inputs parameters. If not, it can wait
+for other Multi-Party. Finally, Cloak takes the transaction into EVM execution and saves it to the ledger.
+Note that, this ledger belongs to the Cloak Network rather than blockchain.
+
+The processing flow of MPT is as follows:
 
 .. image:: ../imgs/multi-party-transaction.svg
     :width: 800px
     :alt: transaction-identity
     :align: center
 
-When a transaction involves multiple parties, Cloak will check the legality of Multi-Party and accept
-their inputs data. Then, Cloak checks the completeness of transaction inputs parameters. If not, it can wait
-for other Multi-Party. Finally, Cloak takes the transaction into EVM execution and saves it to the ledger.
+1. Check the hash of target function and get the information of it; 
+2. Check the legitimacy of parties;
+3. Accept parties' input data.
+4. Check whether the transaction demand meets; 
+   
+   4.1 If it meets, go to step 5.
+
+   4.2 If not, wait until the conditions are met or run out of time.
+
+5. the execution executes it and return result in EVM;
+6. Save the result in the ledger.
+
+
+Of course, Cloak will send the final state to the blockchain at the end.  
