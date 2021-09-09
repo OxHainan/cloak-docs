@@ -96,7 +96,7 @@ The effects of user and member transactions are eventually committed to a replic
 
 Cloak's documentation is contained in the `docs` folder and is published to [Read the Docs](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/#). It is based on Sphinx and can be built using the Makefile contained in the subdirectory:
 
-### 📋 Prerequisites
+### 📋 Requirements
 
 ```shell
 $ pip install -r requirements.txt
