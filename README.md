@@ -6,7 +6,7 @@
   </a>
 </h1>
 
-This is a Cloak documentation, guiding people to understand and use Cloak.
+This is a documentation, guiding people to understand and use Cloak.
 
 ## What is Cloak
 
