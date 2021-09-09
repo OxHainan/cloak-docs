@@ -81,8 +81,7 @@ Workflow of Transaction
 
 There are three critical components in the Cloak-TEE enables the CT and MPT.
 * Privacy Interpreter, completes privacy parameters check for the transaction.
-* Key Management Enclave, provides data encryption and decryption functions inside Enclave to protect 
-  users' data information from being stolen by third parties.
+* Key Management Enclave, provides data encryption and decryption functions inside Enclave to protect users' data information from being stolen by third parties.
 * EVM Enclave, responsible for the execution of confidential smart contracts and output the execution result.
 
 Taking two cooperators as an example to explain the workflow of MPT.
@@ -119,9 +118,11 @@ When processing a Policy Binding Transaction, Cloak will
 
 1. check the validity of parameters of the policy in the Privacy Interpreter;
 2. check whether the policy exists 
-  2.1 If it exists, it will check the binding relationship between privacy policy and user;
-    2.1.1 If it has already been binded, throw error. 
-  2.2 If not, it will save it to the ledger;
+   
+   2.1 If it exists, it will check the binding relationship between privacy policy and user;
+      
+      2.1.1 If it has already been binded, throw error. 
+   2.2 If not, it will save it to the ledger;
 3. set the binding relationship between privacy policy and confidential smart contract;
 
 
@@ -178,12 +179,16 @@ The processing flow is as follows:
     :align: center
 
 1. Check whether the policy exists; 
+  
   1.1 If it exists, it will send the name and address of target function and get privacy policy modules;
+  
   1.2 If not, it will throw an error;
 2. Send synchronized data state of contract to blockchain and get the encrypted state;
 3. Key Management decrypte and send it to Cloak Tx pools;
 4. Check the type of transaction;
+  
   4.1 If it is a CT, the execution executes it and return result in EVM. 
+  
   4.2 If it is a MPT, it will wait for other MPT until meet the demand. The details will be described below.
 
 When a transaction is MPT, Cloak will check the legality of Multi-Party and accept
@@ -202,9 +207,11 @@ The processing flow of MPT is as follows:
 2. Check the legitimacy of parties;
 3. Accept parties' input data.
 4. Check whether the transaction demand meets; 
+   
    4.1 If it meets, go to step 5.
+   
    4.2 If not, wait until the conditions are met or run out of time.
-5. the execution executes it and return result in EVM;
+5. The execution executes it and return result in EVM;
 6. Save the result in the ledger.
 
 
