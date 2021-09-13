@@ -15,7 +15,7 @@ Here, we focus on the process of using Cloak.
 ---------------
 Installation
 ---------------
-There are two ways to install compiler, the easiser way is to use docker:
+There are two ways to install compiler, the easier way is to use docker:
 
 .. code:: 
 
@@ -46,8 +46,8 @@ Using Cloak requires the following seven steps:
 
 1. Write a Cloak contract file.
 2. Compile it via Cloak Compiler to generate public_contract.sol, private_contract.sol and policy.json.
-3. Deploy public_contract.sol to Cloak Blockchain.
-4. Register your public key to PKI contract.
+3. Register your public key to PKI contract.
+4. Deploy public_contract.sol to Cloak Blockchain.
 5. Deploy private_contract.sol to cloak-tee.
 6. Bind policy.json to the private contract.
 7. Propose or participate a transaction.
@@ -55,7 +55,7 @@ Using Cloak requires the following seven steps:
 Here we will show you how to finish there steps through `demo.cloak <https://github.com/OxHainan/cloak-client/blob/main/samples/demo/demo.cloak>`__:
 
 A Glance of Cloak Contract
-**********************
+***************************
 
 This is the *demo.cloak*, representing the Cloak contract of the first step.
 Here, we pay attention to the steps of using it rather than the details. 
