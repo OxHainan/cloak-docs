@@ -88,7 +88,15 @@ The main features of Cloak include:
 Limitations
 ------------------
 
-- string, bytes are not yet supported
+- string, bytes, array, nested mapping [P0, will be supported recently]
+- struct types [P1]
+- User Defined Value Types, function types(for higher-order functions) [P2]
+- Tuple variable declaration, new expression, data location [P0, will be supported recently]
+- private, import, library, interface, inheritance, using for syntax [P1]
+- Events, emit statement [p1]
+- after, delete expression [P1]
+- Inline Assembly [P1]
+- Decoder, encryption and decryption of return values [P1]
 
 -------------------------------
 Security Disclaimer
