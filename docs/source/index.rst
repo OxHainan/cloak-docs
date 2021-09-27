@@ -16,7 +16,7 @@ Welcome to Cloak's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: TEE-Blockchain Architecture
+   :caption: Decentralized Oracle Network
 
    tee-blockchain-architecture/cloak-network
    tee-blockchain-architecture/initialize-cloak-network-on-blockchain

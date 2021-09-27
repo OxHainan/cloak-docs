@@ -52,7 +52,7 @@ The figure followed shows the workflow of Cloak to develop, deploy the
 cnfidential smart contract and send private transaction, including MPT. 
 It is mainly divided into three phases, *development*, *deployment* and *transaction*. 
 
-.. image:: ../imgs/framework.svg
+.. image:: ../imgs/framework.png
     :alt: The overall workflow of Cloak
     :align: center
 
