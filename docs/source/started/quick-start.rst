@@ -32,6 +32,12 @@ Clone code:
    git clone https://github.com/OxHainan/cloak-compiler.git
    cd cloak-compiler
 
+Install dependencies:
+
+.. code:: 
+
+   pip install -r install/requirements.txt
+
 Setup:
 
 .. code:: 
