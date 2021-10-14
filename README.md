@@ -50,7 +50,7 @@ The effects of user and member transactions are eventually committed to a replic
         - [Workflow for Pull Requests](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/contribute.html#workflow-for-pull-requests)
         - [Documentation Style Guide](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/contribute.html#documentation-style-guide)
 
-- TEE-Blockchain Architecture
+- Decentralized Oracle Network
     - [Cloak Network](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/cloak-network.html)
         - [Cloak Network Overview](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/cloak-network.html#cloak-network-overview)
         - [Workflow of Transaction](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/cloak-network.html#workflow-of-transaction)

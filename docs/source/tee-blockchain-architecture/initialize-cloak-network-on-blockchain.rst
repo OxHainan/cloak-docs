@@ -6,7 +6,7 @@ Initializing Cloak Network on blockchain is to deploy Cloak Service, including f
 * **cloak-tee**: the core component, which is a `CCF <https://github.com/microsoft/CCF>`__ app that runs in a TEE environment,
   deals with Ethereum and Cloak transaction from users and synchronizes the results to blockchain.
 * **cloak-tee-agent**: as described above, cloak-tee runs in SGX Enclave(TEE), it is inconvenient to 
-  communicate with the real-world (blockchain, file system, etc.), so cloak-tee-agent is the untrusted 
+  communicate with the outside system (blockchain, file system, etc.), so cloak-tee-agent is the untrusted 
   part that reads cloak-tee log file and communicates with outside.
 * **CloakPKI Contract**: provide the service to get PK from address for encryption and decryption.
 * **CloakService contract**: provide some useful functions that include tee address register, 

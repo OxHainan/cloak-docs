@@ -2,12 +2,13 @@
 Cloak Network
 ===============================
 
-Cloak Network is the network consisting of multiple Cloak Executors that hold TEE with Cloak runtime in it. Cloak Executors
+Cloak Network is the network consisting of multiple Cloak Executors that hold TEE with Cloak runtime in it. 
+Each Cloak Executor is supposed to
 
-- processes broadcasted requests from `cloak-client <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`_.
-- runs contracts in its TEE.
-- executes the Confidential Transaction (CT) and the Multi-Party Transaction (MPT) in its TEE.
-- generates proofs proving the correctness of state updates indenpendently.
+- processe broadcasted requests from `cloak-client <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`_.
+- run contracts in its TEE.
+- execute the Confidential Transaction (CT) and the Multi-Party Transaction (MPT) in its TEE.
+- generate proofs proving the correctness of state updates indenpendently.
 
 Cloak Network is built on `CCF Network <https://microsoft.github.io/CCF/main/overview/index.html>`_, *i.e.*, a special CCF Network running Cloak App.
 
