@@ -63,6 +63,10 @@ Install
 ************************
 To deploy the private contract, send policy to cloak-tee and execute MPT in it, cloak-client is a good tool that implements web3 provider.
 
+.. note::
+
+   nodejs should be upgrade to v17.0.1 or latest version.
+
 Install cloak-client:
 
 .. code::

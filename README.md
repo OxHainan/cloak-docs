@@ -51,13 +51,13 @@ The effects of user and member transactions are eventually committed to a replic
         - [Documentation Style Guide](https://cloak-docs.readthedocs.io/en/latest/started/contribute.html#documentation-style-guide)
 
 - Decentralized Oracle Network
-    - [Cloak Network](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/cloak-network.html)
-        - [Cloak Network Overview](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/cloak-network.html#cloak-network-overview)
-        - [Workflow of Transaction](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/cloak-network.html#workflow-of-transaction)
-    - [Initialize Cloak Network on Blockchain](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html)
-        - [Deploy Cloak Service Contract](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html#deploy-cloak-service-contract)
-        - [Build Cloak-tee](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html#build-cloak-tee)
-        - [Setup Cloak Service](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html#setup-cloak-service)
+    - [Cloak Network](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/cloak-network.html)
+        - [Cloak Network Overview](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/cloak-network.html#cloak-network-overview)
+        - [Workflow of Transaction](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/cloak-network.html#workflow-of-transaction)
+    - [Initialize Cloak Network on Blockchain](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html)
+        - [Deploy Cloak Service Contract](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html#deploy-cloak-service-contract)
+        - [Build Cloak-tee](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html#build-cloak-tee)
+        - [Setup Cloak Service](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html#setup-cloak-service)
 
 - Develop Cloak Smart Contract
     - [Cloak Language](https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/cloak-language.html)
