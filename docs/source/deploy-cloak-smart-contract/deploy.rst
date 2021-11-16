@@ -146,10 +146,9 @@ sendMultiPartyTransaction
     
     {
         "function": "getSum",
-        "inputs" : [
-            { "name": "_a", "value": "100"},
-            { "name": "_b", "value": "201"}
-        ]
+        "inputs" : { 
+            "_a": "100", "_b": "201"
+        }
     }
 
 Executed MPT will not get the result immediately, it will return an id of that MPT regardless of proposing or participating.
