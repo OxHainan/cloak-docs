@@ -55,7 +55,7 @@ The effects of user and member transactions are eventually committed to a replic
         - [Cloak Network Overview](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/cloak-network.html#cloak-network-overview)
         - [Workflow of Transaction](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/cloak-network.html#workflow-of-transaction)
     - [Initialize Cloak Network on Blockchain](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html)
-        - [Deploy PKI and Cloak Service Contract](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html#deploy-pki-and-cloak-service-contract)
+        - [Deploy Cloak Service Contract](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html#deploy-cloak-service-contract)
         - [Build Cloak-tee](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html#build-cloak-tee)
         - [Setup Cloak Service](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html#setup-cloak-service)
 
