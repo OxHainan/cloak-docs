@@ -141,32 +141,15 @@ The input format of the transaction is as follows:
 
     {
         "function": "settleReceivables",
-        "inputs" : [{
-            "name": "payee",
-            "value": "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe"
-        }, {
-            "name": "amount",
-            "value": "0x1234"
-        }],
+        "inputs" : {
+            "payee": "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe",
+            "amount": "0x1234"
+        }
     }
 
 * ``function``: (Optional), when the user is the initiator of the transaction, this field cannot be omitted 
 
-* ``inputs``: inputs parameter of target of function, structure array composed of ``name`` and ``value``. 
-
-.. note::
-    Due to ``value`` can only accept ``string`` types, when the variable type of ``name`` is an ``array``, it will 
-    need to be converted to ``string`` types. e.g., we need to input the flowing array types data,
-
-    .. code::
-
-        ["0x123", "0x456"]
-    
-    so, we can converte it to
-
-    .. code-block::
-
-        '["0x123", "0x456"]'
+* ``inputs``: inputs parameter of target of function, the ``key`` is parameter name and the ``value`` is parameter value. 
 
 Suppose Co.1 uses Cloak to execute confidential transactions.
 He needs to deploy the corresponding verifier contract to the blockchain and to deploy the privacy 
