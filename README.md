@@ -1,4 +1,4 @@
-<img  width="280" src="https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/_static/logo.png" alt="cloak-logo" align="left">
+<img  width="280" src="https://cloak-docs.readthedocs.io/en/latest/_static/logo.png" alt="cloak-logo" align="left">
 
 <h1 align="center">
     <a>
@@ -29,76 +29,76 @@ The effects of user and member transactions are eventually committed to a replic
 
 ![Clock Network](./docs/source/imgs/cloak-network.svg)
 
-[cloak-networks]: https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/cloak-network.html#cloak-network
+[cloak-networks]: https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/cloak-network.html#cloak-network
 
 ## 📖 Table of contents
 
 - Getting Started
-    - [Introduction](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/introduction.html)
-        - [What is Cloak?](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/introduction.html#what-is-cloak)
-        - [Cloak Overview](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/introduction.html#cloak-overview)
-        - [Advanced Features](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/introduction.html#advanced-features)
-        - [Limitations](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/introduction.html#limitations)
-        - [Security Disclaimer](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/introduction.html#security-disclaimer)
-    - [Quick Start](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/quick-start.html)
-        - [Prerequisites](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/quick-start.html#prerequisites)
-        - [Installation](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/quick-start.html#installation)
-        - [Cloak by Examples](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/quick-start.html#cloak-by-examples)
-    - [Call for Contributions](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/contribute.html)
-        - [All Contributions Counts](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/contribute.html#all-contributions-counts)
-        - [How to Report Issues](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/contribute.html#how-to-report-issues)
-        - [Workflow for Pull Requests](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/contribute.html#workflow-for-pull-requests)
-        - [Documentation Style Guide](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/contribute.html#documentation-style-guide)
+    - [Introduction](https://cloak-docs.readthedocs.io/en/latest/started/introduction.html)
+        - [What is Cloak?](https://cloak-docs.readthedocs.io/en/latest/started/introduction.html#what-is-cloak)
+        - [Cloak Overview](https://cloak-docs.readthedocs.io/en/latest/started/introduction.html#cloak-overview)
+        - [Advanced Features](https://cloak-docs.readthedocs.io/en/latest/started/introduction.html#advanced-features)
+        - [Limitations](https://cloak-docs.readthedocs.io/en/latest/started/introduction.html#limitations)
+        - [Security Disclaimer](https://cloak-docs.readthedocs.io/en/latest/started/introduction.html#security-disclaimer)
+    - [Quick Start](https://cloak-docs.readthedocs.io/en/latest/started/quick-start.html)
+        - [Prerequisites](https://cloak-docs.readthedocs.io/en/latest/started/quick-start.html#prerequisites)
+        - [Installation](https://cloak-docs.readthedocs.io/en/latest/started/quick-start.html#installation)
+        - [Cloak by Examples](https://cloak-docs.readthedocs.io/en/latest/started/quick-start.html#cloak-by-examples)
+    - [Call for Contributions](https://cloak-docs.readthedocs.io/en/latest/started/contribute.html)
+        - [All Contributions Counts](https://cloak-docs.readthedocs.io/en/latest/started/contribute.html#all-contributions-counts)
+        - [How to Report Issues](https://cloak-docs.readthedocs.io/en/latest/started/contribute.html#how-to-report-issues)
+        - [Workflow for Pull Requests](https://cloak-docs.readthedocs.io/en/latest/started/contribute.html#workflow-for-pull-requests)
+        - [Documentation Style Guide](https://cloak-docs.readthedocs.io/en/latest/started/contribute.html#documentation-style-guide)
 
 - Decentralized Oracle Network
-    - [Cloak Network](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/cloak-network.html)
-        - [Cloak Network Overview](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/cloak-network.html#cloak-network-overview)
-        - [Workflow of Transaction](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/cloak-network.html#workflow-of-transaction)
-    - [Initialize Cloak Network on Blockchain](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html)
-        - [Deploy PKI and Cloak Service Contract](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html#deploy-pki-and-cloak-service-contract)
-        - [Build Cloak-tee](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html#build-cloak-tee)
-        - [Setup Cloak Service](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html#setup-cloak-service)
+    - [Cloak Network](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/cloak-network.html)
+        - [Cloak Network Overview](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/cloak-network.html#cloak-network-overview)
+        - [Workflow of Transaction](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/cloak-network.html#workflow-of-transaction)
+    - [Initialize Cloak Network on Blockchain](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html)
+        - [Deploy PKI and Cloak Service Contract](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html#deploy-pki-and-cloak-service-contract)
+        - [Build Cloak-tee](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html#build-cloak-tee)
+        - [Setup Cloak Service](https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html#setup-cloak-service)
 
 - Develop Cloak Smart Contract
-    - [Cloak Language](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/cloak-language.html)
-        - [Locations](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/cloak-language.html#locations)
-        - [Data Types](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/cloak-language.html#data-types)
-        - [Privacy Types](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/cloak-language.html#privacy-types)
-        - [Type Declarations](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/cloak-language.html#type-declarations)
-        - [Expressions](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/cloak-language.html#expressions)
-        - [Statements](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/cloak-language.html#statements)
-        - [Functions](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/cloak-language.html#functions)
-        - [A Simple Cloak Contract](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/cloak-language.html#a-simple-cloak-contract)
-    - [Cloak Compiler](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/compiler.html)
-        - [Compile](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/compiler.html#compile)
-        - [Debug](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/compiler.html#debug)
+    - [Cloak Language](https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/cloak-language.html)
+        - [Locations](https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/cloak-language.html#locations)
+        - [Data Types](https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/cloak-language.html#data-types)
+        - [Privacy Types](https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/cloak-language.html#privacy-types)
+        - [Type Declarations](https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/cloak-language.html#type-declarations)
+        - [Expressions](https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/cloak-language.html#expressions)
+        - [Statements](https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/cloak-language.html#statements)
+        - [Functions](https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/cloak-language.html#functions)
+        - [A Simple Cloak Contract](https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/cloak-language.html#a-simple-cloak-contract)
+    - [Cloak Compiler](https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/compiler.html)
+        - [Compile](https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/compiler.html#compile)
+        - [Debug](https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/compiler.html#debug)
 
 - Deploy Cloak Smart Contract
-    - [Cloak Blockchain](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html)
-    	- [Deploy Public Key](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#deploy-public-key)
-    	- [Deploy Public Contract](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#deploy-public-contract)
-    	- [Deploy private contract](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#deploy-private-contract)
-    	- [Bind privacy policy](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#bind-privacy-policy)
-    	- [Send Transaction](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#send-transaction)
-    - [Cloak Client](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client)
-        - [Install](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#install)
-        - [Cloak Web3](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-web3)
-        - [Deploy a Solidity contract](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#deploy-a-solidity-contract)
-        - [sendPrivacyTransaction](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#sendprivacytransaction)
-        - [sendMultiPartyTransaction](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#sendmultipartytransaction)
-        - [getMultiPartyTransaction](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#getmultipartytransaction)
+    - [Cloak Blockchain](https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html)
+    	- [Deploy Public Key](https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#deploy-public-key)
+    	- [Deploy Public Contract](https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#deploy-public-contract)
+    	- [Deploy private contract](https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#deploy-private-contract)
+    	- [Bind privacy policy](https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#bind-privacy-policy)
+    	- [Send Transaction](https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#send-transaction)
+    - [Cloak Client](https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client)
+        - [Install](https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#install)
+        - [Cloak Web3](https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-web3)
+        - [Deploy a Solidity contract](https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#deploy-a-solidity-contract)
+        - [sendPrivacyTransaction](https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#sendprivacytransaction)
+        - [sendMultiPartyTransaction](https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#sendmultipartytransaction)
+        - [getMultiPartyTransaction](https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#getmultipartytransaction)
 
 - Contribute
-    - [Roadmap](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/roadmap/index.html)
-    - [API Documentation](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/apidoc/index.html)
+    - [Roadmap](https://cloak-docs.readthedocs.io/en/latest/roadmap/index.html)
+    - [API Documentation](https://cloak-docs.readthedocs.io/en/latest/apidoc/index.html)
 
 - About Cloak
-    - [Publications](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/publications/publications.html)
-        - [Technical Papers and Reports](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/publications/publications.html#technical-papers-and-reports)
-        - [Release Notes](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/publications/publications.html#release-notes)
-    - [About Us](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/about.html)
-        - [Oxford-Hainan Blockchain Research Institute](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/about.html#oxford-hainan-blockchain-research-institute)
-        - [Cloak Team](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/about.html#cloak-team)
+    - [Publications](https://cloak-docs.readthedocs.io/en/latest/publications/publications.html)
+        - [Technical Papers and Reports](https://cloak-docs.readthedocs.io/en/latest/publications/publications.html#technical-papers-and-reports)
+        - [Release Notes](https://cloak-docs.readthedocs.io/en/latest/publications/publications.html#release-notes)
+    - [About Us](https://cloak-docs.readthedocs.io/en/latest/about.html)
+        - [Oxford-Hainan Blockchain Research Institute](https://cloak-docs.readthedocs.io/en/latest/about.html#oxford-hainan-blockchain-research-institute)
+        - [Cloak Team](https://cloak-docs.readthedocs.io/en/latest/about.html#cloak-team)
 
 ## Contents
 
@@ -110,7 +110,7 @@ The effects of user and member transactions are eventually committed to a replic
 
 ## 🎉 Building The Docs
 
-Cloak's documentation is contained in the `docs` folder and is published to [Read the Docs](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/#). It is based on Sphinx and can be built using the Makefile contained in the subdirectory:
+Cloak's documentation is contained in the `docs` folder and is published to [Read the Docs](https://cloak-docs.readthedocs.io/en/latest/#). It is based on Sphinx and can be built using the Makefile contained in the subdirectory:
 
 ### 📋 Requirements
 
@@ -127,8 +127,8 @@ $ make html
 
 ## 📖 Learn More
 
-- Browse the [documentation](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/#).
-- Read the [Research Papers](https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/publications/publications.html).
+- Browse the [documentation](https://cloak-docs.readthedocs.io/en/latest/#).
+- Read the [Research Papers](https://cloak-docs.readthedocs.io/en/latest/publications/publications.html).
 
 ## 📖 Related Links
 
@@ -146,19 +146,19 @@ Read below to learn how you can take part in improving Cloak TEE.
 Cloak TEE has adopted a Code of Conduct that we expect project participants to adhere to.
 Please read the [full text][code] so that you can understand what actions will and will not be tolerated.
 
-[code]: https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/contribute.html#documentation-style-guide
+[code]: https://cloak-docs.readthedocs.io/en/latest/started/contribute.html#documentation-style-guide
 
 ### [Contributing Guide][contribute]
 
 Read our [**Call for Contributions**][contribute] to learn about our development process, how to propose bugfixed and improvements, and how to build and test your changes to Cloak.
 
-[contribute]: https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/contribute.html#all-contributions-counts
+[contribute]: https://cloak-docs.readthedocs.io/en/latest/started/contribute.html#all-contributions-counts
 
 ### [Open Source Roadmap][roadmap]
 
 You can learn more about our vision for Cloak Networks in the [**Roadmap**][roadmap].
 
-[roadmap]: https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/roadmap/index.html#roadmap
+[roadmap]: https://cloak-docs.readthedocs.io/en/latest/roadmap/index.html#roadmap
 
 ### Submit Issues
 
