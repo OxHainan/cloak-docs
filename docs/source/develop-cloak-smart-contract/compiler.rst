@@ -11,7 +11,7 @@ In `Quick Start <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/st
 
 .. code-block ::
 
-    python cloak/__main__.py compile -o output --blockchain-pki-address <PKI ADDRESS> --blockchain-service-address <CLOAK SERVICE ADDRESS> test/demo.cloak
+    python cloak/__main__.py compile -o output --blockchain-service-address <CLOAK SERVICE ADDRESS> test/demo.cloak
    
 
 Here, we will briefly show you how the cloak-compiler works inside.
@@ -301,13 +301,11 @@ The generated public contract is as follows:
 
    pragma solidity ^0.8.0;
 
-   import "./CloakPKI.sol";
    import "./CloakService.sol";
 
    contract Demo {
 
        // Helper Contracts
-       CloakPKI public constant CloakPKI_inst = CloakPKI(0);
        CloakService public constant CloakService_inst = CloakService(0);
 
        // TEE helper variables
@@ -373,7 +371,7 @@ The generated public contract is as follows:
 
 
 * In line 1, it is an obvious statement to indecate it is a Solidity contract.
-* In lines 9-10, there are two Helper Contracts. ``CloakPKI`` is a PKI infrastructure contract of Cloak.  ``CloakService`` is a service contract of cloak-tee. ``teeCHash`` and ``teePHash`` are parameters to verify the proof in line 55.
+* In lines 9, ``CloakService`` is a service contract of cloak-tee. ``teeCHash`` and ``teePHash`` are parameters to verify the proof in line 55.
 * In lines 13-15, there are three TEE helper variables. 
 * In lines 27-50, the function ``get_states`` calculates and returns the old states.
 * In lines 52-69, the function ``set_states`` receives the parameters from TEE and set the new states.

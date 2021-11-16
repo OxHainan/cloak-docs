@@ -52,7 +52,7 @@ Using Cloak requires the following seven steps:
 
 1. Write a Cloak contract file.
 2. Compile it via Cloak Compiler to generate public_contract.sol, private_contract.sol and policy.json.
-3. Register your public key to PKI contract.
+3. Register your public key to CloakService contract.
 4. Deploy public_contract.sol to Cloak Blockchain.
 5. Deploy private_contract.sol to cloak-tee.
 6. Bind policy.json to the private contract.
@@ -128,7 +128,7 @@ This is the second step, we write a python script to execute it.
 
 .. code:: 
 
-    python cloak/__main__.py compile -o output --blockchain-pki-address <PKI ADDRESS> --blockchain-service-address <CLOAK SERVICE ADDRESS> test/demo.cloak
+    python cloak/__main__.py compile -o output --blockchain-service-address <CLOAK SERVICE ADDRESS> test/demo.cloak
 
 There are three important files in the *output* directory, including public_contract.sol, private_contract.sol and policy.json.
 
@@ -161,7 +161,7 @@ Run command:
 
    # CCF_AUTH_DIR: a directory that includes CCF network.cert, a user cert and pk, typically workspace/sandbox_common/ under cloak-tee build directory if you use sandbox.sh setup cloak-tee.
    # COMPILE_DIR: cloak-compiler output directory
-   node index.js <CCF_AUTH_DIR> <COMPILE_DIR> <PKI_ADDRESS>
+   node index.js <CCF_AUTH_DIR> <COMPILE_DIR> 
 
 More detailed usage is in the `cloak-client document <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`__, and
 the full sample is in the `code <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__.

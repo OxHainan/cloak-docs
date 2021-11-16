@@ -16,16 +16,7 @@ now we will separate there steps, explain why and how to do that for every step.
 
 Deploy Public Key
 ************************
-Before executing an MPT, if you are the owner of some state data (*e.g.*, ``_manager`` in Demo contract),
-you need to register your public key to the PKI contract,
-and the public key must be specified by a standard PEM format.
-
-If what you have are hex-string style public keys/private keys, there are many way to convert the format to PEM,
-here is a example using openssl to do that:
-
-.. code::
-
-   echo 302e0201010420 <PRIVATE KEY> a00706052b8104000a | xxd -r -p | openssl ec -inform d -pubout
+Before executing an MPT, if you are the owner of some state data (*e.g.*, ``_manager`` in Demo contract), and you need to register your public key to the CloakService contract.
 
 Deploy Public Contract
 ************************
