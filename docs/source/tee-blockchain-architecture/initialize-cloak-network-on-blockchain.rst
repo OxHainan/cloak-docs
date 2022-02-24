@@ -51,7 +51,7 @@ Setup Cloak Network:
 
 .. code::
 
-   python cloak.py setup --build-path <CLOAK-TEE BUILD PATH> --blockchain-http-uri <BLOCKCHAIN-HTTP-URI> --cloak-service-address <CLOAK-SERVICE-ADDRESS>
+   python cloak.py setup --build-path <CLOAK-TEE BUILD PATH> --blockchain-http-uri <BLOCKCHAIN-HTTP-URI>
 
 The `build-path` option is the path where you build cloak-tee.
 
