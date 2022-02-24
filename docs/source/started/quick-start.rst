@@ -128,7 +128,7 @@ This is the second step, we write a python script to execute it.
 
 .. code:: 
 
-    python cloak/__main__.py compile -o output --blockchain-service-address <CLOAK SERVICE ADDRESS> test/demo.cloak
+    python cloak/__main__.py compile -o output test/demo.cloak
 
 There are three important files in the *output* directory, including public_contract.sol, private_contract.sol and policy.json.
 
