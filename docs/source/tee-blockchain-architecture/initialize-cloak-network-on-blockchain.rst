@@ -43,11 +43,13 @@ After building, the next steps are to build CloakService contracts, run cloak-te
 Get cloak service contract:
 
 .. code::
+
   git clone https://github.com/OxHainan/cloak-service-contract.git
 
 Build it:
 
 .. code-block::
+
   npm install
   truffle compile
  
