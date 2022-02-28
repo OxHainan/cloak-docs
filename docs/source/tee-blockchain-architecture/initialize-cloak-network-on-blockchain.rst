@@ -53,7 +53,8 @@ Build it:
   npm install
   truffle compile
  
- If the compilation is successful, you will see the `build` directory. 
+
+If the compilation is successful, you will see the `build` directory. 
 
 Setup Cloak Network:
 
