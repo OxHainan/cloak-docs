@@ -19,7 +19,7 @@ First of all, you need a CCF-0.15.2 environment, see: `CCF Development Setup <ht
 
 .. code-block::
 
-   docker pull plytools/circleci-cloak-tee:v0.2.0
+   docker pull plytools/cloak-tee:latest
 
 Get cloak-tee code in Docker:
 
