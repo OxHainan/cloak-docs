@@ -69,6 +69,7 @@ The `MANAGER ADDRESS` option is a person who manager the cloak network, format l
 The `BLOCKCHAIN-HTTP-URL` option is the connect to blockchain backend, and default is http://127.0.0.1:8545. If you want to connect aother blockchain backend, please commit it. 
 
 .. Note::
+
   If you want to develop or test cloak-tee, ganache-cli may be a good choice as a blockchain backend, after installed ganache and started it.
 
 After deploying CloakService contracts, the script will output the addresses of them, they are useful for compiling cloak contracts, and if you don't want to deploy them again when you restart Cloak Network, you can use the options `--cloak-service-address` to set your deployed contracts.
