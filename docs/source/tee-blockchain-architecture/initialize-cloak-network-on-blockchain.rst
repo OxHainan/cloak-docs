@@ -38,7 +38,20 @@ Build it:
 
 Setup Cloak Service
 **********************
-After building, the next steps are to deploy CloakService contracts, run cloak-tee, you can use Cloak manager script to complete it.
+After building, the next steps are to build CloakService contracts, run cloak-tee.
+
+Get cloak service contract:
+
+.. code::
+  git clone https://github.com/OxHainan/cloak-service-contract.git
+
+Build it:
+
+.. code-block::
+  npm install
+  truffle compile
+ 
+ If the compilation is successful, you will see the `build` directory. 
 
 Setup Cloak Network:
 
@@ -46,7 +59,7 @@ Setup Cloak Network:
 
   ./sandbox.sh -p libcloak.virtual.so --cloakservice-dir <CLOAK SERVICE PAYH> ----manager-address <MANAGER ADDRESS> --blockchain-url <BLOCKCHAIN-HTTP-URL>
 
-The `CLOAK SERVICE PAYH` option is the path where you build cloak service contract.
+The `CLOAK SERVICE PAYH` option is the generated path where you compiled the cloak contract, (e.g. <CLOAK SERVICE REPO>/build/contract)
 
 The `MANAGER ADDRESS` option is a person who manager the cloak network, format likes ethereum account address. If you don`t commit it, it will choose the first account of the blockchain backend as the management address by default.
 
