@@ -38,23 +38,19 @@ Build it:
 
 Setup Cloak Service
 **********************
-After building, the next steps are to deploy CloakService contracts, run cloak-tee, cloak-tee-agent and prepare cloak-tee, you can use Cloak manager script to complete it.
-
-The Cloak manager directory is CLOAK-TEE-PROJECT/agent, install dependencies:
-
-.. code::
-
-   cd ../agent
-   pip install -r requirements.txt
+After building, the next steps are to deploy CloakService contracts, run cloak-tee, you can use Cloak manager script to complete it.
 
 Setup Cloak Network:
 
 .. code::
 
-   python cloak.py setup --build-path <CLOAK-TEE BUILD PATH> --blockchain-http-uri <BLOCKCHAIN-HTTP-URI>
+  ./sandbox.sh -p libcloak.virtual.so --cloakservice-dir <CLOAK SERVICE PAYH> ----manager-address <MANAGER ADDRESS> --blockchain-url <BLOCKCHAIN-HTTP-URL>
 
-The `build-path` option is the path where you build cloak-tee.
+The `CLOAK SERVICE PAYH` option is the path where you build cloak service contract.
 
-If you want to develop or test cloak-tee, ganache-cli may be a good choice as a blockchain backend, after installed ganache and started it, The `--blockchain-http-uri` option should be `http://127.0.0.1:8545`
+The `BLOCKCHAIN-HTTP-URL` option is the connect to blockchain backend, and default is http://127.0.0.1:8545. If you want to connect aother blockchain backend, please commit it. 
+
+.. Note::
+  If you want to develop or test cloak-tee, ganache-cli may be a good choice as a blockchain backend, after installed ganache and started it.
 
 After deploying CloakService contracts, the script will output the addresses of them, they are useful for compiling cloak contracts, and if you don't want to deploy them again when you restart Cloak Network, you can use the options `--cloak-service-address` to set your deployed contracts.
