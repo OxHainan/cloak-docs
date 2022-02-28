@@ -48,6 +48,8 @@ Setup Cloak Network:
 
 The `CLOAK SERVICE PAYH` option is the path where you build cloak service contract.
 
+The `MANAGER ADDRESS` option is a person who manager the cloak network, format likes ethereum account address. If you don`t commit it, it will choose the first account of the blockchain backend as the management address by default.
+
 The `BLOCKCHAIN-HTTP-URL` option is the connect to blockchain backend, and default is http://127.0.0.1:8545. If you want to connect aother blockchain backend, please commit it. 
 
 .. Note::
