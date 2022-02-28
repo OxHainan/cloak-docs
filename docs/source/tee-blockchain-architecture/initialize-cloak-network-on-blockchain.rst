@@ -15,7 +15,7 @@ Build Cloak-tee
 **********************
 Cloak-tee is a CCF App, compile and run it just like a standard CFF App operation.
 
-First of all, you need a CCF-0.15.2 environment, see: `CCF Development Setup <https://microsoft.github.io/CCF/main/build_apps/build_setup.html>`__, but it is complicated, we recommend you use Dcoker to setup it:
+First of all, if you need to configure the cloak-tee environment yourself, see: `CCF Development Setup <https://microsoft.github.io/CCF/main/build_apps/build_setup.html>`__, but it is complicated, we recommend you use Dcoker to setup it:
 
 .. code-block::
 
