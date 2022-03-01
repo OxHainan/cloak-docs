@@ -139,7 +139,7 @@ Typically, there are three function types.
 
 * PUB, public, iff all data privacy types are **@all**.
 
-* CT, confidential transaction, iff only one private expression exists but is not owned by TEE.
+* PRT, private transaction, iff only one private expression exists but is not owned by TEE.
 
 * MPT, multi-party transaction, iff one involves variables from different parties.
 
@@ -196,7 +196,7 @@ Cloak contract is similar to a traditional Solidity smart contract. Let us begin
            return true;
        }
    
-       /** CT-me
+       /** PRT-me
         *
         * @dev Deposit token from public to private balances
         * @param value The amount to be deposited.
@@ -209,7 +209,7 @@ Cloak contract is similar to a traditional Solidity smart contract. Let us begin
            return true;
        }
    
-       /** CT-owner; change ownership; return private data;
+       /** PRT-owner; change ownership; return private data;
         *
         * @dev Gets the public balance of the specified address.
         * @param owner The address to query the balance of.
@@ -331,7 +331,7 @@ These two ``require()`` ensures that the security of variables. Users need to us
         return true;
     }
     
-Function ``deposit()`` is a CT function, because the variable ``priBalances`` is a private type but does not belong to TEE.
+Function ``deposit()`` is a PRT function, because the variable ``priBalances`` is a private type but does not belong to TEE.
 
 .. code-block::
    
