@@ -7,7 +7,7 @@ Cloak Compiler
 Compile
 --------------------
 
-In `Quick Start <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/quick-start.html>`_, the basic usage is shown with command.
+In `Quick Start <https://cloak-docs.readthedocs.io/en/latest/started/quick-start.html>`_, the basic usage is shown with command.
 
 .. code-block ::
 
@@ -17,7 +17,7 @@ In `Quick Start <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/st
 Here, we will briefly show you how the cloak-compiler works inside.
 
 
-In the `development phase <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/introduction.html#cloak-overview>`_, developers first annotate privacy invariants in Solidity smart contract intuitively to get Cloak smart contract and use the cloak-complier to compile the Cloak contract. 
+In the `development phase <https://cloak-docs.readthedocs.io/en/latest/started/introduction.html#cloak-overview>`_, developers first annotate privacy invariants in Solidity smart contract intuitively to get Cloak smart contract and use the cloak-complier to compile the Cloak contract. 
 
 The components of cloak-compiler works as following:
 
@@ -26,7 +26,7 @@ The components of cloak-compiler works as following:
 *  **Code Generator**, generates *verifier contract (aka public contract)* and *private contract*.
 
 
-For more detail, we recommend the `Publications <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/publications/publications.html>`_.
+For more detail, we recommend the `Publications <https://cloak-docs.readthedocs.io/en/latest/publications/publications.html>`_.
 
 Annotate Privacy Invariants
 ==============================
@@ -59,7 +59,7 @@ With Cloak, users could intuitively specify the MPT as a Cloak smart contract, t
             pubBalances[manager] = 1000;
         }
 
-        //  CT-me
+        //  PRT-me
         //
         // @dev Deposit token from public to private balances
         // @param value The amount to be deposited.
@@ -93,7 +93,7 @@ With Cloak, users could intuitively specify the MPT as a Cloak smart contract, t
 * In line 6, the developer specifies ``_manager`` should be public. 
 * In line 7, the developer specifies a public mapping. 
 * In line 8, the developer specifies a private mapping with ``!x`` and ``@x``.
-* In lines 20-25, the developer defines a Confidential Transaction (CT) that enables one user to transfer public balance into private balance.
+* In lines 20-25, the developer defines a Private Transaction (PRT) that enables one user to transfer public balance into private balance.
 * In lines 33-43, the developer defines a Multi-Party Transaction (MPT) that enables one user (``me``) to transfer private balance to another user (``to``).
 
 
@@ -292,7 +292,7 @@ Code Generator
 ====================
 **Code Generator** generates a verifier contract :math:`V` and a private contract :math:`F`.
 The former is deployed in the blockchain to verify the result and update the state.
-The latter is deployed in the TEE to execute confidential transaction (CT) and  Multi-Party Transaction (MPT). In our implementation, we use the SGX to build a trusted execution environment.
+The latter is deployed in the TEE to execute private transaction (PRT) and  Multi-Party Transaction (MPT). In our implementation, we use the SGX to build a trusted execution environment.
 
 
 The generated public contract is as follows:
