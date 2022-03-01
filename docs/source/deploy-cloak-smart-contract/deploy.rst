@@ -3,14 +3,14 @@
 Cloak Blockchain
 =================================
 The initialization of Cloak Blockchain include two parts: Global Initialization and User Initialization,
-for Global Initialization, we have described in `Initialize Cloak Network on Blockchain <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html>`__.
+for Global Initialization, we have described in `Initialize Cloak Network on Blockchain <https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html>`__.
 In this section, we will focus on User Initialization and interacting with Cloak Network.
 
 .. image:: ../imgs/cloak_blockchain.png
     :alt: Cloak
     :align: center
 
-As `cloak-by-examples <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/quick-start.html#cloak-by-examples>`__ described,
+As `cloak-by-examples <https://cloak-docs.readthedocs.io/en/latest/started/quick-start.html#cloak-by-examples>`__ described,
 we use a demo program to finish the next steps for User initialization and interacting with Cloak Network,
 now we will separate there steps, explain why and how to do that for every step.
 
@@ -32,7 +32,7 @@ Deploy Private Contract
 The private_contract.sol needs to be deployed to Cloak Network for computing Cloak contract.
 The private contract is almost the same as raw cloak contract, which is a standard Solidity contract and has two extended functions(``get_states()`` and ``set_states()``).
 
-Usage: `Deploy Private Contract <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#deploy-a-solidity-contract>`__.
+Usage: `Deploy Private Contract <https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#deploy-a-solidity-contract>`__.
 
 Bind Privacy Policy
 ************************
@@ -41,19 +41,19 @@ which means it don't include any **owner** information,
 but states need to be encrypted for synchronizing to public Blockchain,
 so policy.json play a role to specify the owner and others information for states.
 
-Usage: `sendPrivacyTransaction <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#sendprivacytransaction>`__.
+Usage: `sendPrivacyTransaction <https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#sendprivacytransaction>`__.
 
 Send Transaction
 ***********************
-There are two kind Cloak transaction: CT(Confidential Transaction) and MPT(Multi-Party Transaction),
-CT is special case that only involves one party of MPT for now,
+There are two kind Cloak transaction: PRT(Private Transaction) and MPT(Multi-Party Transaction),
+PRT is special case that only involves one party of MPT for now,
 so we will focus on describing MPT.
 
 An MPT needs a proposer to send a proposal transaction to Cloak Network,
 and Cloak Network will generate an MPT id for the transaction,
 participants who are interested in that transaction will send their transaction to participate it with the generated MPT id.
 
-Usage: `sendMultiPartyTransaction <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#sendmultipartytransaction>`__.
+Usage: `sendMultiPartyTransaction <https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#sendmultipartytransaction>`__.
 
 =================================
 Cloak Client
