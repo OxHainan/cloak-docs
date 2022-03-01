@@ -5,9 +5,9 @@ Cloak Network
 Cloak Network is the network consisting of multiple Cloak Executors that hold TEE with Cloak runtime in it. 
 Each Cloak Executor is supposed to
 
-- processe broadcasted requests from `cloak-client <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`_.
+- processe broadcasted requests from `cloak-client <https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`_.
 - run contracts in its TEE.
-- execute the Confidential Transaction (CT) and the Multi-Party Transaction (MPT) in its TEE.
+- execute the Private Transaction (PRT) and the Multi-Party Transaction (MPT) in its TEE.
 - generate proofs proving the correctness of state updates indenpendently.
 
 Cloak Network is built on `CCF Network <https://microsoft.github.io/CCF/main/overview/index.html>`_, *i.e.*, a special CCF Network running Cloak App.
@@ -80,7 +80,7 @@ Workflow of Transaction
     :align: center
 
 
-There are three critical components in the Cloak-TEE enables the CT and MPT.
+There are three critical components in the Cloak-TEE enables the PRT and MPT.
 * Privacy Interpreter, completes privacy parameters check for the transaction.
 * Key Management Enclave, provides data encryption and decryption functions inside Enclave to protect users' data information from being stolen by third parties.
 * EVM Enclave, responsible for the execution of confidential smart contracts and output the execution result.
@@ -98,9 +98,9 @@ Next, we focus on the key steps, *i.e.*, deploy confidential contracts, policy b
 
 Deploy Confidential Smart Contracts
 -------------------------------------
-Users can write confidential smart contract based on `Cloak Language <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/cloak-language.html>`_ and compile it in the `cloak-compiler <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/compiler.html#>`_ to 
+Users can write confidential smart contract based on `Cloak Language <https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/cloak-language.html>`_ and compile it in the `cloak-compiler <https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/compiler.html#>`_ to 
 generate privacy policy and two contracts. Then, one of contracts can deploy to blockchain and get the contract address, marked as ``Verifier``.
-The other contract is the private contract deployed via `cloak-client <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`_.
+The other contract is the private contract deployed via `cloak-client <https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`_.
 
 Policy Binding Transaction
 ---------------------------
@@ -130,10 +130,10 @@ When processing a Policy Binding Transaction, Cloak will
 Multi-Party Transaction
 --------------------------
 
-In the Cloak Network, users' private transactions are divided into Confidential Transactions (CT) and 
+In the Cloak Network, users' private transactions are divided into Private Transactions (PRT) and 
 Multi-Party Transactions (MPT). The former is the confidential transaction involving one participant.
 The latter involves multiple participants.
-MPT and CT have similar processing logic, but the difference is that MPT need to wait for other's transactions.
+MPT and PRT have similar processing logic, but the difference is that MPT need to wait for other's transactions.
 
 The input format of the transaction is as follows:
 
@@ -171,7 +171,7 @@ The processing flow is as follows:
 3. Key Management decrypte and send it to Cloak Tx pools;
 4. Check the type of transaction;
   
-  4.1 If it is a CT, the execution executes it and return result in EVM. 
+  4.1 If it is a PRT, the execution executes it and return result in EVM. 
   
   4.2 If it is an MPT, it will wait for other MPT until meet the demand. The details will be described below.
 
