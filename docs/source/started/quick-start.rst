@@ -6,10 +6,10 @@ Quick Start
 Prerequisites
 ---------------
 Cloak is a framework consisting of a Cloak Network and a Cloak language compiler described as
-`Introduction <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/started/introduction.html>`__.
+`Introduction <https://cloak-docs.readthedocs.io/en/latest/started/introduction.html>`__.
 Up to now, we haven't  deployed a public test Cloak Network to provide Cloak Service.
 Please deploy a Cloak Network for yourself if you want to use Cloak,
-following `Initialize Cloak Network on Blockchain <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html>`__.
+following `Initialize Cloak Network on Blockchain <https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html>`__.
 Here, we focus on the process of using Cloak.
 
 ---------------
@@ -65,7 +65,7 @@ A Glance of Cloak Contract
 
 This is the *demo.cloak*, representing the Cloak contract of the first step.
 Here, we pay attention to the steps of using it rather than the details. 
-A detailed description is presented in `Cloak Compiler <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/develop-cloak-smart-contract/compiler.html>`_.
+A detailed description is presented in `Cloak Compiler <https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/compiler.html>`_.
 
 .. code-block::
 
@@ -83,7 +83,7 @@ A detailed description is presented in `Cloak Compiler <https://oxhainan-cloak-d
             pubBalances[manager] = 1000;
         }
 
-        //  CT-me
+        //  PRT-me
         //
         // @dev Deposit token from public to private balances
         // @param value The amount to be deposited.
@@ -139,8 +139,8 @@ There are three important files in the *output* directory, including public_cont
 Deploy and Transaction
 **********************
 
-The remaining steps will be carried out through `cloak-client <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`_.
-We have writed a `sample <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__ that uses cloak-client to show you how to register pk, deploy public/private contract, bind privacy policy and propose a CT/MPT transaction, *etc*.
+The remaining steps will be carried out through `cloak-client <https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`_.
+We have writed a `sample <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__ that uses cloak-client to show you how to register pk, deploy public/private contract, bind privacy policy and propose a PRT/MPT transaction, *etc*.
 
 Clone cloak-client and change directory to sample/demo:
 
@@ -163,6 +163,6 @@ Run command:
    # COMPILE_DIR: cloak-compiler output directory
    node index.js <CCF_AUTH_DIR> <COMPILE_DIR> 
 
-More detailed usage is in the `cloak-client document <https://oxhainan-cloak-docs.readthedocs-hosted.com/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`__, and
+More detailed usage is in the `cloak-client document <https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`__, and
 the full sample is in the `code <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__.
 
