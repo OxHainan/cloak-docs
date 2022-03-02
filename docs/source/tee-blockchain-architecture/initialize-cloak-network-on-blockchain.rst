@@ -15,7 +15,7 @@ Build Cloak-tee
 **********************
 Cloak-tee is a CCF App, compile and run it just like a standard CFF App operation.
 
-First of all, if you need to configure the cloak-tee environment yourself, see: `CCF Development Setup <https://microsoft.github.io/CCF/main/build_apps/build_setup.html>`__, but it is complicated, we recommend you use Dcoker to setup it:
+First of all, if you need to configure the cloak-tee environment yourself, see: `CCF Development Setup <https://microsoft.github.io/CCF/main/build_apps>`__, but it is complicated, we recommend you use Docker to setup it:
 
 .. code-block::
 
@@ -38,7 +38,7 @@ Build it:
 
 Setup Cloak Service
 **********************
-After building, the next steps are to build CloakService contracts, run cloak-tee.
+After building and **running the blockchain (ganache-cli in our demo)**, the next steps are to build CloakService contracts, run cloak-tee.
 
 Get cloak service contract:
 
@@ -50,6 +50,7 @@ Build it:
 
 .. code-block::
 
+  cd cloak-service-contract
   npm install
   truffle compile
  
