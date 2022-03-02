@@ -201,7 +201,7 @@ the full sample is in the `code <https://github.com/OxHainan/cloak-client/tree/m
     :alt: Demo Result
     :align: center
 
-It shows the result of the successful running of the demo.
+It shows the result of the successful running of the demo, meaning the execution of *multiPartyTransfer* in *index.js*.
 
 .. Note::
 
