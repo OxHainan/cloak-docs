@@ -34,7 +34,7 @@ Build it:
 
     mkdir build && cd build
     cmake .. -GNinja
-    ninja
+    ninja -j 4
 
 Setup Cloak Service
 **********************
@@ -59,8 +59,9 @@ If the compilation is successful, you will see the `build` directory.
 Setup Cloak Network:
 
 .. code::
-
-  ./sandbox.sh -p libcloak.virtual.so --cloakservice-dir <CLOAK SERVICE PAYH> ----manager-address <MANAGER ADDRESS> --blockchain-url <BLOCKCHAIN-HTTP-URL>
+  
+  cd build
+  ./sandbox.sh -p libcloak.virtual.so --cloakservice-dir <CLOAK SERVICE PAYH> --manager-address <MANAGER ADDRESS> --blockchain-url <BLOCKCHAIN-HTTP-URL>
 
 The `CLOAK SERVICE PAYH` option is the generated path where you compiled the cloak contract, (e.g. <CLOAK SERVICE REPO>/build/contract)
 
