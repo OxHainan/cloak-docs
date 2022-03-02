@@ -10,6 +10,31 @@ Cloak is a framework consisting of a Cloak Network and a Cloak language compiler
 Up to now, we haven't  deployed a public test Cloak Network to provide Cloak Service.
 Please deploy a Cloak Network for yourself if you want to use Cloak,
 following `Initialize Cloak Network on Blockchain <https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html>`__.
+
+To run the demo, we need some dependecies in our container (plytools/cloak-tee:latest).
+
+.. code:: 
+
+   # nodejs 
+   curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash – 
+   sudo apt-get install -y nodejs
+   # ganache-cli  the blockchain backend
+   npm install -g ganache-cli
+   # truffle
+   npm install -g truffle
+   # solc
+   sudo apt-get install software-properties-common
+   sudo add-apt-repository ppa:ethereum/ethereum
+   sudo apt-get install solc
+   # java
+   apt install openjdk-11-jdk
+
+Generally, we ask three terminals for container to run our demo. The terminal order is also the execution order we require.
+
+* T1: it runs the blockchian (e.g., ganache-cli)
+* T2: it runs the Cloak Network.
+* T3: it represents the user's terminal, `compiles <https://cloak-docs.readthedocs.io/en/latest/started/quick-start.html#compile-cloak-contract>`__ the cloak contract and `deploys <https://cloak-docs.readthedocs.io/en/latest/started/quick-start.html#deploy-and-transaction>`__ the contract.
+
 Here, we focus on the process of using Cloak.
 
 ---------------
@@ -21,7 +46,7 @@ There are two ways to install compiler, the easier way is to use docker:
 
    docker pull plytools/circleci-compiler:v0.2.0
 
-Or install it to any host that you want. Note that, Cloak Compiler is implemented by
+Or install it to any host that you want. **For convenience, we use the same container plytools/cloak-tee:latest, which is also the recommendation for your test.** Note that, Cloak Compiler is implemented by
 Python 3, so you need to prepare an environment that includes an executable
 Python 3 and pip3, and its version is at least greater than 3.8.
 
@@ -65,7 +90,7 @@ A Glance of Cloak Contract
 
 This is the *demo.cloak*, representing the Cloak contract of the first step.
 Here, we pay attention to the steps of using it rather than the details. 
-A detailed description is presented in `Cloak Compiler <https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/compiler.html>`_.
+A detailed description is presented in `Cloak Compiler <https://cloak-docs.readthedocs.io/en/latest/develop-cloak-smart-contract/compiler.html>`__.
 
 .. code-block::
 
@@ -124,14 +149,17 @@ For demonstrating the *demo.cloak*, We use the following test account as an exam
 Compile Cloak Contract
 **********************
 
-This is the second step, we write a python script to execute it.
+After the running of cloak service, we can compile the cloak contract. For example:
 
 .. code:: 
 
-    python cloak/__main__.py compile -o output test/demo.cloak
+    cloak compile -o <OUTPUT PATH> --put-enable <CLOAK CONTRACT>
+    e.g.
+    cloak compile -o output --put-enable /project/evm4ccf/cloak-client/samples/demo/demo.cloak
 
-There are three important files in the *output* directory, including public_contract.sol, private_contract.sol and policy.json.
+There are four important files in the *output* directory, including contract.cloak, public_contract.sol, private_contract.sol and policy.json.
 
+* contract.cloak: the cloak contract of your business.
 * public_contract.sol: a solidity contract, it will be deployed to Blockchain.
 * private_contract.sol: a solidity contract, it will be deployed to cloak-tee and be executed by eEVM in TEE environment.
 * policy.json: a privacy policy definition of the Cloak smart contract binding to the private contract.
@@ -147,13 +175,12 @@ Clone cloak-client and change directory to sample/demo:
 .. code::
 
    git clone https://github.com/OxHainan/cloak-client.git
-   cd cloak-client/samples/demo
-
-Install dependencies:
-
-.. code::
-
+   cd cloak-client
    npm install
+   cd cloak-client/samples/demo
+   npm install
+   cp /project/evm4ccf/cloak-service-contract/build/contracts/CloakService.json .
+
 
 Run command:
 
@@ -162,7 +189,14 @@ Run command:
    # CCF_AUTH_DIR: a directory that includes CCF network.cert, a user cert and pk, typically workspace/sandbox_common/ under cloak-tee build directory if you use sandbox.sh setup cloak-tee.
    # COMPILE_DIR: cloak-compiler output directory
    node index.js <CCF_AUTH_DIR> <COMPILE_DIR> 
+   e.g.
+   node index.js /project/evm4ccf/cloak-tee/build/workspace/sandbox_common/ /project/evm4ccf/output
+
 
 More detailed usage is in the `cloak-client document <https://cloak-docs.readthedocs.io/en/latest/deploy-cloak-smart-contract/deploy.html#cloak-client>`__, and
 the full sample is in the `code <https://github.com/OxHainan/cloak-client/tree/main/samples/demo>`__.
 
+.. image:: ../imgs/demo-result.png
+    :width: 1000px
+    :alt: Demo Result
+    :align: center
