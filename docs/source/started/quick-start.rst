@@ -200,3 +200,8 @@ the full sample is in the `code <https://github.com/OxHainan/cloak-client/tree/m
     :width: 1000px
     :alt: Demo Result
     :align: center
+
+
+.. Note::
+
+  Close the proxy if you have set it, otherwise the Cloak Network fails to run.
