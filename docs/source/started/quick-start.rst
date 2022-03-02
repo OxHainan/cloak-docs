@@ -40,14 +40,7 @@ Here, we focus on the process of using Cloak.
 ---------------
 Installation
 ---------------
-There are two ways to install compiler, the easier way is to use docker:
-
-.. code:: 
-
-   docker pull plytools/circleci-compiler:v0.2.0
-
-Or install it to any host that you want. **For convenience, we use the same container plytools/cloak-tee:latest, which is also the recommendation for your test.** Note that, Cloak Compiler is implemented by
-Python 3, so you need to prepare an environment that includes an executable
+There are two ways to install compiler, the easier way is to use docker or install it to any host that you want. **For convenience, we recommend the same container plytools/cloak-tee:latest in ** `Initialize Cloak Network on Blockchain <https://cloak-docs.readthedocs.io/en/latest/tee-blockchain-architecture/initialize-cloak-network-on-blockchain.html>`__. Note that, Cloak Compiler is implemented by Python 3, so you need to prepare an environment that includes an executable
 Python 3 and pip3, and its version is at least greater than 3.8.
 
 Clone code:
