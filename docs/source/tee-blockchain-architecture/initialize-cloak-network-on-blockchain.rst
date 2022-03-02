@@ -63,8 +63,10 @@ Setup Cloak Network:
   
   cd build
   ./sandbox.sh -p libcloak.virtual.so --cloakservice-dir <CLOAK SERVICE PAYH> --manager-address <MANAGER ADDRESS> --blockchain-url <BLOCKCHAIN-HTTP-URL>
+  e.g.
+  ./sandbox.sh -p libcloak.virtual.so --cloakservice-dir ../../cloak-service-contract/build/contracts/  --blockchain-url http://127.0.0.1:8545
 
-The `CLOAK SERVICE PAYH` option is the generated path where you compiled the cloak contract, (e.g. <CLOAK SERVICE REPO>/build/contract)
+The `CLOAK SERVICE PAYH` option is the generated path where you compiled the cloak contract, (e.g. <CLOAK SERVICE REPO>/build/contracts)
 
 The `MANAGER ADDRESS` option is a person who manager the cloak network, format likes ethereum account address. If you don`t commit it, it will choose the first account of the blockchain backend as the management address by default.
 
