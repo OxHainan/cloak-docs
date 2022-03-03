@@ -16,7 +16,7 @@ To run the demo, we need some dependecies in our container (plytools/cloak-tee:l
 .. code:: 
 
    # nodejs 
-   curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash – 
+   curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
    sudo apt-get install -y nodejs
    # ganache-cli  the blockchain backend
    npm install -g ganache-cli
