@@ -96,6 +96,7 @@ Limitations
 - Inline Assembly [P1]
 - Decoder, encryption and decryption of return values [P1]
 - Call other functions that read or mutated state variables [P2]
+- revert, assert syntax [P2]
 
 -------------------------------
 Security Disclaimer
