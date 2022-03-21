@@ -146,9 +146,9 @@ After the running of cloak service, we can compile the cloak contract. For examp
 
 .. code:: 
 
-    cloak compile -o <OUTPUT PATH> --put-enable <CLOAK CONTRACT>
+    cloak compile --contract --combined-json <CLOAK CONTRACT>
     e.g.
-    cloak compile -o output --put-enable /project/evm4ccf/cloak-client/samples/demo/demo.cloak
+    cloak compile --contract --combined-json /project/evm4ccf/cloak-client/samples/demo/demo.cloak
 
 There are four important files in the *output* directory, including contract.cloak, public_contract.sol, private_contract.sol and policy.json.
 
